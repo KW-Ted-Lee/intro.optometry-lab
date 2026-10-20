@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W15 眼位、聚散與雙眼視覺｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .iris { transition: transform .5s ease; }
+  .occ { transition: opacity .3s; }
+  table.mini tr.on td { background: var(--accent-soft); font-weight: 700; }
+</style>
+</head>
+<body data-chapter="w15">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 15</div>
+    <h1>眼位、聚散與雙眼視覺</h1>
+    <div class="en">Eye Position &amp; Binocular Vision</div>
+    <p class="lede">兩隻眼睛要對準同一個目標，大腦才能把兩張影像融合成一個有立體感的世界。本週的核心觀念：<b>斜位是常態，不是疾病——問題在代償夠不夠。</b>還有一個口訣：<b>LR₆ SO₄，其餘皆為 3。</b></p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>分辨顯性的 Tropia 與隱性的 Phoria，並理解為什麼斜位是常態而非疾病。</li>
+      <li>說出六條眼外肌的作用與支配神經，用口訣 LR₆ SO₄ 記住。</li>
+      <li>說出雙眼單視的三個條件，並說明立體視是怎麼產生的。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Strabismus</span><h3>斜視</h3><p>兩眼視軸不平行，無法同時注視同一目標。原因：眼外肌不平衡、大腦支配（腦性麻痺、腦部病變）、肌肉萎縮、遠視（W11 調節性內斜視）、創傷感染。影響：複視、弱視。治療：稜鏡、手術、遮眼、視力訓練 VT。</p></div>
+      <div class="concept"><span class="en-term">-tropia vs -phoria</span><h3>顯性與隱性</h3><p><b>-tropia</b> 顯性（雙眼睜開就偏斜），<b>-phoria</b> 隱性（融像被打斷才偏斜）。四個方向：Eso- 內、Exo- 外、Hyper- 上、Hypo- 下。例：內斜視 Esotropia、內斜位 Esophoria。</p></div>
+      <div class="concept"><span class="en-term">Phoria is normal</span><h3>斜位是常態</h3><p>多數人都有輕微斜位。代償足夠 → 一輩子沒症狀；代償不足 → 視疲勞、頭痛、閱讀跳行、字會飄。斜視用遮蓋測驗檢出；斜位用遮蓋—去遮蓋或交替遮蓋。三年級會學 ZCSBV、Morgan 期望值。</p></div>
+      <div class="concept"><span class="en-term">Six extraocular muscles</span><h3>六條眼外肌</h3><p>內直肌 MR 內轉；外直肌 LR 外轉；上直肌 SR 向上內、內旋；下直肌 IR 向下內、外旋；上斜肌 SO 向下外、內旋；下斜肌 IO 向上外、外旋。</p></div>
+      <div class="concept"><span class="en-term">LR₆ SO₄</span><h3>支配神經口訣</h3><p>外直肌由第 6 對<b>外展神經</b>、上斜肌由第 4 對<b>滑車神經</b>，其餘四條都是第 3 對<b>動眼神經</b>。CN VI 麻痺 → 不能外轉、內斜；CN IV 麻痺 → 代償性頭傾；CN III 麻痺 → 眼球外下偏＋眼瞼下垂＋瞳孔散大，要立刻轉介。</p></div>
+      <div class="concept"><span class="en-term">Binocular single vision</span><h3>雙眼視覺</h3><p>影像落在兩眼視網膜的對應點上，大腦融合成一個有立體感的影像。兩眼相距一個瞳距 PD（成人約 62–64 mm）。<b>感覺融像</b>是腦的工作，<b>運動融像</b>是肌肉的工作。</p></div>
+      <div class="concept"><span class="en-term">Three conditions</span><h3>雙眼單視三條件</h3><p>一、兩眼視力相近（否則大腦抑制較差那眼）；二、視軸能對準同一目標（運動融像，斜視就是失敗在這）；三、大腦具備融像能力（關鍵期若被干擾可能發展不起來）。任一失敗 → 複視或抑制 → 可能弱視。</p></div>
+      <div class="concept"><span class="en-term">Benefits</span><h3>雙眼比單眼好在哪</h3><p>運動協調、手眼協調、多一個備份、視野更大（近 200°，中間約 120° 為雙眼區）、雙眼加和，以及最重要的：<b>視差產生立體視</b>。</p></div>
+      <div class="concept"><span class="en-term">Stereopsis</span><h3>立體視</h3><p>兩眼看同一物體有水平視差，大腦換算成深度。正常約 40 弧秒或更佳；Titmus 蒼蠅圖、隨機點立體圖。Panum 融像區內有視差仍可融像；超出就是生理性複視。斜視弱視者立體視明顯下降且不易恢復。</p></div>
+      <div class="concept"><span class="en-term">Vergence</span><h3>聚散</h3><p>內聚（看近）與開散（看遠）是兩眼的異向運動。四種輻輳：調節性、融像性、近感性、張力性。Brock String 訓練的就是內聚與開散的能力。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Prentice's rule</span><h3>Prentice 法則</h3><p>P ＝ c × F（c 為偏離光學中心的公分數）。−5.00 D 鏡片偏 0.5 cm → 2.5Δ 非預期稜鏡。鏡片中心沒對準瞳孔，眼睛就得額外聚散代償 → 疲勞頭痛。這就是配鏡要量準 PD 的原因（W16 實驗）。</p></div>
+    </div>
+    <p class="fix-note" style="margin-top:14px">講義更正：原講義將外直肌的支配神經寫為「外旋神經」，正確名稱是「外展神經 Abducens nerve, CN VI」。</p>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 15-1</span><h3>六條眼外肌與神經麻痺</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="eom"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>收縮哪一條肌肉（右眼）</label><div class="seg" id="m-m"><button data-v="none" aria-pressed="true">都放鬆</button><button data-v="MR">內直肌</button><button data-v="LR">外直肌</button><button data-v="SR">上直肌</button><button data-v="IR">下直肌</button><button data-v="SO">上斜肌</button><button data-v="IO">下斜肌</button></div></div>
+          <div class="ctrl"><label>或：右眼神經麻痺（看正前方時的樣子）</label><div class="seg" id="m-p"><button data-v="none" aria-pressed="true">無</button><button data-v="6">CN VI</button><button data-v="4">CN IV</button><button data-v="3">CN III</button></div></div>
+          <div class="verdict" id="m-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <table class="mini" id="m-tab"></table>
+        <div class="predict" data-answer="2">
+          <p class="q">右眼外直肌麻痺，右眼在看正前方時會？</p>
+          <div class="opts"><button>往外偏（外斜）</button><button>往上偏</button><button>往內偏（內斜）</button></div>
+          <p class="why">外直肌（CN VI）負責外轉；它沒力，內直肌就把眼睛拉向內，造成內斜視，而且無法向外轉。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>畫面是你面對病人：病人的右眼在畫面左邊，它的「內側（鼻側）」朝向畫面中間。</li>
+          <li>斜肌的作用看起來和名字相反：上斜肌讓眼睛往「下」外，下斜肌往「上」外。</li>
+          <li>CN III 麻痺三件事一起出現：外下偏、眼瞼下垂、瞳孔散大（它也管副交感，回想 W02）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 15-2</span><h3>遮蓋測驗：斜視與斜位</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="ct"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>病人眼位</label><div class="seg" id="c-cond"><button data-v="ortho" aria-pressed="true">正位</button><button data-v="esoP">內斜位</button><button data-v="exoP">外斜位</button><button data-v="esoT">右眼內斜視</button><button data-v="exoT">右眼外斜視</button><button data-v="mystery">神秘病人</button></div></div>
+          <div class="ctrl"><label>遮眼板</label><div class="seg" id="c-act"><button data-v="none" aria-pressed="true">不遮</button><button data-v="R">遮右眼</button><button data-v="L">遮左眼</button></div></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="c-see" checked> 遮眼板半透明（看得到後面的眼睛）</label></div>
+          <div class="ctrl" id="c-ans-box" hidden><label>神秘病人是？</label><div class="chips" id="c-ans"></div></div>
+          <div class="verdict" id="c-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">右眼內斜視的病人，遮住「左眼」時，右眼會？</p>
+          <div class="opts"><button>不動</button><button>往外轉，接手注視目標</button><button>往內轉</button></div>
+          <p class="why">本來注視的是左眼；左眼被遮，偏斜的右眼必須轉過來（向外）對準目標。看到「沒被遮的眼睛動了」就是斜視。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li><b>斜視</b>：遮住注視眼時，看沒被遮的那隻眼有沒有移動。</li>
+          <li><b>斜位</b>：雙眼睜開時都正；被遮的眼睛在板子後面偏掉，移開板子的瞬間才看到它轉回來。</li>
+          <li>取消「半透明」，就是真實檢查時看到的樣子；試試「神秘病人」。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 15-3</span><h3>Worth 4-Dot（衛氏四點）</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="w4"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>模式</label><div class="seg" id="w-mode"><button data-v="learn" aria-pressed="true">看結果</button><button data-v="quiz">考考我</button></div></div>
+          <div class="ctrl" id="w-c-box"><label>病人狀況</label><div class="seg" id="w-c"><button data-v="fuse" aria-pressed="true">正常融像</button><button data-v="supL">左眼被抑制</button><button data-v="supR">右眼被抑制</button><button data-v="eso">內斜（同側複視）</button><button data-v="exo">外斜（交叉複視）</button></div></div>
+          <div class="ctrl" id="w-q-box" hidden><label>病人看到這樣，代表？</label><div class="chips" id="w-q"></div></div>
+          <div class="verdict" id="w-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">戴紅綠眼鏡（右紅左綠），病人說只看到 3 個綠燈，代表？</p>
+          <div class="opts"><button>左眼被抑制</button><button>右眼（紅片側）被抑制</button><button>正常融像</button></div>
+          <p class="why">綠燈只有左眼（綠片）看得到；只剩綠燈，表示右眼的訊號被大腦關掉了。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>卡片上：上紅、左右兩綠、下白。白燈兩眼都看得到，所以正常人看到 4 個（白燈會被看成紅或綠，或兩色交替）。</li>
+          <li>5 個燈是複視：紅燈在右＝同側複視（內斜），紅燈在左＝交叉複視（外斜）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 15-4</span><h3>Brock String：生理性複視與聚散</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-bk" aria-label="Brock 繩與病人看到的畫面"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>注視哪一顆珠子</label><div class="seg" id="bk-f"><button data-v="0">紅珠 40 cm</button><button data-v="1" aria-pressed="true">黃珠 80 cm</button><button data-v="2">綠珠 150 cm</button></div></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="bk-sup"> 左眼被抑制</label></div>
+          <div class="readout">
+            <div class="row"><span>注視的珠子</span><b id="bk-a">—</b></div>
+            <div class="row"><span>兩眼需要的內聚</span><b id="bk-c">—</b></div>
+          </div>
+          <div class="verdict" id="bk-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">注視中間的黃珠時，前面的紅珠看起來會？</p>
+          <div class="opts"><button>一顆，很清楚</button><button>變成兩顆（生理性複視）</button><button>消失</button></div>
+          <p class="why">紅珠在 Panum 融像區之外，影像落在兩眼的非對應點，所以看成兩顆。這是正常現象，不是病。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>雙眼正常時，繩子看起來是兩條，在注視的珠子交叉成「X」。</li>
+          <li>注視近的珠子，兩眼要內聚更多；注視遠的珠子要開散——Brock String 訓練的就是這件事。</li>
+          <li>勾選「左眼被抑制」：只剩一條繩子，表示沒有用雙眼一起看。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>有斜位就是有病。</summary><div class="fix">多數人都有輕微斜位。問題不在有沒有，而在代償夠不夠。</div></details>
+      <details class="myth"><summary>斜視就是「斜眼看人」。</summary><div class="fix">斜視是眼球位置的問題，與態度無關。很多患者從小因此被誤解。</div></details>
+      <details class="myth"><summary>外直肌由「外旋神經」支配。</summary><div class="fix">正確是外展神經 Abducens nerve，第 6 對腦神經。</div></details>
+      <details class="myth"><summary>閉一隻眼也有立體感。</summary><div class="fix">單眼仍有一些深度線索，但真正的立體視來自兩眼的水平視差（W16 VR 實驗會親身驗證）。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>下週準備 <span class="tag">NEXT</span></h2>
+    <div class="hw"><b>W16 實驗三：VR 眼鏡製作</b><ul>
+      <li>兩人一組用直尺互量瞳距 PD 並記錄下來，實驗課要用。</li>
+      <li>有癲癇病史或眼部不適的同學，請改為觀察組。</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/bank/w15.js"></script>
+<script>
+(function () {
+  const { seg, check, shuffle } = OL;
+  OL.levels("levels", [
+    ["◆", "Tropia vs Phoria；斜位是常態", "容易混淆的一組概念"],
+    ["◆", "六條眼外肌與 LR₆ SO₄", "名詞配對、單選"],
+    ["◆", "雙眼單視三條件、立體視", "立體視來自水平視差"],
+    ["◆", "Worth 4-Dot 判讀", "看圖判讀融像、抑制、複視"],
+    ["◆", "Prentice 法則 P ＝ c × F", "看懂即可，W16 實驗會體驗"],
+    ["○", "配偶肌與 Hering 法則、ZCSBV", "三年級詳述"],
+  ]);
+
+  /* ---------- LAB 15-1 ---------- */
+  const MUS = {
+    MR: ["內直肌 MR", "向內看（內轉）", "—", "動眼神經 CN III", [1, 0], 0],
+    LR: ["外直肌 LR", "向外看（外轉）", "—", "外展神經 CN VI", [-1, 0], 0],
+    SR: ["上直肌 SR", "向上內側看", "向內旋轉", "動眼神經 CN III", [0.45, -1], 1],
+    IR: ["下直肌 IR", "向下內側看", "向外旋轉", "動眼神經 CN III", [0.45, 1], -1],
+    SO: ["上斜肌 SO", "向下外側看", "向內旋轉", "滑車神經 CN IV", [-0.55, 1], 1],
+    IO: ["下斜肌 IO", "向上外側看", "向外旋轉", "動眼神經 CN III", [-0.55, -1], -1],
+  };
+  const mm = seg("m-m", () => { mp.set("none", true); upd1(); }), mp = seg("m-p", () => { mm.set("none", true); upd1(); });
+  function upd1() {
+    const m = mm.value, p = mp.value;
+    // 右眼在畫面左邊（x=170），其鼻側朝 +x
+    let dx = 0, dy = 0, tor = 0, ptosis = false, dil = false, Ldx = 0, tilt = 0;
+    if (m !== "none") { dx = MUS[m][4][0] * 22; dy = MUS[m][4][1] * 18; tor = MUS[m][5]; }
+    if (p === "6") dx = 14;
+    if (p === "4") { dy = -10; dx = 3; tilt = 12; }
+    if (p === "3") { dx = -20; dy = 12; ptosis = true; dil = true; }
+    const eye = (cx, edx, edy, rt, pt, big, label) => `
+      <g><ellipse cx="${cx}" cy="140" rx="70" ry="42" fill="var(--an-sclera)" stroke="var(--an-line)"/>
+      <g class="iris" style="transform: translate(${edx}px, ${edy}px)"><circle cx="${cx}" cy="140" r="27" fill="var(--an-iris)"/><circle cx="${cx}" cy="140" r="${big ? 14 : 8}" fill="#111"/>
+      ${rt ? `<path d="${rt > 0 ? `M${cx - 18},122 A26 26 0 0 1 ${cx + 18},122` : `M${cx + 18},122 A26 26 0 0 0 ${cx - 18},122`}" fill="none" stroke="var(--ray)" stroke-width="2.5" marker-end="url(#ar)"/>` : ""}</g>
+      ${pt ? `<path d="M${cx - 71},140 Q${cx},150 ${cx + 71},140 Q${cx},84 ${cx - 71},140 Z" fill="#d9b9a0" stroke="#a88a74"/>` : ""}
+      <text x="${cx}" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">${label}</text></g>`;
+    document.getElementById("eom").innerHTML = `<svg viewBox="0 0 540 250" role="img" aria-label="面對病人時的兩眼"><defs><marker id="ar" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--ray)"/></marker></defs>
+      <g transform="rotate(${tilt} 270 140)">${eye(170, dx, dy, tor, ptosis, dil, "病人右眼 OD")}${eye(370, Ldx, 0, 0, false, false, "病人左眼 OS")}</g>
+      <text x="270" y="30" text-anchor="middle" font-size="11" fill="var(--muted)">← 病人右側　　　鼻　　　病人左側 →</text>
+      <text x="270" y="240" text-anchor="middle" font-size="11" fill="var(--muted)">（你面對病人；紅色箭頭表示旋轉）</text></svg>`;
+    const on = m !== "none" ? [m] : p === "6" ? ["LR"] : p === "4" ? ["SO"] : p === "3" ? ["MR", "SR", "IR", "IO"] : [];
+    document.getElementById("m-tab").innerHTML = `<tr><th>肌肉</th><th>主要作用</th><th>次要</th><th>神經</th></tr>` + Object.entries(MUS).map(([k, r]) => `<tr class="${on.includes(k) ? "on" : ""}"><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3].replace("神經 ", "")}</td></tr>`).join("");
+    const v = document.getElementById("m-v");
+    if (m !== "none") v.innerHTML = `${MUS[m][0]}：${MUS[m][1]}${MUS[m][2] !== "—" ? "、" + MUS[m][2] : ""}；${MUS[m][3]}。`;
+    else if (p === "6") v.innerHTML = '<span class="pill bad">CN VI 麻痺</span> 外直肌沒力 → 右眼內斜、無法外轉。';
+    else if (p === "4") v.innerHTML = '<span class="pill bad">CN IV 麻痺</span> 上斜肌沒力 → 右眼偏高，向下內看受限，病人會歪頭代償。';
+    else if (p === "3") v.innerHTML = '<span class="pill bad">CN III 麻痺</span> 眼球外下偏＋眼瞼下垂＋瞳孔散大，要立刻轉介。';
+    else v.innerHTML = "選一條肌肉或一種神經麻痺。";
+  }
+  upd1();
+
+  /* ---------- LAB 15-2 ---------- */
+  const cond = seg("c-cond", () => { if (cond.value === "mystery") newMystery(); else { mystery = null; document.getElementById("c-ans-box").hidden = true; } act.set("none", true); upd2(true); });
+  const act = seg("c-act", () => upd2());
+  const see = check("c-see", () => upd2(true));
+  let prev = "none", mystery = null, msg = "";
+  const NAMES = { ortho: "正位", esoP: "內斜位", exoP: "外斜位", esoT: "右眼內斜視", exoT: "右眼外斜視" };
+  function newMystery() {
+    mystery = shuffle(Object.keys(NAMES))[0];
+    const box = document.getElementById("c-ans-box"); box.hidden = false;
+    document.getElementById("c-ans").innerHTML = Object.entries(NAMES).map(([k, t]) => `<button type="button" class="chip" data-k="${k}">${t}</button>`).join("");
+    document.querySelectorAll("#c-ans .chip").forEach((b) => b.onclick = () => {
+      document.querySelectorAll("#c-ans .chip").forEach((x) => { x.disabled = true; if (x.dataset.k === mystery) x.classList.add("ok"); });
+      if (b.dataset.k !== mystery) b.classList.add("bad");
+      document.getElementById("c-v").innerHTML = (b.dataset.k === mystery ? '<span class="pill ok">答對了</span> ' : '<span class="pill bad">再想想</span> ') + `這位病人是「${NAMES[mystery]}」。再按一次「神秘病人」換一位。`;
+    });
+  }
+  function pos(c, cover) {
+    // 回傳右眼、左眼的水平偏移（像素；正值＝往畫面右）。右眼鼻側＝畫面右；左眼鼻側＝畫面左
+    let R = 0, L = 0;
+    const inR = 16, inL = -16;
+    if (c === "esoP") { if (cover === "R") R = inR; if (cover === "L") L = inL; }
+    if (c === "exoP") { if (cover === "R") R = -inR; if (cover === "L") L = -inL; }
+    if (c === "esoT") { if (cover === "L") { R = 0; L = inL; } else R = inR; }
+    if (c === "exoT") { if (cover === "L") { R = 0; L = -inL; } else R = -inR; }
+    return [R, L];
+  }
+  function upd2(silent) {
+    const c = mystery || cond.value, cover = act.value;
+    const [R, L] = pos(c, cover), [R0, L0] = pos(c, prev);
+    const op = see.value ? 0.45 : 0.97;
+    const eye = (cx, d, covered) => `<g><ellipse cx="${cx}" cy="150" rx="66" ry="40" fill="var(--an-sclera)" stroke="var(--an-line)"/>
+      <g class="iris" style="transform: translateX(${d}px)"><circle cx="${cx}" cy="150" r="25" fill="var(--an-iris)"/><circle cx="${cx}" cy="150" r="9" fill="#111"/><circle cx="${cx + 7}" cy="142" r="3" fill="#fff" opacity=".8"/></g>
+      <rect class="occ" x="${cx - 78}" y="88" width="156" height="124" rx="14" fill="#2b2f33" opacity="${covered ? op : 0}"/></g>`;
+    document.getElementById("ct").innerHTML = `<svg viewBox="0 0 540 250" role="img" aria-label="遮蓋測驗">
+      <text x="270" y="28" text-anchor="middle" font-size="12" fill="var(--muted)">病人注視遠方視標 ✚</text>
+      ${eye(170, R, cover === "R")}${eye(370, L, cover === "L")}
+      <text x="170" y="236" text-anchor="middle" font-size="12" fill="var(--ink)">病人右眼</text><text x="370" y="236" text-anchor="middle" font-size="12" fill="var(--ink)">病人左眼</text></svg>`;
+    if (!silent) {
+      const movedR = Math.abs(R - R0) > 1 && cover !== "R", movedL = Math.abs(L - L0) > 1 && cover !== "L";
+      const dir = (d, eyeName) => { const nasal = eyeName === "R" ? d > 0 : d < 0; return nasal ? "向內" : "向外"; };
+      let t = "";
+      if (movedR) t += `<b>沒被遮的右眼 ${dir(R - R0, "R")}移動</b>。`;
+      if (movedL) t += `<b>沒被遮的左眼 ${dir(L - L0, "L")}移動</b>。`;
+      if (!t) t = cover === "none" ? "移開遮眼板：注意看剛剛被遮的那隻眼。" : "沒被遮的那隻眼沒有移動。";
+      if (cover === "none" && prev !== "none") { const d = prev === "R" ? R - R0 : L - L0; if (Math.abs(d) > 1) t = `剛被遮的${prev === "R" ? "右" : "左"}眼在板子拿開時 <b>${dir(d, prev)}轉回來</b>——這是去遮蓋時的恢復運動。`; else if (!movedR && !movedL) t = "移開遮眼板，兩眼都沒有動。"; }
+      if (mystery == null) {
+        const hint = { ortho: "正位：怎麼遮都不會動。", esoP: "內斜位：只有被遮時才偏（向內），雙眼睜開時正。", exoP: "外斜位：只有被遮時才偏（向外）。", esoT: "右眼內斜視：雙眼睜開時右眼就偏內；遮左眼時右眼向外移動接手注視。", exoT: "右眼外斜視：遮左眼時右眼向內移動接手注視。" }[c];
+        t += `<br><small>${hint}</small>`;
+      }
+      document.getElementById("c-v").innerHTML = t;
+    }
+    prev = cover;
+  }
+  upd2(true);
+
+  /* ---------- LAB 15-3 ---------- */
+  const W = { fuse: "正常融像（4 個燈）", supL: "左眼被抑制（2 個紅燈）", supR: "右眼被抑制（3 個綠燈）", eso: "內斜：同側複視（5 個，紅在右）", exo: "外斜：交叉複視（5 個，紅在左）" };
+  const wm = seg("w-mode", () => { if (wm.value === "quiz") newW(); upd3(); }), wc = seg("w-c", () => upd3());
+  let wq = null;
+  function newW() {
+    wq = shuffle(Object.keys(W))[0];
+    document.getElementById("w-q").innerHTML = Object.entries(W).map(([k, t]) => `<button type="button" class="chip" data-k="${k}">${t.replace(/（.*）/, "")}</button>`).join("");
+    document.querySelectorAll("#w-q .chip").forEach((b) => b.onclick = () => {
+      document.querySelectorAll("#w-q .chip").forEach((x) => { x.disabled = true; if (x.dataset.k === wq) x.classList.add("ok"); });
+      if (b.dataset.k !== wq) b.classList.add("bad");
+      document.getElementById("w-v").innerHTML = (b.dataset.k === wq ? '<span class="pill ok">正確</span> ' : '<span class="pill bad">再想想</span> ') + W[wq] + ' <button type="button" class="linkish" id="w-next">下一題</button>';
+      document.getElementById("w-next").onclick = () => { newW(); upd3(); };
+    });
+  }
+  function upd3() {
+    const quiz = wm.value === "quiz", c = quiz ? wq : wc.value;
+    document.getElementById("w-c-box").hidden = quiz; document.getElementById("w-q-box").hidden = !quiz;
+    const red = "#e53935", green = "#2e9d4a", white = "#f5f5f5";
+    const dot = (x, y, col, ring) => `<circle cx="${x}" cy="${y}" r="17" fill="${col}" stroke="${ring || "#333"}" stroke-width="1.2"/>`;
+    // 卡片
+    let card = `<rect x="40" y="40" width="160" height="170" rx="12" fill="#111"/>${dot(120, 72, red)}${dot(82, 125, green)}${dot(158, 125, green)}${dot(120, 178, white)}<text x="120" y="232" text-anchor="middle" font-size="12" fill="var(--muted)">檢查卡（實際顏色）</text>`;
+    // 病人看到的
+    const ox = 340, Rset = (dx) => dot(ox + dx, 72, red) + dot(ox + dx, 178, red), Gset = (dx) => dot(ox - 38 + dx, 125, green) + dot(ox + 38 + dx, 125, green) + dot(ox + dx, 178, green);
+    let seen = "";
+    if (c === "fuse") seen = dot(ox, 72, red) + dot(ox - 38, 125, green) + dot(ox + 38, 125, green) + `<circle cx="${ox}" cy="178" r="17" fill="url(#mix)" stroke="#333"/>`;
+    if (c === "supL") seen = Rset(0);
+    if (c === "supR") seen = Gset(0);
+    if (c === "eso") seen = Rset(40) + Gset(-40);
+    if (c === "exo") seen = Rset(-40) + Gset(40);
+    document.getElementById("w4").innerHTML = `<svg viewBox="0 0 480 250" role="img" aria-label="Worth 4-Dot"><defs><linearGradient id="mix"><stop offset="0.5" stop-color="${red}"/><stop offset="0.5" stop-color="${green}"/></linearGradient></defs>
+      ${card}<rect x="240" y="40" width="200" height="170" rx="12" fill="#111"/>${seen}<text x="${ox}" y="232" text-anchor="middle" font-size="12" fill="var(--muted)">病人戴紅綠眼鏡（右紅左綠）看到的</text></svg>`;
+    if (!quiz) document.getElementById("w-v").innerHTML = W[c];
+    else if (!document.querySelector("#w-q .chip:disabled")) document.getElementById("w-v").innerHTML = "看右邊病人描述的畫面，選出判讀。";
+  }
+  upd3();
+})();
+</script>
+<script>
+  (function () {
+    const { Stage, seg, check } = OL;
+    const D = [40, 80, 150], COL = ["#e53935", "#f2b705", "#2e9d4a"], NM = ["紅珠", "黃珠", "綠珠"];
+    const bf = seg("bk-f", () => st.render()), sup = check("bk-sup", () => st.render());
+    const st = new Stage("cv-bk", { xmin: 0, xmax: 100, ymin: 0, ymax: 60, aspect: 0.62, minH: 280, maxH: 420, draw: (s, c) => {
+      const f = +bf.value, ctx = s.ctx, pd = 6.3;
+      // 左半：俯視
+      const ox = 6, oy = 6, sc = 52 / 160;
+      const ex = [ox + 6 - pd * 0.35, ox + 6 + pd * 0.35];
+      ex.forEach((x) => { ctx.save(); ctx.beginPath(); ctx.arc(s.X(x), s.Y(oy), 7, 0, Math.PI * 2); ctx.fillStyle = c.surface; ctx.fill(); ctx.strokeStyle = c.muted; ctx.stroke(); ctx.restore(); });
+      s.line(ox + 6, oy, ox + 6, oy + 160 * sc, { color: c.muted, w: 1.5 });
+      D.forEach((d, k) => s.point(ox + 6, oy + d * sc, "", { color: COL[k], r: 6 }));
+      ex.forEach((x) => s.line(x, oy, ox + 6, oy + D[f] * sc, { color: c.accent, w: 1, dash: [4, 3] }));
+      s.text("俯視", ox + 6, 2, { size: 10, color: c.muted });
+      // 右半：病人看到的
+      const cx = 64, base = 4, top = 56, ctr = 64;
+      const xAt = (dcm, eye) => { // 影像的水平位置：相對注視點的視差
+        const disp = (1 / dcm - 1 / D[f]) * 600; return ctr + (eye === "R" ? -1 : 1) * disp;
+      };
+      const yAt = (dcm) => base + (1 - 40 / dcm) * 0 + (Math.log(dcm / 30) / Math.log(170 / 30)) * (top - base);
+      const eyes = sup.value ? ["R"] : ["R", "L"];
+      eyes.forEach((e) => {
+        const pts = []; for (let d = 30; d <= 170; d += 2) pts.push([xAt(d, e), yAt(d)]);
+        s.poly(pts, { color: e === "R" ? "#888" : "#bbb", w: 2 });
+        D.forEach((d, k) => s.point(xAt(d, e), yAt(d), "", { color: COL[k], r: k === f ? 7 : 6 }));
+      });
+      s.text("病人看到的", ctr, 59, { size: 11, color: c.muted });
+      const conv = (pd / 100) / (D[f] / 100) * 100;   // 稜鏡度 ≈ PD(cm) × 1/距離(m)
+      document.getElementById("bk-a").textContent = `${NM[f]}（${D[f]} cm）`;
+      document.getElementById("bk-c").textContent = `約 ${(pd * 100 / D[f]).toFixed(1)}Δ`;
+      document.getElementById("bk-v").innerHTML = sup.value ? '<span class="pill bad">只有一條繩子</span> 左眼被抑制，沒有雙眼一起看。' : `<span class="pill ok">繩子在${NM[f]}交叉成 X</span> 比它近的珠子看成兩顆（交叉複視）、比它遠的也看成兩顆（同側複視）。`;
+    } });
+  })();
+</script>
+</body>
+</html>

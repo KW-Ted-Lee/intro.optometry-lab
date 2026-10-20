@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W05 實驗一：紙黏土眼球模型｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="w05">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 05 · Lab 1</div>
+    <h1>實驗一：紙黏土眼球模型</h1>
+    <div class="en">Build an Eye Model</div>
+    <p class="lede">用一顆可開合的模型，把 W02–W04 的解剖重建成立體的空間關係。動手之前先在這裡練兩件事：<b>按比例換算尺寸</b>，以及<b>把 14 個構造放在正確的位置</b>。做模型是為了把解剖記牢，不是為了比誰做得漂亮。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>用立體模型正確呈現眼球各層由內而外的順序與相對位置。</li>
+      <li>以中英文標出 14 個必標構造，名稱與位置都要正確。</li>
+      <li>拿著模型，口述一次光線從角膜到視神經的完整路徑。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>製作重點 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="lvtag lv-s">★ 要會算</span><span class="en-term">Step 0 · Scale</span><h3>先決定比例</h3><p>真實眼軸長約 24 mm。用 5 : 1 製作，模型直徑 12 cm；角膜 11 mm × 5 ＝ 5.5 cm；視盤 1.5 mm × 5 ＝ 7.5 mm；水晶體厚約 4 mm × 5 ＝ 2 cm。球不是 12 cm 就自己換算。</p></div>
+      <div class="concept"><span class="en-term">Three coats</span><h3>由內而外三層</h3><p>保麗龍球剖半 → 內壁鋪<b>橘紅色視網膜</b> → 外覆<b>深褐色脈絡膜</b> → 最外層<b>白色鞏膜</b>。順序絕對不能錯。</p></div>
+      <div class="concept"><span class="en-term">Posterior pole</span><h3>後極部</h3><p>黃色標出黃斑部與中央窩（視軸正對處）；在黃斑部<b>鼻側約 15°</b> 做一個小凹陷當視盤，再接出白色黏土條當視神經。</p></div>
+      <div class="concept"><span class="en-term">Anterior segment</span><h3>前段組裝</h3><p>前方嵌入透明半球（角膜）→ 內側貼環狀虹膜，中央留瞳孔 → 虹膜後方放彈珠（水晶體，前平後彎）→ 細黏土絲連接水晶體與球壁（懸韌帶與睫狀體）。<b>水晶體不能直接黏在虹膜上</b>，要留出後房。</p></div>
+      <div class="concept"><span class="en-term">Check-off</span><h3>驗收重點</h3><p>14 項構造完整且位置正確、三層由內而外的順序、中英文名稱、比例換算紀錄表，以及拿著模型口述一次光路。</p></div>
+      <div class="concept"><span class="en-term">Why it matters later</span><h3>這顆模型之後還會用到</h3><p>W06 的 +43 D 與 +19 D 兩個屈光面、W08 把視網膜前後移就是遠視與近視、W14 懸韌帶是調節的物理基礎、W15 兩顆模型的距離就是瞳距 PD。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 5-1</span><h3>步驟〇：比例換算</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="sc"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="s-b">保麗龍球直徑 <output id="s-b-out"></output></label><input type="range" id="s-b" min="6" max="16" step="0.5" value="12"></div>
+          <div class="readout">
+            <div class="row"><span>放大倍數</span><b id="s-k">—</b></div>
+          </div>
+          <table class="mini" id="s-tab"></table>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">保麗龍球直徑 10 cm，視盤（真實 1.5 mm）要做多大？</p>
+          <div class="opts"><button>約 6.3 mm</button><button>7.5 mm</button><button>1.5 cm</button></div>
+          <p class="why">倍數 ＝ 100 mm ÷ 24 mm ≈ 4.17；1.5 × 4.17 ≈ 6.3 mm。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>倍數只要算一次：模型直徑 ÷ 24 mm（單位要一致）。</li>
+          <li>把換算結果寫在紀錄表第一欄，做完對這些數字會有「身體感覺」。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 5-2</span><h3>虛擬模型：標出 14 個構造</h3></div>
+      <div class="sim">
+        <div class="svgstage" id="lbl" style="padding:0;overflow-x:auto;place-items:start"></div>
+        <div class="toolbar" style="margin:0">
+          <span id="l-tip" class="score-line">先點圖上的編號，再點下方的名稱。</span>
+        </div>
+        <div class="chips" id="l-names"></div>
+        <div class="row-btns"><button class="btn" id="l-check" type="button">檢查答案</button><button class="btn ghost" id="l-reset" type="button">重新開始</button><button class="btn ghost" id="l-show" type="button">顯示正確答案</button></div>
+        <div class="verdict" id="l-v"></div>
+      </div>
+      <div class="observe">
+        <h4>由內而外三層的順序</h4>
+        <p class="score-line">用 ↑ ↓ 排出從眼球「最裡面」到「最外面」的順序，再按檢查。</p>
+        <ol class="order-list" id="ord"></ol>
+        <div class="row-btns"><button class="btn ghost" id="ord-check" type="button">檢查順序</button><span id="ord-v"></span></div>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 5-3</span><h3>口述光路：光線從角膜走到大腦</h3></div>
+      <div class="sim"><p class="score-line">驗收時要拿著模型講一次光路。先在這裡排對順序。</p><div id="o53"></div></div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>四個會讓光轉彎的屈光間質：角膜、房水（前房與後房）、水晶體、玻璃體。</li>
+          <li>注意前房在「瞳孔之前」、後房在「瞳孔之後」。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 5-4</span><h3>模型找錯：同學的模型哪裡不對？</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="bug"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>這顆模型的問題是？</label><div class="chips" id="b-ans"></div></div>
+          <div class="row-btns"><button class="btn ghost" id="b-new" type="button">看下一位同學的模型</button></div>
+          <div class="verdict" id="b-v"></div>
+          <div class="score-line" id="b-s"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>這是右眼的水平剖面（由上往下看）：光從左邊進來，下方是鼻側。</li>
+          <li>五種錯誤都來自投影片上的「每年都有人做錯的五件事」，也可能這位同學做得完全正確。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>每年都有人做錯的五件事 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>鞏膜放在最內層。</summary><div class="fix">由內而外是視網膜 → 脈絡膜 → 鞏膜。鞏膜是最外、最厚、維持形狀的那一層。</div></details>
+      <details class="myth"><summary>視盤做在黃斑部的顳側，或做在正中央。</summary><div class="fix">視盤在黃斑部鼻側約 15°，正中央是黃斑部與中央窩。這決定了盲點在視野的顳側（W04）。</div></details>
+      <details class="myth"><summary>前房、後房搞混。</summary><div class="fix">前房在角膜與虹膜之間；後房在虹膜「後方」、水晶體前方。</div></details>
+      <details class="myth"><summary>水晶體直接黏在虹膜上。</summary><div class="fix">要留出後房的空間，房水才有路從睫狀體流到瞳孔（W02）。</div></details>
+      <details class="myth"><summary>標籤只寫中文或只寫英文。</summary><div class="fix">兩者都要寫。專業名詞中英文都要認得。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>練習題 <span class="tag">PRACTICE</span></h2>
+    <p class="sub">數字每次隨機。尺寸填到小數第一位。</p>
+    <div id="practice"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>下週預告 <span class="tag">NEXT</span></h2>
+    <div class="hw"><b>W06 基礎光學：開始算屈光度了</b><ul>
+      <li>請帶計算機。模型請留著，學期末總複習時帶來。</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/anat.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script src="assets/bank/w05.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => OBPractice.mount("practice", "w05"));</script>
+<script>
+(function () {
+  const { range, shuffle } = OL;
+  OL.levels("levels", [
+    ["★", "比例換算", "本次實驗唯一的計算，一步驟乘除法"],
+    ["◆", "三層由內而外的順序", "視網膜 → 脈絡膜 → 鞏膜"],
+    ["◆", "14 個必標構造的位置", "能在剖面圖上標出 12 個主要構造"],
+  ]);
+
+  /* ---------- LAB 5-1 比例 ---------- */
+  const ITEMS = [["眼軸長（球直徑）", 24], ["角膜直徑", 11], ["水晶體厚度", 4], ["水晶體直徑", 9], ["瞳孔直徑", 3], ["前房深度", 3], ["黃斑部直徑", 5.5], ["視盤直徑", 1.5], ["中央窩直徑", 1.5]];
+  const sb = range("s-b", (v) => v.toFixed(1) + " cm", () => upd1());
+  function upd1() {
+    const k = sb.value * 10 / 24;
+    document.getElementById("s-k").textContent = `${(sb.value * 10).toFixed(0)} mm ÷ 24 mm = ${k.toFixed(2)} 倍`;
+    document.getElementById("s-tab").innerHTML = `<tr><th>構造</th><th>真實</th><th>模型</th></tr>` + ITEMS.map(([n, mm]) => `<tr><td style="text-align:left">${n}</td><td>${mm} mm</td><td class="hl">${(mm * k).toFixed(1)} mm</td></tr>`).join("");
+    const R = 110, cx = 150, cy = 140, s = R / 12;
+    const scaleBar = (k * 24) / 10;
+    document.getElementById("sc").innerHTML = `<svg viewBox="0 0 520 290" role="img" aria-label="真實與模型尺寸比較">
+      <circle cx="${cx}" cy="${cy}" r="${R}" fill="var(--an-sclera)" stroke="var(--an-line)"/>
+      <circle cx="${cx}" cy="${cy}" r="${R - 6}" fill="var(--an-choroid)"/><circle cx="${cx}" cy="${cy}" r="${R - 10}" fill="var(--an-retina)"/><circle cx="${cx}" cy="${cy}" r="${R - 14}" fill="var(--canvas)"/>
+      <path d="M${cx - R + 6},${cy - 5.5 * s} A${7.8 * s} ${7.8 * s} 0 0 0 ${cx - R + 6},${cy + 5.5 * s}" fill="var(--an-cornea)" stroke="var(--an-cornea-edge)"/>
+      <ellipse cx="${cx - R + 6 + 3.6 * s}" cy="${cy}" rx="${2 * s}" ry="${4.5 * s}" fill="var(--an-lens)" stroke="var(--an-lens-edge)"/>
+      <circle cx="${cx + R - 13}" cy="${cy + 2.8 * s}" r="${0.75 * s}" fill="var(--an-disc)" stroke="var(--an-nerve-edge)"/>
+      <line x1="${cx - R}" y1="${cy + R + 14}" x2="${cx + R}" y2="${cy + R + 14}" stroke="var(--ink)"/><text x="${cx}" y="${cy + R + 30}" text-anchor="middle" font-size="12" fill="var(--ink)">模型直徑 ${sb.value.toFixed(1)} cm ＝ 真實 24 mm</text>
+      <g transform="translate(330,40)"><text font-size="12" fill="var(--muted)" y="0">實際大小比較（真實眼球）</text>
+        <circle cx="60" cy="90" r="${12 * 2.2}" fill="var(--an-sclera)" stroke="var(--an-line)"/><text x="60" y="${90 + 12 * 2.2 + 16}" text-anchor="middle" font-size="11" fill="var(--muted)">24 mm</text>
+        <text y="180" font-size="13" fill="var(--accent)" font-weight="700">放大 ${k.toFixed(2)} 倍</text>
+        <text y="202" font-size="12" fill="var(--ink)">角膜 ${(11 * k / 10).toFixed(2)} cm</text>
+        <text y="222" font-size="12" fill="var(--ink)">水晶體厚 ${(4 * k / 10).toFixed(2)} cm</text></g>
+    </svg>`;
+  }
+  upd1();
+
+  /* ---------- LAB 5-2 標示 ---------- */
+  const S = OLAnat.STRUCT;
+  let sel = null, ans = {}, state = {}, reveal = false;
+  function render() {
+    document.getElementById("lbl").innerHTML = OLAnat.eye({ pins: true, sel, state, answers: reveal ? Object.fromEntries(S.map((t) => [t.k, `${t.zh} ${t.en}`])) : Object.fromEntries(Object.entries(ans).map(([k, v]) => [k, S.find((t) => t.k === v).zh])), label: "眼球剖面標示練習" });
+    document.querySelectorAll("#lbl .pin").forEach((g) => {
+      const act = () => { sel = g.dataset.pin; render(); document.getElementById("l-tip").textContent = "選好了，現在點下方的名稱。"; };
+      g.addEventListener("click", act); g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); act(); } });
+    });
+    const used = new Set(Object.values(ans));
+    document.getElementById("l-names").innerHTML = names.map((t) => `<button type="button" class="chip" data-k="${t.k}" ${used.has(t.k) ? 'aria-pressed="true"' : ""}>${t.zh} ${t.en}</button>`).join("");
+    document.querySelectorAll("#l-names .chip").forEach((b) => b.onclick = () => {
+      if (!sel) { document.getElementById("l-tip").textContent = "請先點圖上的一個編號。"; return; }
+      for (const k in ans) if (ans[k] === b.dataset.k) delete ans[k];
+      ans[sel] = b.dataset.k; state = {}; sel = null; render();
+      document.getElementById("l-tip").textContent = `已標 ${Object.keys(ans).length} / 14。`;
+    });
+  }
+  const names = shuffle(S.slice());
+  document.getElementById("l-check").onclick = () => {
+    let ok = 0; state = {};
+    S.forEach((t) => { if (ans[t.k]) { state[t.k] = ans[t.k] === t.k ? "ok" : "bad"; if (ans[t.k] === t.k) ok++; } });
+    render();
+    const pct = ok / 14;
+    document.getElementById("l-v").innerHTML = `答對 ${ok} / 14　` + (pct === 1 ? '<span class="pill ok">全部正確</span> 可以開始動手做了。' : pct >= 0.6 ? '<span class="pill warn">大部分正確</span> 紅色的再對照 W02、W03 的剖面圖。' : '<span class="pill bad">還不熟</span> 先回去看 W02、W03 的剖面圖。');
+    if (window.labTrack) labTrack("label_check", { chapter: "w05", correct: ok, total: 14 });
+  };
+  document.getElementById("l-reset").onclick = () => { ans = {}; state = {}; sel = null; reveal = false; document.getElementById("l-v").textContent = ""; render(); };
+  document.getElementById("l-show").onclick = () => { reveal = !reveal; document.getElementById("l-show").textContent = reveal ? "隱藏正確答案" : "顯示正確答案"; render(); };
+  render();
+
+  /* 三層順序 */
+  const RIGHT = ["視網膜 Retina", "脈絡膜 Choroid", "鞏膜 Sclera"];
+  let ord = ["鞏膜 Sclera", "視網膜 Retina", "脈絡膜 Choroid"];
+  function drawOrd(mark) {
+    const ol = document.getElementById("ord");
+    ol.innerHTML = ord.map((t, i) => `<li class="${mark ? (t === RIGHT[i] ? "ok" : "bad") : ""}"><span>${t}${i === 0 ? '　<small style="color:var(--muted)">（最內）</small>' : i === 2 ? '　<small style="color:var(--muted)">（最外）</small>' : ""}</span><span class="mv"><button type="button" data-i="${i}" data-d="-1" aria-label="上移">↑</button><button type="button" data-i="${i}" data-d="1" aria-label="下移">↓</button></span></li>`).join("");
+    ol.querySelectorAll("button").forEach((b) => b.onclick = () => { const i = +b.dataset.i, j = i + +b.dataset.d; if (j < 0 || j > 2) return; [ord[i], ord[j]] = [ord[j], ord[i]]; document.getElementById("ord-v").innerHTML = ""; drawOrd(false); });
+  }
+  document.getElementById("ord-check").onclick = () => { const ok = ord.every((t, i) => t === RIGHT[i]); drawOrd(true); document.getElementById("ord-v").innerHTML = ok ? '<span class="pill ok">正確</span> 視網膜 → 脈絡膜 → 鞏膜' : '<span class="pill bad">再排一次</span> 想想：哪一層負責感光？哪一層維持形狀？'; };
+  drawOrd(false);
+})();
+</script>
+<script>
+  OL.order("o53", ["角膜 Cornea", "前房 Anterior chamber", "瞳孔 Pupil", "後房 Posterior chamber", "水晶體 Crystalline lens", "玻璃體 Vitreous humour", "視網膜 Retina", "視神經 Optic nerve", "大腦（枕葉視覺皮質）"], { first: "光線最先", last: "最後" });
+  (function () {
+    const ERR = [
+      ["ok", "做得完全正確"], ["layers", "三層順序做反（鞏膜在最內層）"], ["temporal", "視盤做在黃斑部的顳側"],
+      ["center", "視盤做在正中央（和黃斑部重疊）"], ["stuck", "水晶體黏在虹膜上，沒有後房"],
+    ];
+    let cur = null, ok = 0, n = 0;
+    function eye(err) {
+      const cx = 250, cy = 150, R = 110;
+      const ring = (r, col) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${col}" stroke-width="7"/>`;
+      const cols = err === "layers" ? ["#f6f3ec", "#6e3b2f", "#e0673f"] : ["#e0673f", "#6e3b2f", "#f6f3ec"];   // 由內而外
+      let s = `<svg viewBox="0 0 500 300" role="img" aria-label="同學的眼球模型剖面"><circle cx="${cx}" cy="${cy}" r="${R + 10}" fill="rgba(170,205,220,.18)"/>`;
+      s += ring(R - 3, cols[0]) + ring(R + 4, cols[1]) + ring(R + 11, cols[2]);
+      s += `<rect x="${cx - R - 20}" y="${cy - 52}" width="44" height="104" fill="var(--canvas)"/>`;
+      s += `<path d="M${cx - R + 4},${cy - 50} Q${cx - R - 34},${cy} ${cx - R + 4},${cy + 50}" fill="rgba(150,210,235,.55)" stroke="#3d8fae" stroke-width="2"/>`;
+      const irisX = cx - R + 14, lensX = err === "stuck" ? irisX + 22 : irisX + 34;
+      s += `<rect x="${irisX}" y="${cy - 48}" width="6" height="34" fill="#5f7f8c"/><rect x="${irisX}" y="${cy + 14}" width="6" height="34" fill="#5f7f8c"/>`;
+      s += `<ellipse cx="${lensX}" cy="${cy}" rx="18" ry="40" fill="rgba(236,226,180,.85)" stroke="#b49a45" stroke-width="1.5"/>`;
+      const mac = [cx + R - 3, cy];
+      s += `<circle cx="${mac[0]}" cy="${mac[1]}" r="7" fill="#e2b21c"/>`;
+      const ang = err === "temporal" ? -15 : err === "center" ? 0 : 15;
+      const a = ang * Math.PI / 180, dx = cx + (R - 3) * Math.cos(a), dy = cy + (R - 3) * Math.sin(a);
+      s += `<circle cx="${dx}" cy="${dy}" r="7" fill="#f4e7c6" stroke="#b8a77e" stroke-width="2"/><path d="M${dx + 6},${dy} L${dx + 60},${dy + (dy - cy) * 0.4}" stroke="#efe3c2" stroke-width="16"/>`;
+      s += `<text x="${cx - R - 30}" y="${cy + 100}" font-size="12" fill="var(--muted)">光線 →</text><text x="${cx + 40}" y="290" font-size="12" fill="var(--muted)">↓ 鼻側</text>`;
+      s += `<text x="${mac[0] - 16}" y="${cy - 14}" font-size="11" fill="var(--ink)" text-anchor="end">黃斑部</text><text x="${dx - 12}" y="${dy + (ang >= 0 ? 22 : -12)}" font-size="11" fill="var(--ink)" text-anchor="end">視盤</text>`;
+      return s + `</svg>`;
+    }
+    function next() {
+      cur = ERR[Math.floor(Math.random() * ERR.length)][0];
+      document.getElementById("bug").innerHTML = eye(cur);
+      const box = document.getElementById("b-ans");
+      box.innerHTML = ERR.map(([k, t]) => `<button type="button" class="chip" data-k="${k}">${t}</button>`).join("");
+      document.getElementById("b-v").textContent = "";
+      box.querySelectorAll(".chip").forEach((b) => b.onclick = () => {
+        n++; if (b.dataset.k === cur) ok++;
+        box.querySelectorAll(".chip").forEach((x) => { x.disabled = true; if (x.dataset.k === cur) x.classList.add("ok"); });
+        if (b.dataset.k !== cur) b.classList.add("bad");
+        const why = { ok: "三層由內而外是視網膜（橘紅）→ 脈絡膜（深褐）→ 鞏膜（白）；視盤在黃斑鼻側；水晶體和虹膜之間留有後房。", layers: "最內層變成白色了。正確是視網膜在最內、鞏膜在最外。", temporal: "視盤跑到黃斑部的上方（顳側）。右眼水平剖面的鼻側在下方。", center: "後極部正中央是黃斑部，視盤應該在它的鼻側約 15°。", stuck: "水晶體直接貼著虹膜，沒有後房，房水就沒有路從睫狀體流到瞳孔。" }[cur];
+        document.getElementById("b-v").innerHTML = (b.dataset.k === cur ? '<span class="pill ok">找到了</span> ' : '<span class="pill bad">再看一次</span> ') + why;
+        document.getElementById("b-s").textContent = `答對 ${ok} / ${n}`;
+      });
+    }
+    document.getElementById("b-new").onclick = next;
+    next();
+  })();
+</script>
+</body>
+</html>

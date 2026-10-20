@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W06 基礎光學｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="w06">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 06</div>
+    <h1>基礎光學：折射、透鏡與屈光度</h1>
+    <div class="en">Refraction, Lenses &amp; Dioptres</div>
+    <p class="lede">所有的度數都來自折射。本週只有一條要自己算的公式：<b>F ＝ 1 / f（f 一定用公尺）</b>。其他公式——Snell 定律、聚散度、成像公式、等效屈光度——看懂它們在說什麼就好。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>★ 熟練 F ＝ 1/f 的雙向計算，這是全學期最常用的一條公式。</li>
+      <li>◆ 看懂 Snell 定律、聚散度、成像公式在說什麼，不必自己算。</li>
+      <li>說出全眼約 60 D、眼軸約 24 mm，以及為什麼 43 ＋ 19 不等於 60。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Five behaviours of light</span><h3>光會做的五件事</h3><p>直進（針孔成像）、反射（角膜反光點）、<b>折射</b>（所有度數的來源）、繞射（針孔太小變糊）、散射（白內障眩光）。這五件事在眼睛裡全都會發生。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Snell's law</span><h3>Snell 定律</h3><p>n₁ sin θ₁ ＝ n₂ sin θ₂。折射率 n ＝ 真空光速 ÷ 介質光速，一定大於 1。要記的只有一句：<b>疏 → 密，偏向法線</b>；密 → 疏，偏離法線。角度太大會全反射。</p></div>
+      <div class="concept"><span class="en-term">Refractive indices</span><h3>眼球各介質的折射率</h3><p>空氣 1.000、角膜 1.376、房水 1.336、水晶體 1.386–1.406、玻璃體 1.336。水晶體泡在折射率跟自己很接近的液體裡——這是下一張卡的關鍵。</p></div>
+      <div class="concept"><span class="en-term">Why the cornea wins</span><h3>為什麼角膜最強</h3><p>不是因為最彎（水晶體更彎），而是<b>界面兩側的折射率差</b>：空氣→角膜差 0.376，約 +43 D；房水→水晶體只差約 0.06，只有 +19 D。在水中裸眼看不清，因為角膜幾乎失效。</p></div>
+      <div class="concept"><span class="en-term">Plus · Minus lens</span><h3>凸透鏡與凹透鏡</h3><p>凸透鏡（+）中央厚、會聚、有實焦點，矯正遠視與老花。凹透鏡（−）中央薄、發散、只有虛焦點（要反向延長），矯正近視。</p></div>
+      <div class="concept"><span class="lvtag lv-s">★ 要會算</span><span class="en-term">F = 1 / f</span><h3>屈光度與焦距</h3><p>F 單位是屈光度 D，f 一定要用<b>公尺</b>（用公分會錯 100 倍）。完整寫法 F ＝ n′/f′，空氣中 n′ ＝ 1。屈光度可以相加：+2.00 加 +3.00 ≈ +5.00。<b>40 cm → 2.50 D</b> 請記熟。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Vergence · L′ = L + F</span><h3>聚散度與成像公式</h3><p>L ＝ n / l，發散為負、會聚為正、平行光為 0。眼前 25 cm 的物體，光到眼睛時 L ＝ −4.00 D，眼睛要額外提供 +4.00 D——這就是調節（W14）。成像公式：出射 ＝ 入射 ＋ 鏡片。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Prism dioptre (Δ)</span><h3>稜鏡度</h3><p>1Δ 表示光線在 1 公尺處偏移 1 公分。稜鏡讓光線向<b>基底</b>偏折、影像向<b>尖端</b>移動。內斜位用 BO、外斜位用 BI（W15、W16 再出現）。</p></div>
+      <div class="concept"><span class="en-term">Gullstrand model eye</span><h3>模型眼五個參數</h3><p>角膜約 +43 D、水晶體（未調節）約 +19 D、全眼約 <b>+60 D</b>、眼軸約 <b>24 mm</b>、前房深度約 3.0 mm。「60 D、24 mm」W08 起每週都會用到。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Equivalent power</span><h3>43 ＋ 19 ≠ 60</h3><p>兩個屈光面中間隔著距離，不能直接相加：F ＝ F₁ ＋ F₂ − (d/n)·F₁·F₂。第三項就是距離造成的扣減，約 2 D。只要兩片鏡片有距離，總度數就小於相加。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Axial length vs power</span><h3>眼軸 1 mm ≈ 3 D</h3><p>眼軸每增加 1 mm，約相當於 −2.7 至 −3.0 D 的近視變化。近視控制研究看的是眼軸，因為它是結構性、客觀的，而且拉長後不會縮回去（W10、W17）。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 6-1</span><h3>Snell 定律與全反射</h3><span class="lvtag lv-d">◆ 要看懂</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-sn" aria-label="折射示意"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>光從</label><div class="seg" id="n1"><button data-v="1.000" aria-pressed="true">空氣 1.000</button><button data-v="1.333">水 1.333</button><button data-v="1.376">角膜 1.376</button><button data-v="1.500">玻璃 1.500</button></div></div>
+          <div class="ctrl"><label>進入</label><div class="seg" id="n2"><button data-v="1.000">空氣 1.000</button><button data-v="1.333">水 1.333</button><button data-v="1.376" aria-pressed="true">角膜 1.376</button><button data-v="1.500">玻璃 1.500</button></div></div>
+          <div class="ctrl"><label for="th">入射角 θ₁ <output id="th-out"></output></label><input type="range" id="th" min="0" max="85" step="1" value="40"></div>
+          <div class="readout">
+            <div class="row"><span>折射角 θ₂</span><b id="sn-t2">—</b></div>
+            <div class="row"><span>n₁sinθ₁／n₂sinθ₂</span><b id="sn-chk">—</b></div>
+          </div>
+          <div class="verdict" id="sn-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">光從空氣進入角膜，會偏向還是偏離法線？</p>
+          <div class="opts"><button>偏向法線</button><button>偏離法線</button><button>不偏折</button></div>
+          <p class="why">空氣 1.000 → 角膜 1.376 是「疏 → 密」，偏向法線。這裡只要懂觀念，不需要算角度。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>兩邊折射率一樣（例如角膜 → 角膜），光完全不轉彎：轉彎靠的是「差」。</li>
+          <li>從玻璃射向空氣，把入射角拉大，超過臨界角就全反射——光纖與前房隅角鏡的原理。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 6-2</span><h3>凸透鏡、凹透鏡與 F ＝ 1/f</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-ln" aria-label="平行光通過透鏡"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="lp">鏡片度數 F <output id="lp-out"></output></label><input type="range" id="lp" min="-10" max="10" step="0.25" value="5"></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="lq"> 隱藏焦距，讓我先算</label></div>
+          <div class="readout">
+            <div class="row"><span>焦距 f</span><b id="lf">—</b></div>
+            <div class="row"><span>焦點</span><b id="lk">—</b></div>
+          </div>
+          <div class="verdict" id="lv"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">−5.00 D 的凹透鏡，虛焦點在哪裡？</p>
+          <div class="opts"><button>鏡片後方 20 cm</button><button>鏡片前方 20 cm</button><button>鏡片前方 5 cm</button></div>
+          <p class="why">f ＝ 1 / (−5.00) ＝ −0.20 m。負號代表虛焦點在鏡片「前方」。把度數調到 −5.00 看虛線交在哪裡。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>度數越高，焦距越短：+10.00 D 只有 10 cm，+2.00 D 有 50 cm。</li>
+          <li>凹透鏡的光線往外散開，把它們反向延長（虛線），交點就是虛焦點。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 6-3</span><h3>為什麼角膜最強？在水裡看看</h3><span class="lvtag lv-d">◆ 要看懂</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-wt" aria-label="角膜與水晶體的折射率差"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>眼睛前方是</label><div class="seg" id="med"><button data-v="air" aria-pressed="true">空氣</button><button data-v="water">水（裸眼潛水）</button><button data-v="goggle">水＋蛙鏡</button></div></div>
+          <div class="readout">
+            <div class="row"><span>角膜前的 Δn</span><b id="w-dn">—</b></div>
+            <div class="row"><span>角膜屈光力（約）</span><b id="w-fc">—</b></div>
+            <div class="row"><span>全眼屈光力（約）</span><b id="w-fe">—</b></div>
+          </div>
+          <div class="verdict" id="w-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">裸眼在水中看東西很模糊，主要是因為？</p>
+          <div class="opts"><button>水太冷，水晶體變硬</button><button>瞳孔放大</button><button>水的折射率接近角膜，角膜幾乎失去度數</button></div>
+          <p class="why">角膜的度數來自空氣與角膜之間 0.376 的折射率差。水是 1.333，差值剩 0.04，角膜的度數幾乎全部失效。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>水晶體整顆泡在房水與玻璃體裡，折射率差只有約 0.06，所以雖然更彎，度數反而比較小。</li>
+          <li>蛙鏡在角膜前留一層空氣，把那 0.376 的折射率差還給你。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 6-4</span><h3>43 ＋ 19 為什麼不等於 60</h3><span class="lvtag lv-d">◆ 要看懂</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-eq" aria-label="兩片鏡片距離與總度數"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="ed">兩個屈光面的距離 d <output id="ed-out"></output></label><input type="range" id="ed" min="0" max="10" step="0.1" value="3.6"></div>
+          <div class="readout">
+            <div class="row"><span>F₁ ＋ F₂</span><b>62.00 D</b></div>
+            <div class="row"><span>距離造成的扣減</span><b id="e-sub">—</b></div>
+            <div class="row"><span>等效屈光度</span><b id="e-F">—</b></div>
+          </div>
+          <div class="verdict" id="e-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>d ＝ 0（兩面貼在一起）時，才可以直接相加。</li>
+          <li>距離越大，扣得越多。配鏡學的頂點距離、隱形眼鏡換算（W10）都是同一個道理。</li>
+          <li>這裡用簡化的兩面模型示意；投影片代入約略值得到約 60 D。公式只要看懂，不必計算。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>角膜最強是因為它最彎。</summary><div class="fix">水晶體其實更彎。屈光力取決於界面兩側的折射率差，角膜面對的是空氣，差最大。</div></details>
+      <details class="myth"><summary>F ＝ 1/f 代公分也可以。</summary><div class="fix">f 一定要用公尺。50 cm 要先寫成 0.5 m，F ＝ 2.00 D；直接用 50 會得到 0.02，錯 100 倍。</div></details>
+      <details class="myth"><summary>負度數的焦距是負的，所以沒有意義。</summary><div class="fix">負號代表方向：虛焦點在鏡片前方。−5.00 D 的虛焦點在鏡片前 20 cm。</div></details>
+      <details class="myth"><summary>全眼 60 D ＝ 角膜 43 D ＋ 水晶體 19 D。</summary><div class="fix">相加是 62 D。因為兩面之間有距離，要扣掉約 2 D，所以約 60 D。</div></details>
+    </div>
+  </section>
+
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>練習題 <span class="tag">PRACTICE</span></h2>
+    <p class="sub">★ F ＝ 1/f 的雙向換算。數字每次隨機；屈光度填到小數第二位，距離填公分（含正負號）。</p>
+    <div id="practice"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>本週作業 <span class="tag">HOMEWORK</span></h2>
+    <div class="hw"><b>作業（四）屈光度換算與觀念問答</b><ul>
+      <li>計算題 8 題：焦距與屈光度的雙向換算（含反向題）——下方練習題就是同一類。</li>
+      <li>觀念問答：為什麼角膜是全眼最強的屈光面？（不要回答「因為它最彎」）</li>
+      <li>觀念問答：43 D ＋ 19 D ＝ 62 D，課本卻寫約 60 D，差距從哪裡來？</li>
+      <li>下週實驗課前繳交，算是進實驗室的準備；請帶計算機。</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script src="assets/bank/w06.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => OBPractice.mount("practice", "w06"));</script>
+<script>
+(function () {
+  const { Stage, range, seg, check, fmt, clamp, blurText } = OL;
+  OL.levels("levels", [
+    ["★", "F ＝ 1/f 雙向換算", "焦距 ↔ 屈光度、反向題（已知度數求焦點位置）"],
+    ["◆", "Snell 定律", "疏 → 密偏向法線"],
+    ["◆", "聚散度 L ＝ n/l、成像公式 L′ ＝ L ＋ F", "看懂即可"],
+    ["◆", "等效屈光度：為何 43 ＋ 19 ≠ 60", "兩面之間有距離"],
+    ["◆", "稜鏡度 1Δ 的定義；眼軸 1 mm ≈ 3 D", "觀念級"],
+    ["○", "全反射", "光纖與前房隅角鏡"],
+  ]);
+
+  /* ---------- LAB 6-1 Snell ---------- */
+  const n1 = seg("n1", () => st1.render()), n2 = seg("n2", () => st1.render());
+  const th = range("th", (v) => v + "°", () => st1.render());
+  const st1 = new Stage("cv-sn", { xmin: -10, xmax: 10, ymin: -6, ymax: 6, aspect: 0.6, minH: 260, maxH: 420, equal: true, draw: (s, c) => {
+    const a = +n1.value, b = +n2.value, t1 = th.value * Math.PI / 180;
+    const ctx = s.ctx; ctx.save(); ctx.fillStyle = c.accent; ctx.globalAlpha = 0.05 + (a - 1) * 0.35; ctx.fillRect(s.X(-10), s.Y(6), s.X(0) - s.X(-10), s.Y(-6) - s.Y(6));
+    ctx.globalAlpha = 0.05 + (b - 1) * 0.35; ctx.fillRect(s.X(0), s.Y(6), s.X(10) - s.X(0), s.Y(-6) - s.Y(6)); ctx.restore();
+    s.line(0, -6, 0, 6, { color: c.glassEdge, w: 2 });
+    s.line(-9.5, 0, 9.5, 0, { color: c.muted, w: 1, dash: [6, 5] }); s.text("法線", 9.4, 0.6, { size: 11, color: c.muted, align: "right" });
+    s.text(`n₁ = ${a.toFixed(3)}`, -9.5, 5.3, { align: "left", size: 12, weight: 700 }); s.text(`n₂ = ${b.toFixed(3)}`, 9.5, 5.3, { align: "right", size: 12, weight: 700 });
+    const L = 9;
+    const p0 = [-L * Math.cos(t1), -L * Math.sin(t1)];
+    s.ray([p0, [0, 0]], { color: c.ray, w: 2.2 });
+    const sin2 = a * Math.sin(t1) / b;
+    const R = document.getElementById("sn-t2"), K = document.getElementById("sn-chk"), V = document.getElementById("sn-v");
+    if (sin2 > 1) {
+      s.ray([[0, 0], [-L * Math.cos(t1), L * Math.sin(t1)]], { color: c.ray, w: 2.2 });
+      R.textContent = "全反射"; K.textContent = "—";
+      V.innerHTML = `<span class="pill warn">全反射</span> 入射角超過臨界角 ${(Math.asin(b / a) * 180 / Math.PI).toFixed(1)}°，光完全折返。`;
+    } else {
+      const t2 = Math.asin(sin2);
+      s.ray([[0, 0], [L * Math.cos(t2), L * Math.sin(t2)]], { color: c.ray, w: 2.2 });
+      s.ray([[0, 0], [-L * Math.cos(t1), L * Math.sin(t1)]], { color: c.ray, w: 1, alpha: 0.18 });
+      const arc = (r, ang, dir, col) => { ctx.save(); ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.beginPath(); if (dir < 0) ctx.arc(s.X(0), s.Y(0), r, Math.PI, Math.PI + ang); else ctx.arc(s.X(0), s.Y(0), r, -ang, 0); ctx.stroke(); ctx.restore(); };
+      arc(46, t1, -1, c.ink); arc(58, t2, 1, c.accent);
+      R.textContent = (t2 * 180 / Math.PI).toFixed(1) + "°";
+      K.textContent = `${(a * Math.sin(t1)).toFixed(3)} ／ ${(b * Math.sin(t2)).toFixed(3)}`;
+      V.innerHTML = Math.abs(a - b) < 1e-6 ? '<span class="pill info">不偏折</span> 兩邊折射率相同，光直直穿過。' : a < b ? '<span class="pill ok">疏 → 密</span> 偏向法線（θ₂ 比 θ₁ 小）。' : '<span class="pill warn">密 → 疏</span> 偏離法線（θ₂ 比 θ₁ 大）。';
+    }
+    s.text("θ₁", -3.2, -0.9, { size: 12, weight: 700 });
+  } });
+
+  /* ---------- LAB 6-2 透鏡 ---------- */
+  const lp = range("lp", (v) => fmt.D(v), () => st2.render());
+  const lq = check("lq", () => st2.render());
+  const st2 = new Stage("cv-ln", { xmin: -60, xmax: 60, ymin: -22, ymax: 22, aspect: 0.5, minH: 260, maxH: 420, draw: (s, c) => {
+    const F = lp.value, f = F ? 100 / F : Infinity;
+    s.axis();
+    s.lens(0, 16, F, { label: fmt.D(F) });
+    [-12, -6, 6, 12].forEach((y) => {
+      if (F === 0) { s.ray([[-60, y], [60, y]], { color: c.ray }); return; }
+      const slope = -y / f;
+      s.ray([[-60, y], [0, y], [60, y + slope * 60]], { color: c.ray });
+      if (F < 0) s.line(0, y, f, 0, { color: c.virtual, dash: [5, 4], w: 1.2, alpha: 0.8 });
+    });
+    for (let x = -50; x <= 50; x += 10) s.text((x > 0 ? "+" : "") + x, x, -20.5, { size: 10, color: c.muted, font: c.mono });
+    s.text("cm", 58, -20.5, { size: 10, color: c.muted, align: "right" });
+    const hide = lq.value;
+    if (F !== 0 && Math.abs(f) <= 60) s.point(f, 0, hide ? "?" : (F > 0 ? "實焦點" : "虛焦點"), { color: F > 0 ? c.ray : c.virtual, font: c.body, dy: -14 });
+    document.getElementById("lf").textContent = hide ? "先自己算" : F === 0 ? "∞（平光）" : `${(1 / F).toFixed(3)} m ＝ ${fmt.num(f, 1, "cm")}`;
+    document.getElementById("lk").textContent = hide ? "？" : F === 0 ? "—" : F > 0 ? `鏡片後方 ${Math.abs(f).toFixed(1)} cm` : `鏡片前方 ${Math.abs(f).toFixed(1)} cm`;
+    document.getElementById("lv").innerHTML = F > 0 ? '<span class="pill ok">凸透鏡</span> 會聚光線，可矯正遠視與老花。' : F < 0 ? '<span class="pill info">凹透鏡</span> 發散光線，可矯正近視。' : "平光：光線不改變方向。";
+  } });
+
+  /* ---------- LAB 6-3 水中 ---------- */
+  const med = seg("med", () => st3.render());
+  const st3 = new Stage("cv-wt", { xmin: 0, xmax: 100, ymin: 0, ymax: 60, aspect: 0.6, minH: 280, maxH: 420, draw: (s, c) => {
+    const nf = med.value === "water" ? 1.333 : 1.000;
+    const dn = 1.376 - nf, Fc = dn / 0.0078 - 5.9, Fl = 19;
+    const eqv = (fc) => fc + Fl - 0.0036 / 1.336 * fc * Fl;
+    const Fe = eqv(Fc), err = Fe - eqv(0.376 / 0.0078 - 5.9);
+    // 長條圖
+    const bar = (x, v, max, col, lab, val) => {
+      const h = v / max * 30; const ctx = s.ctx; ctx.save(); ctx.fillStyle = col; ctx.globalAlpha = 0.85; ctx.fillRect(s.X(x), s.Y(14 + Math.max(0, h)), s.X(x + 9) - s.X(x), Math.abs(h) * s.sy); ctx.restore();
+      s.text(lab, x + 4.5, 10, { size: 11 }); s.text(val, x + 4.5, 16 + Math.max(0, h) + 2.5, { size: 11, weight: 700, font: c.mono });
+    };
+    s.line(4, 14, 60, 14, { color: c.muted, w: 1 });
+    bar(8, dn, 0.4, c.accent, "角膜 Δn", dn.toFixed(3));
+    bar(20, 0.064, 0.4, c.ray2, "水晶體 Δn", "≈0.06");
+    bar(36, Math.max(0, Fc), 50, c.accent, "角膜 D", Fc.toFixed(1));
+    bar(48, Fl, 50, c.ray2, "水晶體 D", "19.0");
+    s.text("折射率差", 18, 53, { size: 11, color: c.muted }); s.text("屈光力（約）", 46, 53, { size: 11, color: c.muted });
+    // 看到的景象
+    const ctx = s.ctx, x0 = s.X(64), y0 = s.Y(50), w = s.X(98) - x0, h = s.Y(12) - y0;
+    ctx.save(); ctx.fillStyle = med.value === "air" ? c.surface : "#cfe6f0"; ctx.fillRect(x0, y0, w, h); ctx.strokeStyle = c.line; ctx.strokeRect(x0, y0, w, h);
+    const blur = Math.min(40, Math.abs(err) * 1.6);
+    blurText(ctx, "E", x0 + w / 2, y0 + h * 0.4, `700 ${Math.round(h * 0.42)}px ${c.body}`, c.ink, blur, blur);
+    blurText(ctx, "E F P", x0 + w / 2, y0 + h * 0.78, `700 ${Math.round(h * 0.14)}px ${c.body}`, c.ink, blur * 0.6, blur * 0.6);
+    ctx.restore();
+    s.text("眼睛看到的", 81, 54, { size: 11, color: c.muted });
+    document.getElementById("w-dn").textContent = `${(1.376).toFixed(3)} − ${nf.toFixed(3)} = ${dn.toFixed(3)}`;
+    document.getElementById("w-fc").textContent = fmt.D(Fc, 1);
+    document.getElementById("w-fe").textContent = fmt.D(Fe, 1);
+    document.getElementById("w-v").innerHTML = med.value === "water" ? `<span class="pill bad">非常模糊</span> 全眼少了約 ${Math.abs(err).toFixed(0)} D，等於變成高度遠視。` : med.value === "goggle" ? '<span class="pill ok">清楚</span> 蛙鏡在角膜前留一層空氣，折射率差回來了。' : '<span class="pill ok">清楚</span> 角膜面對空氣，折射率差最大。';
+  } });
+
+  /* ---------- LAB 6-4 等效屈光度 ---------- */
+  const ed = range("ed", (v) => v.toFixed(1) + " mm", () => st4.render());
+  const st4 = new Stage("cv-eq", { xmin: -10, xmax: 40, ymin: -12, ymax: 12, aspect: 0.42, minH: 220, maxH: 330, draw: (s, c) => {
+    const d = ed.value, F1 = 43, F2 = 19, n = 1.336;
+    const sub = d / 1000 / n * F1 * F2, F = F1 + F2 - sub;
+    s.axis({ label: false });
+    s.lens(0, 9, 9, { label: "+43" }); s.lens(d, 7, 6, { label: "+19", labelColor: c.ray2 });
+    const fp = n / F * 1000;   // 從第二面起算的像方焦距（近似）
+    const el = [{ x: 0, F: F1 / 1000, n2: n }, { x: d, F: F2 / 1000, n2: n }];
+    [-5, -2.5, 2.5, 5].forEach((y) => { const tr = OL.trace({ x: -10, y, s: 0 }, el, 40); s.ray(tr.pts, { color: c.ray, w: 1.5 }); });
+    s.text(`d = ${d.toFixed(1)} mm`, d / 2, -10.5, { size: 11, color: c.muted });
+    document.getElementById("e-sub").textContent = "−" + sub.toFixed(2) + " D";
+    document.getElementById("e-F").textContent = fmt.D(F);
+    document.getElementById("e-v").innerHTML = d < 0.05 ? "兩面貼在一起，才能直接相加。" : `距離 ${d.toFixed(1)} mm，總度數比相加少了 ${sub.toFixed(1)} D。`;
+  } });
+})();
+</script>
+</body>
+</html>

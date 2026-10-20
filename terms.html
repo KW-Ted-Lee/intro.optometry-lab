@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>中英名詞總表｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  table.terms td.wk { font-family: var(--font-mono); font-size: 12px; white-space: nowrap; }
+  table.terms td.wk a { color: var(--accent); }
+  .count { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body data-chapter="terms">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Glossary</div>
+    <h1>中英名詞總表</h1>
+    <div class="en">English–Chinese terms, week by week</div>
+    <p class="lede">各週「專業英文」整理在一起。中英文都要記。可以搜尋、依週次篩選，或切換到字卡模式自我測驗。</p>
+  </div>
+
+  <section class="block">
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="搜尋英文或中文，例如 cornea、調節" aria-label="搜尋名詞">
+      <select class="chapter-select" id="wk" aria-label="篩選週次"><option value="all">全部週次</option><option value="mid">前半學期 W01–W08</option><option value="fin">後半學期 W10–W17</option></select>
+      <div class="seg" id="mode"><button data-v="table" aria-pressed="true">表格</button><button data-v="card">字卡</button></div>
+      <span class="count" id="cnt"></span>
+    </div>
+    <div id="tbl"></div>
+    <div class="flash" id="fl" hidden>
+      <div class="seg" id="dir"><button data-v="en" aria-pressed="true">看英文 → 想中文</button><button data-v="zh">看中文 → 想英文</button></div>
+      <button type="button" class="flashcard" id="card" aria-live="polite"></button>
+      <div class="row-btns"><button class="btn ghost" id="prev" type="button">← 上一張</button><button class="btn" id="flip" type="button">翻面</button><button class="btn ghost" id="next" type="button">下一張 →</button><button class="btn ghost" id="shuf" type="button">洗牌</button></div>
+      <div class="row-btns know"><button class="btn ok" id="yes" type="button">✓ 記得了</button><button class="btn ghost" id="no" type="button">還不熟</button><label class="chk"><input type="checkbox" id="only"> 只出還不熟的字卡</label></div>
+      <span class="count" id="pos"></span>
+    </div>
+  </section>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/bank/w01.js"></script><script src="assets/bank/w02.js"></script><script src="assets/bank/w03.js"></script><script src="assets/bank/w04.js"></script>
+<script src="assets/bank/w05.js"></script><script src="assets/bank/w06.js"></script><script src="assets/bank/w07.js"></script><script src="assets/bank/w08.js"></script>
+<script src="assets/bank/w10.js"></script><script src="assets/bank/w11.js"></script><script src="assets/bank/w12.js"></script><script src="assets/bank/w13.js"></script>
+<script src="assets/bank/w14.js"></script><script src="assets/bank/w15.js"></script><script src="assets/bank/w16.js"></script><script src="assets/bank/w17.js"></script>
+<script>
+(function () {
+  const { WEEKS, BANK, wkLabel, seg, shuffle, esc, journal } = OL;
+  const known = (t) => !!journal.terms()[t.en.toLowerCase()];
+  const sel = document.getElementById("wk");
+  WEEKS.forEach((w) => sel.insertAdjacentHTML("beforeend", `<option value="${w.id}">${wkLabel(w)}　${w.zh}</option>`));
+  // 合併：同一英文詞只列一次，週次合併
+  const map = new Map();
+  WEEKS.forEach((w) => (BANK[w.id] && BANK[w.id].terms || []).forEach(([en, zh, d]) => {
+    const k = en.toLowerCase();
+    if (!map.has(k)) map.set(k, { en, zh, d, wks: [w] }); else map.get(k).wks.push(w);
+  }));
+  const ALL = [...map.values()];
+  let list = ALL, idx = 0, flipped = false;
+  const mode = seg("mode", () => render()), dir = seg("dir", () => { flipped = false; showCard(); });
+  function filter() {
+    const q = document.getElementById("q").value.trim().toLowerCase(), f = sel.value;
+    return ALL.filter((t) => {
+      const inWk = f === "all" || (f === "mid" ? t.wks.some((w) => w.wk <= 8) : f === "fin" ? t.wks.some((w) => w.wk >= 10) : t.wks.some((w) => w.id === f));
+      const hit = !q || t.en.toLowerCase().includes(q) || t.zh.includes(q) || (t.d || "").includes(q);
+      const fresh = !(mode && mode.value === "card" && document.getElementById("only").checked && known(t));
+      return inWk && hit && fresh;
+    });
+  }
+  function render() {
+    list = filter();
+    const kn = ALL.filter(known).length;
+    document.getElementById("cnt").textContent = `共 ${list.length} 個名詞　·　你已記得 ${kn} / ${ALL.length}`;
+    const card = mode.value === "card";
+    document.getElementById("tbl").hidden = card; document.getElementById("fl").hidden = !card;
+    if (!card) {
+      document.getElementById("tbl").innerHTML = `<div class="terms-wrap"><table class="terms"><tr><th>English</th><th>中文</th><th>一句話說明</th><th>週次</th></tr>${list.map((t) => `<tr><td>${known(t) ? '<span class="kn" title="已記得">✓</span> ' : ""}${t.en}</td><td>${t.zh}</td><td>${t.d || ""}</td><td class="wk">${t.wks.map((w) => `<a href="${w.id}.html">${wkLabel(w)}</a>`).join(" ")}</td></tr>`).join("")}</table></div>`;
+    } else { idx = 0; flipped = false; showCard(); }
+  }
+  function showCard() {
+    const el = document.getElementById("card");
+    if (!list.length) { el.innerHTML = document.getElementById("only").checked ? "這個範圍的字卡你都記得了！" : "沒有符合的名詞"; document.getElementById("pos").textContent = ""; return; }
+    const t = list[idx], en = dir.value === "en";
+    const front = en ? `<div class="fw">${t.en}</div>` : `<div class="fz">${t.zh}</div>`;
+    const back = en ? `<div class="fz">${t.zh}</div>` : `<div class="fw">${t.en}</div>`;
+    el.innerHTML = `<div><small>${t.wks.map(wkLabel).join(" · ")}${known(t) ? "　✓ 已記得" : ""}</small>${flipped ? back + `<div class="fd">${t.d || ""}</div>` : front + '<div class="fd">點一下翻面</div>'}</div>`;
+    document.getElementById("pos").textContent = `${idx + 1} / ${list.length}`;
+  }
+  document.getElementById("card").onclick = document.getElementById("flip").onclick = () => { flipped = !flipped; showCard(); };
+  document.getElementById("next").onclick = () => { idx = (idx + 1) % list.length; flipped = false; showCard(); };
+  document.getElementById("prev").onclick = () => { idx = (idx - 1 + list.length) % list.length; flipped = false; showCard(); };
+  document.getElementById("shuf").onclick = () => { shuffle(list); idx = 0; flipped = false; showCard(); };
+  const step = (k) => { if (!list.length) return; journal.term(list[idx].en, k); const only = document.getElementById("only").checked;
+    if (only && k) { list.splice(idx, 1); if (idx >= list.length) idx = 0; } else idx = (idx + 1) % list.length;
+    flipped = false; const kn = ALL.filter(known).length; document.getElementById("cnt").textContent = `共 ${list.length} 個名詞　·　你已記得 ${kn} / ${ALL.length}`; showCard(); };
+  document.getElementById("yes").onclick = () => step(true);
+  document.getElementById("no").onclick = () => step(false);
+  document.getElementById("only").addEventListener("change", render);
+  document.getElementById("q").addEventListener("input", render); sel.addEventListener("change", render);
+  render();
+})();
+</script>
+</body>
+</html>

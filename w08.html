@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W08 正視眼與屈光不正總論｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="w08">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 08</div>
+    <h1>正視眼與屈光不正總論</h1>
+    <div class="en">Emmetropia &amp; the Far Point</div>
+    <p class="lede">整個屈光學的骨架就在這一週：用<b>「遠點在哪裡」</b>一次理解正視、近視、遠視與它們的矯正。再畫清楚一條界線——<b>老花不是屈光不正</b>。最後是前半學期總複習。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>用「遠點在哪裡」理解正視、近視、遠視三種狀態與它們的矯正。</li>
+      <li>說出依成因、依兩眼關係、依規則性的三種分類方式。</li>
+      <li>說明靜態的屈光狀態與動態的調節功能是兩件事。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Emmetropia</span><h3>正視眼的兩個前提</h3><p>在<b>調節完全放鬆</b>時，<b>無限遠</b>物體的焦點清楚落在視網膜上。無限遠＝光可視為平行光，臨床上以 6 公尺（20 英尺）近似。眼軸約 24 mm、全眼約 60 D。</p></div>
+      <div class="concept"><span class="en-term">Far point</span><h3>遠點的定義</h3><p>調節完全放鬆時，能看清楚的最遠的那一點。正視 → 無限遠；近視 → 眼前有限距離；遠視 → 視網膜後方（虛遠點）。近視者摘下眼鏡看近反而清楚，就是這個原因。</p></div>
+      <div class="concept"><span class="lvtag lv-s">★ 要會算</span><span class="en-term">Far point = 1 / D</span><h3>遠點距離 ＝ 1 ／ 度數</h3><p>−1.00 → 100 cm、−2.00 → 50 cm、−4.00 → 25 cm、−5.00 → 20 cm、−10.00 → 10 cm。反向題：裸眼只看得清 33 cm 以內 → 1/0.33 ≈ 3 → 約 −3.00 D。</p></div>
+      <div class="concept"><span class="en-term">What correction does</span><h3>矯正的本質</h3><p>把無限遠的物體成像在患者的遠點上：<b>矯正鏡片的焦點與遠點重合</b>。−2.00 D 鏡片的虛焦點在前方 50 cm，−2.00 D 近視者的遠點也在 50 cm，所以度數數值相等。</p></div>
+      <div class="concept"><span class="en-term">Three classifications</span><h3>三種切法</h3><p>依成因：軸性 vs 屈光性（多數近視是軸性）；依兩眼關係：等視 vs 屈光參差；依規則性：球面（近視、遠視） vs 柱面（散光）。同一位患者可以同時被三種方式描述。</p></div>
+      <div class="concept"><span class="en-term">Presbyopia is not a refractive error</span><h3>老花不是屈光不正</h3><p>屈光不正是調節放鬆時焦點落在哪裡的<b>靜態</b>光學狀態；老花是調節能力隨年齡下降的<b>動態</b>功能問題。正視眼的人到 45 歲一樣會老花。嚴格說，屈光不正只有近視、遠視、散光三種。</p></div>
+    </div>
+    <p class="fix-note" style="margin-top:14px">講義更正：原講義寫「無線遠物體」，正確應為「無限遠」。</p>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 8-1</span><h3>遠點統一模型</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-fp" aria-label="遠點位置與矯正鏡片"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="f-k">屈光狀態 <output id="f-k-out"></output></label><input type="range" id="f-k" min="-10" max="6" step="0.25" value="-2"></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="f-c"> 戴上矯正鏡片</label></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="f-q"> 隱藏答案，讓我先算遠點</label></div>
+          <div class="readout">
+            <div class="row"><span>類型</span><b id="f-type">—</b></div>
+            <div class="row"><span>遠點</span><b id="f-fp">—</b></div>
+            <div class="row"><span>矯正鏡片</span><b id="f-rx">—</b></div>
+          </div>
+          <div class="verdict" id="f-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">−4.00 D 的近視者，遠點在哪裡？</p>
+          <div class="opts"><button>眼前 4 cm</button><button>眼前 40 cm</button><button>眼前 25 cm</button></div>
+          <p class="why">1 ÷ 4.00 ＝ 0.25 m ＝ 25 cm。度數越深，遠點越近。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>上方是距離軸：紅色星號是遠點，藍色虛線是矯正鏡片的焦點——兩者永遠重合。</li>
+          <li>下方是眼睛：沒戴鏡片時，平行光聚在視網膜前（近視）或後（遠視）；戴上後剛好落在視網膜上。</li>
+          <li>把度數調成正的：遠點跑到眼睛「後方」，是一個假想的位置（虛遠點）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 8-2</span><h3>屈光不正三種分類</h3></div>
+      <div class="sim">
+        <div class="case">
+          <div class="who" id="k-no"></div>
+          <div class="say" id="k-q"></div>
+          <div class="ctrl"><label>依成因</label><div class="chips" data-g="0"><button type="button" class="chip" data-v="0">軸性</button><button type="button" class="chip" data-v="1">屈光性</button></div></div>
+          <div class="ctrl"><label>依兩眼關係</label><div class="chips" data-g="1"><button type="button" class="chip" data-v="0">等視</button><button type="button" class="chip" data-v="1">屈光參差</button></div></div>
+          <div class="ctrl"><label>依規則性</label><div class="chips" data-g="2"><button type="button" class="chip" data-v="0">球面</button><button type="button" class="chip" data-v="1">柱面（散光）</button></div></div>
+          <div class="row-btns"><button class="btn" id="k-check" type="button">檢查</button><button class="btn ghost" id="k-next" type="button">換一位病人</button></div>
+          <div class="fb" id="k-fb" hidden></div>
+        </div>
+        <div class="score-line" id="k-score"></div>
+      </div>
+      <div class="observe">
+        <h4>判斷提示</h4><ul>
+          <li>成因：眼軸偏離 24 mm、角膜正常（約 43 D）→ 軸性；眼軸正常、角膜或水晶體屈光力異常 → 屈光性。</li>
+          <li>兩眼關係：兩眼差 1.00 D 以上就算屈光參差，2.00 D 以上具臨床意義（W11）。</li>
+          <li>規則性：處方有柱面（C）就是散光。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 8-3</span><h3>量遠點、推度數</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-mfp" aria-label="把字卡慢慢拉遠"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="mf-d">字卡距離 <output id="mf-d-out"></output></label><input type="range" id="mf-d" min="10" max="200" step="1" value="15"></div>
+          <div class="row-btns"><button class="btn" id="mf-rec" type="button">「再遠就模糊了」→ 記錄</button><button class="btn ghost" id="mf-new" type="button">換一位病人</button></div>
+          <div class="ctrl"><label for="mf-ans">由遠點推算的度數（D，含負號）</label><input class="num" type="text" inputmode="decimal" id="mf-ans" placeholder="例如 −2.50"></div>
+          <div class="row-btns"><button class="btn ghost" id="mf-chk" type="button">對答案</button></div>
+          <div class="verdict" id="mf-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>這就是作業（五）的方法：請近視的家人摘下眼鏡，把字卡慢慢拉遠，量「剛好還清楚」的最遠距離。</li>
+          <li>度數 ＝ 1 ÷ 遠點（公尺），近視加負號；再取最接近的 0.25 D。</li>
+          <li>量到的距離只要差幾公分，低度數的換算差很多、高度數差得少——想想為什麼。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 8-4</span><h3>這是哪一種屈光狀態？</h3></div>
+      <div class="sim" id="d84"></div>
+      <div class="observe">
+        <h4>判斷提示</h4><ul>
+          <li>先問：調節放鬆時，平行光的焦點在哪裡？</li>
+          <li>老花是調節功能衰退，不是屈光不正；正視眼也會老花。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>近視的人摘下眼鏡看手機比較清楚，表示眼睛變好了。</summary><div class="fix">只是手機剛好落在他的遠點附近。遠點以內本來就看得清楚。</div></details>
+      <details class="myth"><summary>近視用凹透鏡，只是規定要背的。</summary><div class="fix">凹透鏡的虛焦點要和遠點重合，才能把遠方物體「搬」到遠點上。−2.00 D 鏡片的虛焦點就在 50 cm。</div></details>
+      <details class="myth"><summary>老花也是一種屈光不正。</summary><div class="fix">老花是調節功能隨年齡衰退，和調節放鬆時的屈光狀態無關。正視眼一樣會老花。</div></details>
+      <details class="myth"><summary>遠視眼的遠點在很遠的地方，所以看遠很清楚。</summary><div class="fix">遠視的遠點在視網膜後方，是假想的位置。平行光進來一定聚焦在視網膜後，必須用調節才看得清（W11）。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>前半學期總複習 <span class="tag">REVIEW</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">W02 Anterior eye</span><h3>眼球前段</h3><p>角膜五層（上皮可再生、內皮不可再生）；+43 D、11–12 mm、無血管；淚膜三層；房水：睫狀體 → 後房 → 瞳孔 → 前房 → 小梁網 → 許萊姆氏管；眼壓 10–21 mmHg。</p></div>
+      <div class="concept"><span class="en-term">W03 Posterior eye</span><h3>眼球後段</h3><p>水晶體 +19 D；調節：肌肉收縮 → 懸韌帶放鬆 → 變凸；視桿 1.2 億／周邊／暗視覺；視錐 600 萬／中央窩／明視覺；視盤在黃斑鼻側 15°，C/D 正常 &lt; 0.5。</p></div>
+      <div class="concept"><span class="en-term">W04 Pathway</span><h3>視路、盲點、針孔</h3><p>視神經 → 視交叉 → 視束 → LGN → 視放射 → V1；鼻側纖維交叉；盲點顳側 15°、5° × 7°；三個隱藏機制；針孔 1.2 mm，進步 → 屈光，沒進步 → 懷疑眼疾。</p></div>
+      <div class="concept"><span class="lvtag lv-s">★ 會出計算題</span><span class="en-term">W06–W08 Optics</span><h3>只有兩類計算</h3><p>F ＝ 1/f（記得換成公尺）：50 cm → +2.00、25 cm → +4.00。遠點距離 ＝ 1/度數：−4.00 → 25 cm。各做十題就夠了——到 <a href="calc.html">★ 練功房</a>。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 看懂觀念</span><span class="en-term">Concept formulas</span><h3>看懂就好的公式</h3><p>Snell：疏 → 密偏向法線；角膜最強因為折射率差最大；L ＝ n/l；L′ ＝ L ＋ F；43 ＋ 19 ≠ 60；1Δ ＝ 1 m 處偏 1 cm；眼軸 1 mm ≈ 3 D。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>練習題 <span class="tag">PRACTICE</span></h2>
+    <p class="sub">★ 遠點距離 ＝ 1 / 度數。距離填公分，度數填到小數第二位。</p>
+    <div id="practice"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>複習建議 <span class="tag">REVIEW TIPS</span></h2>
+    <div class="hw"><b>整理前半學期的五個建議</b><ul>
+      <li>把 W02、W03 的剖面圖各默畫一次，中英文都要寫（可用 <a href="w05.html">W05 虛擬模型</a> 自我檢查）。</li>
+      <li>★ 計算只有兩類：F ＝ 1/f 與遠點距離，各做十題。</li>
+      <li>◆ 公式不必背算式，但要能用一句話說出它在講什麼。</li>
+      <li>整理「為什麼」的題目：角膜為何最強、盲點為何感覺不到、房水為何要循環。</li>
+      <li>到 <a href="exam.html">綜合挑戰</a> 選「前半學期」，跨週混著練。</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script src="assets/bank/w08.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => OBPractice.mount("practice", "w08"));</script>
+<script>
+(function () {
+  const { Stage, range, check, fmt, clamp } = OL;
+  OL.levels("levels", [
+    ["★", "遠點距離 ＝ 1 / 度數", "含反向題：由遠點推度數"],
+    ["◆", "遠點統一表", "正視、近視、遠視的焦點、遠點與矯正鏡片"],
+    ["◆", "屈光不正三種分類", "成因、兩眼關係、規則性"],
+    ["◆", "老花不是屈光不正", "靜態光學狀態 vs 動態調節功能"],
+  ]);
+
+  /* ---------- LAB 8-1 ---------- */
+  const fk = range("f-k", (v) => fmt.D(v), () => st.render());
+  const fc = check("f-c", () => st.render()), fq = check("f-q", () => st.render());
+  const st = new Stage("cv-fp", { xmin: 0, xmax: 100, ymin: 0, ymax: 70, aspect: 0.66, minH: 330, maxH: 470, draw: (s, c) => {
+    const K = fk.value, corr = fc.value, hide = fq.value;
+    // 上：距離軸（依屈光度刻度：左＝無限遠，右＝靠近眼睛）
+    const EX = 82, dx = (D) => 6 + (D / 10) * (EX - 12);  // D = 0 → 無限遠
+    const Y0 = 52;
+    s.line(4, Y0, EX, Y0, { color: c.muted, w: 1 });
+    [[0, "∞"], [1, "100"], [2, "50"], [3, "33"], [4, "25"], [5, "20"], [10, "10 cm"]].forEach(([D, t]) => { s.line(dx(D), Y0 - 1.2, dx(D), Y0 + 1.2, { color: c.muted, w: 1 }); s.text(t, dx(D), Y0 - 4, { size: 10, color: c.muted, font: c.mono }); });
+    s.text("眼睛", EX + 4, Y0 + 3.5, { size: 11, weight: 700 });
+    const ctx = s.ctx; ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(EX + 4), s.Y(Y0), 14, 10, 0, 0, Math.PI * 2); ctx.fillStyle = c.surface2; ctx.fill(); ctx.strokeStyle = c.muted; ctx.stroke(); ctx.restore();
+    s.text("距離（依屈光度刻度）", 4, Y0 + 9, { size: 10, color: c.muted, align: "left" });
+    if (K < -0.01) {
+      const D = -K, x = dx(Math.min(D, 10));
+      ctx.save(); ctx.fillStyle = c.accent; ctx.globalAlpha = 0.13; ctx.fillRect(s.X(x), s.Y(Y0 + 5.5), s.X(EX) - s.X(x), 4.5 * s.sy); ctx.restore();
+      s.text("看得清楚的範圍", (x + EX) / 2, Y0 + 7.5, { size: 10, color: c.accent });
+      s.text("★", x, Y0 + 2.8, { size: 16, color: c.bad, weight: 700 });
+      s.text(hide ? "遠點 ?" : `遠點 ${(100 / D).toFixed(1)} cm`, x, Y0 + 7.5, { size: 11, color: c.bad, weight: 700, bg: c.bg });
+      if (corr) { s.line(x, Y0 - 7, x, Y0 - 1.5, { color: c.virtual, dash: [4, 3], w: 1.5 }); s.text(`${fmt.D(K)} 鏡片的虛焦點`, x, Y0 - 9, { size: 10, color: c.virtual }); }
+    } else if (K > 0.01) {
+      s.text("遠點在眼睛後方（虛遠點）→", EX - 2, Y0 + 7.5, { size: 11, color: c.bad, weight: 700, align: "right" });
+      s.text("★", EX + 12, Y0, { size: 16, color: c.bad, weight: 700 });
+      s.text(hide ? "?" : `後方 ${(100 / K).toFixed(1)} cm`, EX + 12, Y0 - 4.5, { size: 10, color: c.bad, font: c.mono });
+    } else { s.text("★ 遠點在無限遠", dx(0) + 1, Y0 + 7.5, { size: 11, color: c.bad, weight: 700, align: "left" }); }
+    // 下：眼睛與光線
+    const cy = 20, ex0 = 50, L = 26;      // 眼睛：角膜 x = 50，視網膜 x = 76
+    ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(ex0 + L / 2), s.Y(cy), (s.X(L) - s.X(0)) / 2 + 2, s.sy * 13, 0, 0, Math.PI * 2); ctx.fillStyle = c.accent; ctx.globalAlpha = 0.07; ctx.fill(); ctx.globalAlpha = 1; ctx.strokeStyle = c.muted; ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(s.X(ex0 + L / 2), s.Y(cy), (s.X(L) - s.X(0)) / 2 + 2, s.sy * 13, 0, -Math.PI / 2.8, Math.PI / 2.8); ctx.strokeStyle = c.retina; ctx.lineWidth = 3; ctx.stroke(); ctx.restore();
+    const eff = corr ? 0 : K;
+    const fx = ex0 + L + clamp(eff * 1.6, -22, 9);   // 焦點相對視網膜
+    s.lens(ex0 + 1, 7, 7, { bulge: 6, y: cy });
+    if (corr && Math.abs(K) > 0.01) s.lens(ex0 - 8, 8, K, { y: cy, label: fmt.D(K), labelColor: K < 0 ? c.virtual : c.ok });
+    [-4, -2, 2, 4].forEach((y) => {
+      const pts = [[5, cy + y]];
+      if (corr && Math.abs(K) > 0.01) { pts.push([ex0 - 8, cy + y]); pts.push([ex0 + 1, cy + y * (1 - K * 0.04)]); }
+      else pts.push([ex0 + 1, cy + y]);
+      const last = pts[pts.length - 1], sl = (cy - last[1]) / (fx - last[0]);
+      const xe = Math.max(fx, ex0 + L) + 3;
+      pts.push([fx, cy]); if (xe > fx) pts.push([xe, cy + sl * (xe - fx)]);
+      s.ray(pts, { color: c.ray, w: 1.4 });
+    });
+    s.text("平行光（來自無限遠）", 5, cy + 7.5, { size: 10, color: c.muted, align: "left" });
+    s.text("視網膜", ex0 + L + 1, cy + 11, { size: 10, color: c.retina, weight: 700 });
+    const type = K < -0.01 ? "近視" : K > 0.01 ? "遠視" : "正視";
+    document.getElementById("f-type").textContent = type;
+    document.getElementById("f-fp").textContent = hide ? "先自己算" : K < -0.01 ? `眼前 ${(100 / -K).toFixed(1)} cm（1 ÷ ${(-K).toFixed(2)}）` : K > 0.01 ? `視網膜後方（虛遠點）` : "無限遠";
+    document.getElementById("f-rx").textContent = K < -0.01 ? `凹透鏡 ${fmt.D(K)}` : K > 0.01 ? `凸透鏡 ${fmt.D(K)}` : "不需要";
+    document.getElementById("f-v").innerHTML = Math.abs(K) < 0.01 ? '<span class="pill ok">正視</span> 平行光剛好落在視網膜上。' : corr ? '<span class="pill ok">矯正後</span> 鏡片的焦點與遠點重合，平行光落在視網膜上。' : K < 0 ? '<span class="pill warn">焦點在視網膜前</span> 勾選「戴上矯正鏡片」看看。' : '<span class="pill warn">焦點在視網膜後</span> 年輕人可以靠調節撐住，但會疲勞（W11）。';
+  } });
+
+  /* ---------- LAB 8-2 ---------- */
+  let cur = null, n = 0, ok = 0;
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const q4 = (v) => Math.round(v * 4) / 4;
+  function gen() {
+    const myo = Math.random() < 0.65, axial = Math.random() < 0.6, aniso = Math.random() < 0.4, cyl = Math.random() < 0.45;
+    const base = myo ? -pick([1.5, 2.25, 3, 4, 5.5]) : pick([1.25, 2, 3]);
+    const od = base, os = aniso ? base + (myo ? -1 : 1) * pick([2, 2.5, 3]) : base + pick([0, -0.25, 0.25]);
+    const C = cyl ? -pick([0.75, 1.25, 1.75]) : 0;
+    const AL = (P) => (24 - P / 3).toFixed(1);
+    const K = axial ? "43.0" : (myo ? pick(["45.5", "46.0"]) : pick(["40.5", "41.0"]));
+    const rx = (P) => `${fmt.s(P)}${C ? ` / ${fmt.s(C)} × 180` : " DS"}`;
+    const al = axial ? `眼軸 OD ${AL(od)} mm、OS ${AL(os)} mm` : "眼軸兩眼都約 24.0 mm";
+    return { q: `處方 OD ${rx(od)}、OS ${rx(os)}；${al}；角膜屈光力約 ${K} D。`, a: [axial ? 0 : 1, aniso ? 1 : 0, cyl ? 1 : 0], why: `${axial ? "眼軸偏離 24 mm、角膜正常 → 軸性" : "眼軸正常、角膜屈光力異常 → 屈光性"}；兩眼差 ${Math.abs(od - os).toFixed(2)} D → ${aniso ? "屈光參差" : "等視"}；${cyl ? "有柱面 → 柱面（散光）" : "沒有柱面 → 球面"}。` };
+  }
+  const sel = [null, null, null];
+  document.querySelectorAll(".case .chips").forEach((box) => box.querySelectorAll(".chip").forEach((b) => b.onclick = () => {
+    const g = +box.dataset.g; sel[g] = +b.dataset.v; box.querySelectorAll(".chip").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  }));
+  function next() {
+    cur = gen(); sel.fill(null);
+    document.querySelectorAll(".case .chip").forEach((x) => { x.setAttribute("aria-pressed", "false"); x.classList.remove("ok", "bad"); });
+    document.getElementById("k-q").textContent = cur.q; document.getElementById("k-no").textContent = `病人 ${n + 1}`;
+    document.getElementById("k-fb").hidden = true;
+  }
+  document.getElementById("k-check").onclick = () => {
+    if (sel.some((v) => v == null)) { document.getElementById("k-fb").hidden = false; document.getElementById("k-fb").textContent = "三種分類都要選。"; return; }
+    const right = sel.filter((v, i) => v === cur.a[i]).length;
+    document.querySelectorAll(".case .chips").forEach((box) => box.querySelectorAll(".chip").forEach((x) => { const g = +box.dataset.g; if (+x.dataset.v === cur.a[g]) x.classList.add("ok"); else if (+x.dataset.v === sel[g]) x.classList.add("bad"); }));
+    n++; if (right === 3) ok++;
+    document.getElementById("k-fb").hidden = false;
+    document.getElementById("k-fb").innerHTML = (right === 3 ? '<span class="pill ok">全對</span> ' : `<span class="pill warn">對 ${right} / 3</span> `) + cur.why;
+    document.getElementById("k-score").textContent = `完全答對 ${ok} / ${n} 位`;
+  };
+  document.getElementById("k-next").onclick = next;
+  next();
+})();
+</script>
+<script>
+  (function () {
+    const { Stage, range, fmt, blurText } = OL;
+    let K = -2.5, rec = null;
+    const md = range("mf-d", (v) => v + " cm", () => st.render());
+    const st = new Stage("cv-mfp", { xmin: 0, xmax: 100, ymin: 0, ymax: 40, aspect: 0.42, minH: 220, maxH: 320, draw: (s, c) => {
+      const d = md.value, x = 8 + (d - 10) / 190 * 84, blur = Math.max(0, -K - 100 / d) * 9, ctx = s.ctx;
+      s.line(6, 10, 94, 10, { color: c.line, w: 1 });
+      [10, 25, 50, 100, 150, 200].forEach((k) => s.text(k + "", 8 + (k - 10) / 190 * 84, 6.5, { size: 10, color: c.muted, font: c.mono }));
+      s.text("cm", 97, 6.5, { size: 10, color: c.muted, align: "right" });
+      ctx.save(); ctx.beginPath(); ctx.ellipse(s.X(4), s.Y(10), 10, 7, 0, 0, Math.PI * 2); ctx.fillStyle = c.surface; ctx.fill(); ctx.strokeStyle = c.ink; ctx.stroke(); ctx.restore();
+      const bx = s.X(x), by = s.Y(24), w = 72, h = 46;
+      ctx.save(); ctx.fillStyle = c.surface; ctx.strokeStyle = c.line; ctx.fillRect(bx - w / 2, by - h / 2, w, h); ctx.strokeRect(bx - w / 2, by - h / 2, w, h); ctx.restore();
+      blurText(ctx, "視光", bx, by, `700 22px ${c.body}`, c.ink, Math.min(26, blur), Math.min(26, blur));
+      s.text(blur < 0.3 ? "清楚" : "模糊", x, 36, { size: 11, weight: 700, color: blur < 0.3 ? c.ok : c.bad });
+      if (rec != null) s.text("▼ 記錄 " + rec + " cm", 8 + (rec - 10) / 190 * 84, 13.5, { size: 10, color: c.accent });
+    } });
+    document.getElementById("mf-rec").onclick = () => { rec = md.value; document.getElementById("mf-v").innerHTML = `記錄遠點 ${rec} cm ＝ ${(rec / 100).toFixed(2)} m。用 1 ÷ 遠點 算出度數，填在下方。`; st.render(); };
+    document.getElementById("mf-chk").onclick = () => {
+      const a = parseFloat(String(document.getElementById("mf-ans").value).replace(/[−–]/g, "-"));
+      const fromRec = rec ? -Math.round(100 / rec * 4) / 4 : null;
+      let t = `這位病人的度數是 ${fmt.D(K)}，遠點 ${(100 / -K).toFixed(1)} cm。`;
+      if (rec) t += ` 你記錄的 ${rec} cm 換算約 ${fmt.D(fromRec)}。`;
+      const good = isFinite(a) && Math.abs(a - K) <= 0.25;
+      document.getElementById("mf-v").innerHTML = (good ? '<span class="pill ok">正確</span> ' : '<span class="pill warn">再檢查</span> ') + t;
+    };
+    const newP = () => { K = -[1, 1.5, 2, 2.5, 3, 4, 5, 6][Math.floor(Math.random() * 8)]; rec = null; md.value = 12; document.getElementById("mf-ans").value = ""; document.getElementById("mf-v").textContent = ""; st.render(); };
+    document.getElementById("mf-new").onclick = newP; newP();
+  })();
+  OL.drill("d84", ["正視", "近視", "遠視", "散光", "老花（不是屈光不正）"], [
+    { q: "調節放鬆時，平行光聚焦在視網膜前方；摘下眼鏡看手機反而清楚。", a: 1, why: "焦點在視網膜前、遠點在眼前有限距離。" },
+    { q: "調節放鬆時，平行光剛好聚焦在視網膜上，遠方清楚。", a: 0, why: "這是正視眼的定義。" },
+    { q: "年輕人視力 1.0，但看書半小時就頭痛；散瞳後驗出 +3.00 D。", a: 2, why: "遠視者靠調節撐住視力，代價是疲勞（W11）。" },
+    { q: "看什麼都有影子、重疊，遠近都不清楚；兩條主子午線屈光力不同。", a: 3, why: "散光是光線聚不成一點，遠近都失真。" },
+    { q: "眼軸 24 mm、全眼 60 D 的 48 歲正視者，看手機要拿遠一點才清楚。", a: 4, why: "屈光狀態正常，是調節能力隨年齡下降——老花，不是屈光不正。" },
+    { q: "光學十字兩條子午線分別是 −1.00 與 −2.50。", a: 3, why: "兩條子午線不同，相差 1.50 D 的散光（W12）。" },
+    { q: "遠點在視網膜後方，平行光進來一定要用調節才能聚焦。", a: 2, why: "虛遠點是遠視的特徵。" },
+  ], { unit: "病人" });
+</script>
+</body>
+</html>

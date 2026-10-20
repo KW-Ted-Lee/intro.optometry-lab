@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W07 實驗二：光學臺｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="w07">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 07 · Lab 2</div>
+    <h1>實驗二：光學臺與光程操作</h1>
+    <div class="en">The Optical Bench</div>
+    <p class="lede">用米尺驗證 F ＝ 1/f，親手把近視與遠視「做出來」，再看一眼散光的兩條焦線。進實驗室前先在這裡跑一次：<b>找焦點要找「最小、最亮」，不是「看起來還可以」。</b></p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>量出凸透鏡的焦距，用 F ＝ 1/f 算出度數，並與標示值比對誤差。</li>
+      <li>分辨凸透鏡的實焦點與凹透鏡的虛焦點，並實際描繪出來。</li>
+      <li>用透鏡與屏幕重現正視、近視、遠視，並找出正確的矯正鏡片。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>實驗重點 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Safety</span><h3>開始之前</h3><p>不得直視光源、雷射嚴禁對人；鏡片只碰邊緣不碰鏡面；器材離座前歸位清點；每組不超過 4 人，紀錄員輪替。請帶計算機與作業（四）。</p></div>
+      <div class="concept"><span class="lvtag lv-s">★ 要會算</span><span class="en-term">Unit A</span><h3>測焦距、算屈光度</h3><p>平行光射入凸透鏡 → 移動屏幕到光點最小最亮 → 量透鏡到屏幕距離 ＝ f′ → F ＝ 1/f′。誤差百分比 ＝ |實測 − 標示| ÷ 標示 × 100%。</p></div>
+      <div class="concept"><span class="en-term">Error sources</span><h3>為什麼和標示值不一樣</h3><p>光源不是真正的平行光、透鏡有厚度、量測基準點錯（應從主平面起算）、「最清晰」帶主觀、米尺讀數。<b>度數越高焦距越短</b>，同樣量錯 5 mm，+10 D 是 5%，+2 D 只有 1%。</p></div>
+      <div class="concept"><span class="en-term">Unit B</span><h3>把光路畫出來</h3><p>多狹縫板產生數條平行光，鋪白紙描出光線：凸透鏡會聚於<b>實焦點</b>；凹透鏡發散，反向延長的交點是<b>虛焦點</b>。以後看到「−5.00 D 的焦點在前方 20 cm」，腦中會有畫面。</p></div>
+      <div class="concept"><span class="en-term">Unit C · Model eye</span><h3>組一個模擬眼</h3><p>+10.00 D 透鏡＋白屏，遠物清晰時是正視。屏幕往<b>後</b>移（眼軸過長）→ 近視，加凹透鏡；往<b>前</b>移（眼軸過短）→ 遠視，加凸透鏡。</p></div>
+      <div class="concept"><span class="lvtag lv-d">◆ 要看懂</span><span class="en-term">Model ≠ real eye</span><h3>為什麼不是 3 D/mm</h3><p>移動越多，需要的度數越高，而且不是線性的。模型眼的「玻璃體」是空氣（n ＝ 1.000），真實眼球是 1.336，所以模型的數字不能直接當成真實眼球的數字。</p></div>
+      <div class="concept"><span class="en-term">Unit D（選作）</span><h3>柱面鏡片：兩條焦線</h3><p>放入柱面鏡片，光線不會聚成一點：先出現一條焦線，再出現另一條互相垂直的焦線，中間有一處最圓最小——最小模糊圈。這就是散光的光學本質（W13 Sturm 光錐）。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 7-1</span><h3>單元 A：測焦距、算誤差</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-a" aria-label="光學臺：光源、透鏡、屏幕"></canvas><span class="hint">拖曳屏幕，或用滑桿微調</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>標示度數</label><div class="seg" id="a-lens"><button data-v="2">+2.00 D</button><button data-v="5" aria-pressed="true">+5.00 D</button><button data-v="10">+10.00 D</button></div></div>
+          <div class="ctrl"><label>光源</label><div class="seg" id="a-src"><button data-v="inf" aria-pressed="true">窗外遠景（近似平行光）</button><button data-v="200">桌燈在 2 m</button></div></div>
+          <div class="ctrl"><label for="a-x">屏幕位置 <output id="a-x-out"></output></label><input type="range" id="a-x" min="5" max="70" step="0.1" value="30"></div>
+          <div class="row-btns"><button class="btn" id="a-rec" type="button">光點最小最亮 → 記錄</button></div>
+          <div class="readout">
+            <div class="row"><span>量到的焦距</span><b id="a-f">—</b></div>
+            <div class="row"><span>實測 F ＝ 1/f</span><b id="a-F">—</b></div>
+            <div class="row"><span>誤差</span><b id="a-e">—</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">用 2 m 外的桌燈代替平行光，量到的焦距會？</p>
+          <div class="opts"><button>比真正焦距長一點</button><button>比真正焦距短一點</button><button>一模一樣</button></div>
+          <p class="why">光線還在發散，聚焦點會落在焦點後方，量到的「焦距」偏長，算出的度數偏低。這是誤差來源第一項。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>三片鏡片各記錄一次，整理成紀錄表：實測焦距、換算度數、誤差百分比。</li>
+          <li>+10.00 D 的光點變化很快，差 0.5 cm 誤差就很明顯；+2.00 D 比較寬容。</li>
+        </ul>
+        <table class="mini" id="a-log"><tr><th>標示</th><th>光源</th><th>f（cm）</th><th>實測 F</th><th>誤差</th></tr></table>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 7-2</span><h3>單元 C：模擬眼與矯正</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-c" aria-label="+10 D 透鏡與屏幕組成的模擬眼"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="c-s">屏幕（視網膜）移動 <output id="c-s-out"></output></label><input type="range" id="c-s" min="-3" max="3" step="0.5" value="0"></div>
+          <div class="ctrl"><label for="c-k">加上矯正鏡片 <output id="c-k-out"></output></label><input type="range" id="c-k" min="-5" max="5" step="0.25" value="0"></div>
+          <div class="readout">
+            <div class="row"><span>屏幕到透鏡</span><b id="c-d">—</b></div>
+            <div class="row"><span>需要的矯正</span><b id="c-n">—</b></div>
+            <div class="row"><span>屏幕上的影像</span><b id="c-q">—</b></div>
+          </div>
+          <div class="verdict" id="c-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">把屏幕往後移 2 cm（眼軸過長），應該加哪一種鏡片？</p>
+          <div class="opts"><button>凸透鏡</button><button>凹透鏡</button><button>不用加</button></div>
+          <p class="why">焦點落在屏幕前方，要用凹透鏡把焦點往後推——這就是近視與它的矯正。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>屏幕後移 1、2、3 cm，各需要多少度？再往前移 1、2、3 cm 比較看看：移得越多要的度數越高，但每 1 cm 的增加量並不固定（不是線性）。</li>
+          <li>模型裡屏幕移 1 cm 只要約 1 D，真實眼球移 1 mm 卻約 3 D：因為模型的「玻璃體」是空氣，而且模型的尺寸比真實眼球大很多。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 7-3</span><h3>單元 D：柱面鏡的兩條焦線</h3><span class="lvtag lv-o">○ 選作</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-d" aria-label="柱面鏡片後方的光斑變化"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="d-x">屏幕位置 <output id="d-x-out"></output></label><input type="range" id="d-x" min="6" max="13" step="0.05" value="7"></div>
+          <div class="readout">
+            <div class="row"><span>鏡片</span><b>+10.00 球面 ＋ +2.00 柱面</b></div>
+            <div class="row"><span>垂直方向焦點</span><b>8.3 cm</b></div>
+            <div class="row"><span>水平方向焦點</span><b>10.0 cm</b></div>
+          </div>
+          <div class="verdict" id="d-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">在兩條焦線中間，光斑是什麼形狀？</p>
+          <div class="opts"><button>一個點</button><button>一條線</button><button>一個最圓最小的圓</button></div>
+          <p class="why">這叫最小模糊圈。W13 的等價球面 SE，就是把它移到視網膜上的度數。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>沿著光軸移動屏幕：橢圓 → 線 → 橢圓 → 圓 → 橢圓 → 線 → 橢圓。</li>
+          <li>兩條焦線互相垂直；把三個位置（前焦線、最小模糊圈、後焦線）都記下來。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 7-4</span><h3>單元 B：把焦點找出來（實焦點與虛焦點）</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-vb" aria-label="平行光通過未知鏡片"></canvas><span class="hint">拖曳光軸上的圓點到焦點</span></div>
+        <div class="lab-panel">
+          <div class="row-btns"><button class="btn" id="vb-show" type="button">描出延長線、對答案</button><button class="btn ghost" id="vb-new" type="button">換一片鏡片</button></div>
+          <div class="readout">
+            <div class="row"><span>你標的焦點</span><b id="vb-mine">—</b></div>
+            <div class="row"><span>F ＝ 1/f</span><b id="vb-F">—</b></div>
+          </div>
+          <div class="verdict" id="vb-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>凸透鏡：光線真的交會在鏡片後方，是實焦點，f 為正。</li>
+          <li>凹透鏡：光線往外散，要把它們「反向延長」回鏡片前方才交會，是虛焦點，f 為負。</li>
+          <li>先目測拖曳圓點，再按按鈕對答案——實驗課在白紙上用鉛筆做的就是這件事。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見錯誤 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>光點「看起來還可以」就記錄。</summary><div class="fix">要慢慢移動，找到「最小、最亮」的位置。焦點附近光點變化很快，尤其是高度數鏡片。</div></details>
+      <details class="myth"><summary>從鏡框邊緣量到屏幕。</summary><div class="fix">焦距應從鏡片的主平面（薄透鏡近似為鏡片中央）起算。基準點錯是常見誤差來源。</div></details>
+      <details class="myth"><summary>模型眼的數字就是真實眼睛的數字。</summary><div class="fix">模型眼的玻璃體是空氣、尺寸也不同，所以每公分需要的度數和真實眼球的 3 D/mm 差很多。模型幫助理解，不能直接套用。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>練習題 <span class="tag">PRACTICE</span></h2>
+    <p class="sub">紀錄表上的計算。屈光度填到小數第二位，誤差填到小數第一位。</p>
+    <div id="practice"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>下週預告 <span class="tag">NEXT</span></h2>
+    <div class="hw"><b>W08 正視眼與屈光不正總論＋前半學期總複習</b><ul>
+      <li>單元 C 的紀錄表在 W10、W11 上課時請帶來對照。</li>
+      <li>可以先到 <a href="exam.html">綜合挑戰</a> 練習前半學期（W01–W08）的題目。</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script src="assets/bank/w07.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => OBPractice.mount("practice", "w07"));</script>
+<script>
+(function () {
+  const { Stage, range, seg, fmt, clamp, blurText, blurDraw } = OL;
+  OL.levels("levels", [
+    ["★", "F ＝ 1/f 與誤差百分比", "紀錄表上的計算"],
+    ["◆", "屏幕移動 vs 所需度數", "用實測數據討論趨勢，不必精算"],
+    ["○", "單元 D：柱面鏡片的兩條焦線", "選作；W13 Sturm 光錐的伏筆"],
+  ]);
+
+  /* ---------- LAB 7-1 ---------- */
+  const lens = seg("a-lens", () => { st1.render(); }), src = seg("a-src", () => st1.render());
+  const ax = range("a-x", (v) => v.toFixed(1) + " cm", () => st1.render());
+  const imgDist = () => { const F = +lens.value, u = src.value === "inf" ? Infinity : +src.value; const L = isFinite(u) ? -100 / u : 0; return 100 / (F + L); };
+  const spot = (x) => { const v = imgDist(); return Math.abs(x - v) / v * 2.5; };   // 光斑半徑（cm，透鏡半徑 2.5 cm）
+  const st1 = new Stage("cv-a", { xmin: -12, xmax: 75, ymin: -12, ymax: 12, aspect: 0.42, minH: 230, maxH: 340, draw: (s, c) => {
+    const ctx = s.ctx, v = imgDist(), x = ax.value;
+    ctx.save(); ctx.fillStyle = c.surface2; ctx.fillRect(s.X(-12), s.Y(-7), s.X(75) - s.X(-12), 10); ctx.restore();
+    for (let k = 0; k <= 70; k += 10) s.text(k + "", k, -9.5, { size: 10, color: c.muted, font: c.mono });
+    s.text("cm", 74, -9.5, { size: 10, color: c.muted, align: "right" });
+    s.text(src.value === "inf" ? "← 平行光" : "← 2 m 外的燈", -11.5, 8.5, { align: "left", size: 11, color: c.muted });
+    s.axis({ label: false });
+    s.lens(0, 6, 6, { label: "+" + (+lens.value).toFixed(2) });
+    const u = src.value === "inf" ? Infinity : +src.value;
+    [-2.5, -1.25, 1.25, 2.5].forEach((y) => {
+      const sIn = isFinite(u) ? y / u : 0;
+      const sOut = sIn - y / (100 / +lens.value);
+      s.ray([[-12, y - sIn * 12], [0, y], [Math.min(x, 75), y + sOut * Math.min(x, 75)]], { color: c.ray, w: 1.4, alpha: 0.9 });
+    });
+    // 屏幕
+    s.line(x, -6.5, x, 6.5, { color: c.ink, w: 4 });
+    const r = spot(x);
+    ctx.save(); ctx.globalAlpha = clamp(0.25 + 0.75 / (1 + r * 4), 0.15, 1); ctx.fillStyle = "#ffcf33";
+    ctx.beginPath(); ctx.ellipse(s.X(x) + 18, s.Y(0), 3 + r * 8, 3 + r * 8, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    s.text("屏幕上的光點", x, 8.5, { size: 11, color: c.muted });
+  } });
+  st1.addHandle({ pos: () => [ax.value, 6.5], drag: (x) => { ax.value = clamp(Math.round(x * 10) / 10, 5, 70); } });
+  document.getElementById("a-rec").onclick = () => {
+    const F = +lens.value, f = ax.value, Fm = 100 / f, err = Math.abs(Fm - F) / F * 100;
+    document.getElementById("a-f").textContent = f.toFixed(1) + " cm ＝ " + (f / 100).toFixed(3) + " m";
+    document.getElementById("a-F").textContent = fmt.D(Fm);
+    document.getElementById("a-e").textContent = err.toFixed(1) + "%";
+    const t = document.getElementById("a-log");
+    t.insertAdjacentHTML("beforeend", `<tr><td>+${F.toFixed(2)}</td><td>${src.value === "inf" ? "平行光" : "2 m"}</td><td>${f.toFixed(1)}</td><td>${fmt.D(Fm)}</td><td class="${err < 3 ? "hl" : ""}">${err.toFixed(1)}%</td></tr>`);
+    if (window.labTrack) labTrack("bench_record", { chapter: "w07", lens: F, err: Math.round(err * 10) / 10 });
+  };
+
+  /* ---------- LAB 7-2 模擬眼 ---------- */
+  const cs = range("c-s", (v) => v === 0 ? "0（正視）" : (v > 0 ? "往後 " : "往前 ") + Math.abs(v).toFixed(1) + " cm", () => st2.render());
+  const ck = range("c-k", (v) => fmt.D(v), () => st2.render());
+  const st2 = new Stage("cv-c", { xmin: -10, xmax: 26, ymin: -8, ymax: 8, aspect: 0.5, minH: 250, maxH: 380, draw: (s, c) => {
+    const d = 10 + cs.value, K = ck.value, Ft = 10 + K, need = 100 / d - 10;
+    const fp = 100 / Ft;
+    s.axis({ label: false });
+    if (Math.abs(K) > 0.01) s.lens(-1.2, 4.5, K, { label: fmt.D(K), labelColor: K > 0 ? c.ok : c.virtual });
+    s.lens(0, 5, 10, { label: "+10.00" });
+    [-3.2, -1.6, 1.6, 3.2].forEach((y) => { const sl = -y / fp; s.ray([[-10, y], [0, y], [24, y + sl * 24]], { color: c.ray, w: 1.4 }); });
+    s.line(d, -6.5, d, 6.5, { color: c.retina, w: 4 });
+    s.text("屏幕（視網膜）", d, 7.3, { size: 11, color: c.retina, weight: 700 });
+    s.line(10, -7.5, 10, -6, { color: c.muted, w: 1 }); s.text("正視位置 10 cm", 10, -7.8 + 0.2, { size: 10, color: c.muted, dy: 8 });
+    const blur = Math.abs(d - fp) / fp * 3.2;   // 光斑半徑（cm）
+    const ctx = s.ctx; ctx.save(); const bw = Math.min(s.X(25.6) - s.X(19.6), s.Y(1.5) - s.Y(7.6)), bx = s.X(25.6) - bw, by = s.Y(7.6) + bw / 2;
+    ctx.fillStyle = c.surface; ctx.fillRect(bx, by - bw / 2, bw, bw); ctx.strokeStyle = c.line; ctx.strokeRect(bx, by - bw / 2, bw, bw);
+    blurText(ctx, "F", bx + bw / 2, by, `700 ${Math.round(bw * 0.55)}px ${c.body}`, c.ink, blur * 22, blur * 22); ctx.restore();
+    s.text("屏幕上的影像", s.wx(bx + bw / 2), s.wy(by + bw / 2) - 0.8, { size: 10, color: c.muted });
+    document.getElementById("c-d").textContent = d.toFixed(1) + " cm";
+    document.getElementById("c-n").textContent = Math.abs(need) < 0.01 ? "不需要" : fmt.D(need);
+    const sharp = Math.abs(K - need) < 0.2;
+    document.getElementById("c-q").textContent = sharp ? "清晰" : "模糊";
+    const type = cs.value > 0 ? "近視（屏幕在焦點後，焦點在屏幕前）" : cs.value < 0 ? "遠視（焦點在屏幕後）" : "正視";
+    document.getElementById("c-v").innerHTML = sharp ? `<span class="pill ok">清晰</span> ${type}${Math.abs(K) > 0.01 ? "，用 " + fmt.D(K) + " 矯正成功。" : ""}` : `<span class="pill warn">模糊</span> ${type}。試著加${need < 0 ? "凹" : "凸"}透鏡。`;
+  } });
+
+  /* ---------- LAB 7-3 柱面 ---------- */
+  const dx = range("d-x", (v) => v.toFixed(2) + " cm", () => st3.render());
+  const fV = 100 / 12, fH = 10;
+  const st3 = new Stage("cv-d", { xmin: 0, xmax: 100, ymin: 0, ymax: 50, aspect: 0.5, minH: 250, maxH: 380, draw: (s, c) => {
+    const x = dx.value, ctx = s.ctx;
+    const h = Math.abs(x - fV) / fV * 2.5, w = Math.abs(x - fH) / fH * 2.5;   // 垂直與水平方向的光斑半寬（cm）
+    // 側視：位置軸
+    const px = (cm) => 6 + (cm - 6) / 7 * 88;
+    s.line(px(6), 8, px(13), 8, { color: c.muted, w: 1 });
+    for (let k = 6; k <= 13; k++) s.text(k + "", px(k), 4.5, { size: 10, color: c.muted, font: c.mono });
+    [[fV, "前焦線（水平）"], [200 / 22, "最小模糊圈"], [fH, "後焦線（垂直）"]].forEach(([f, t], i) => { s.line(px(f), 7, px(f), 11, { color: [c.ray, c.ok, c.ray3][i], w: 2 }); s.text(t, px(f), 13, { size: 10, color: [c.ray, c.ok, c.ray3][i] }); });
+    s.point(px(x), 8, "", { color: c.accent, r: 5 });
+    // 屏幕上的光斑
+    const cx = s.X(50), cy = s.Y(32), sc = Math.min(s.w, s.h) * 0.11;
+    ctx.save(); ctx.fillStyle = c.surface; ctx.strokeStyle = c.line; ctx.fillRect(cx - sc * 3.3, cy - sc * 1.6, sc * 6.6, sc * 3.2); ctx.strokeRect(cx - sc * 3.3, cy - sc * 1.6, sc * 6.6, sc * 3.2);
+    ctx.fillStyle = "#ffbf1f"; ctx.globalAlpha = 0.85; ctx.beginPath(); ctx.ellipse(cx, cy, Math.max(1.5, w * sc), Math.max(1.5, h * sc), 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    s.text("屏幕上的光斑", 50, 47, { size: 11, color: c.muted });
+    let t;
+    if (Math.abs(x - fV) < 0.12) t = '<span class="pill info">前焦線</span> 垂直方向（較強，+12 D）先聚焦，光斑是一條水平線。';
+    else if (Math.abs(x - fH) < 0.12) t = '<span class="pill info">後焦線</span> 水平方向（+10 D）聚焦，光斑是一條垂直線。';
+    else if (Math.abs(w - h) < 0.04) t = '<span class="pill ok">最小模糊圈</span> 兩條焦線之間，光斑最圓最小。';
+    else t = x < fV ? "還在前焦線之前：橢圓。" : x > fH ? "已經過了後焦線：橢圓。" : "在兩條焦線之間：橢圓。";
+    document.getElementById("d-v").innerHTML = t;
+  } });
+})();
+</script>
+<script>
+  (function () {
+    const { Stage, fmt, clamp } = OL;
+    const LIST = [-2.5, -4, -5, -8, 2.5, 4, 5, 8];
+    let P = -4, mark = 15, shown = false;
+    const st = new Stage("cv-vb", { xmin: -50, xmax: 50, ymin: -16, ymax: 16, aspect: 0.5, minH: 260, maxH: 400, draw: (s, c) => {
+      const f = 100 / P;
+      s.axis({ label: false });
+      s.lens(0, 12, P, { label: shown ? fmt.D(P) : "？" });
+      [-9, -4.5, 4.5, 9].forEach((y) => { const sl = -y / f; s.ray([[-50, y], [0, y], [50, y + sl * 50]], { color: c.ray, w: 1.5 }); if (shown && P < 0) s.line(0, y, f, 0, { color: c.virtual, dash: [5, 4], w: 1.2 }); });
+      for (let x = -40; x <= 40; x += 10) s.text((x > 0 ? "+" : "") + x, x, -14.5, { size: 10, color: c.muted, font: c.mono });
+      s.text("cm", 49, -14.5, { size: 10, color: c.muted, align: "right" });
+      if (shown) s.point(f, 0, P > 0 ? "實焦點" : "虛焦點", { color: c.ok, dy: -14, font: c.body });
+    } });
+    st.addHandle({ pos: () => [mark, 0], drag: (x) => { mark = clamp(Math.round(x * 2) / 2, -48, 48); upd(); } });
+    function upd() {
+      document.getElementById("vb-mine").textContent = `${mark > 0 ? "後方" : "前方"} ${Math.abs(mark).toFixed(1)} cm`;
+      document.getElementById("vb-F").textContent = mark ? fmt.D(100 / mark) : "—";
+    }
+    document.getElementById("vb-show").onclick = () => {
+      shown = true; const f = 100 / P, err = Math.abs(mark - f);
+      document.getElementById("vb-v").innerHTML = (err <= 2 ? '<span class="pill ok">很準</span> ' : err <= 5 ? '<span class="pill warn">接近</span> ' : '<span class="pill bad">差有點多</span> ') + `這片是 ${fmt.D(P)}，焦點在${f > 0 ? "鏡片後方" : "鏡片前方"} ${Math.abs(f).toFixed(1)} cm。${P < 0 ? "虛線就是反向延長線。" : ""}`;
+      st.render();
+    };
+    document.getElementById("vb-new").onclick = () => { P = LIST[Math.floor(Math.random() * LIST.length)]; shown = false; mark = 15; document.getElementById("vb-v").textContent = ""; upd(); st.render(); };
+    upd();
+  })();
+</script>
+</body>
+</html>

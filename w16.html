@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W16 實驗三：VR 眼鏡製作｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="w16">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 16 · Lab 3</div>
+    <h1>實驗三：VR 眼鏡製作</h1>
+    <div class="en">Lab 3 · Cardboard VR</div>
+    <p class="lede">一副紙板眼鏡，串起整個學期：W06 的凸透鏡與焦距、W14 的近方三聯動、W15 的視差與 Prentice 法則。實驗課上你會<b>故意把瞳距設錯一次</b>，再<b>閉上一隻眼睛</b>——那一秒鐘，你會親身知道立體視真的來自兩眼的差異。</p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>用紙板與兩片凸透鏡，做出一副能正常顯示立體影像的 VR 眼鏡。</li>
+      <li>先用錯誤的瞳距試一次，再調回自己的 PD，比較兩者的差異。</li>
+      <li>說明 VR 戴久了頭暈眼酸的光學成因，並連結到 W14 的近方三聯動。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>實驗重點 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Safety</span><h3>開始之前</h3><p>美工刀要用切割墊、刀刃朝外、換刀片找老師；連續配戴不超過 10 分鐘，暈眩噁心立刻取下；有癲癇病史或眼部不適者改為觀察組，以書面回答五題討論。</p></div>
+      <div class="concept"><span class="en-term">Materials</span><h3>關鍵是透鏡焦距</h3><p>雙凸透鏡兩片，焦距約 <b>45 mm</b>、直徑 25 mm（約 +22 D）。45 mm 是 Cardboard 的標準規格，太長太短都會讓成像跑掉。手機自備，side-by-side 立體影片老師已下載。</p></div>
+      <div class="concept"><span class="en-term">Steps 1–3</span><h3>裁切與裝鏡片</h3><p>依版型裁出機身、鏡片座、手機固定板（分兩三次切透）→ 嵌入透鏡（只碰邊緣）→ 組合機身、留手機插槽，<b>先不要黏死</b>，下一步還要調鏡片間距。</p></div>
+      <div class="concept"><span class="en-term">Step 4 · PD</span><h3>刻意做錯一次</h3><p>先把兩鏡片中心距設成錯誤值（例如 80 mm 或 50 mm），戴上記錄感受；再調回 W15 量到的自己的 PD。依 Prentice 法則，鏡片中心沒對準瞳孔會產生非預期稜鏡，眼睛必須額外聚散代償——和「配眼鏡時 PD 沒量準」完全相同。</p></div>
+      <div class="concept"><span class="en-term">Steps 5–7</span><h3>定焦距、體驗、對照</h3><p>螢幕到鏡片約等於焦距（45 mm），影像變成近似平行光，看起來像在遠方 → 播放立體影片，記錄 5 分鐘後的不適 → <b>閉上一隻眼</b>，立體感消失，印證水平視差產生立體視。</p></div>
+      <div class="concept"><span class="en-term">VAC</span><h3>輻輳—調節衝突</h3><p>鏡片讓螢幕影像在光學無限遠 → <b>調節</b>停在放鬆；畫面裡的虛擬物體卻在你面前 30 cm → <b>輻輳</b>要對準近處。本來連動的兩個系統互相矛盾 → 視疲勞、眼脹、頭暈、噁心。這是目前顯示原理的根本限制（W17 談業界解法）。</p></div>
+      <div class="concept"><span class="en-term">Five questions</span><h3>紀錄表的五題討論</h3><p>一、為何要兩個幾乎一樣的畫面？二、手機在 5 cm 外為何像在遠方？三、什麼是輻輳—調節衝突？（最重要）四、PD 沒對準會怎樣？五、怎麼設計更舒適的 VR？</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 16-1</span><h3>瞳距與 Prentice 稜鏡</h3><span class="lvtag lv-d">◆ 要看懂</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-pd" aria-label="兩眼、透鏡中心與瞳距"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="d-pd">你的瞳距 PD <output id="d-pd-out"></output></label><input type="range" id="d-pd" min="54" max="72" step="1" value="63"></div>
+          <div class="ctrl"><label for="d-s">兩鏡片中心距 <output id="d-s-out"></output></label><input type="range" id="d-s" min="45" max="85" step="1" value="80"></div>
+          <div class="readout">
+            <div class="row"><span>每眼偏離中心 c</span><b id="d-c">—</b></div>
+            <div class="row"><span>每眼稜鏡 c × F</span><b id="d-p">—</b></div>
+            <div class="row"><span>兩眼合計</span><b id="d-t">—</b></div>
+          </div>
+          <div class="verdict" id="d-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">+22 D 的透鏡，眼睛偏離光學中心 0.5 cm，會產生多少稜鏡？</p>
+          <div class="opts"><button>0.5Δ</button><button>2.2Δ</button><button>11Δ</button></div>
+          <p class="why">P ＝ c × F ＝ 0.5 × 22 ＝ 11Δ。高度數鏡片對 PD 特別敏感，所以 VR 的 PD 一定要調準。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>鏡片中心距比 PD 寬：凸透鏡產生基底朝外（BO），兩眼要額外內聚；比 PD 窄：基底朝內（BI），要額外開散。</li>
+          <li>開散的能力比內聚小，所以「太窄」通常比「太寬」更快看不成單一影像。</li>
+          <li>同樣偏 2 mm：+22 D 的 VR 鏡片產生 4.4Δ，−5.00 D 的眼鏡只有 1Δ——這條公式就是配鏡要量 PD 的原因。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 16-2</span><h3>輻輳—調節衝突</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-vac" aria-label="輻輳距離與調節距離"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="v-d">畫面中虛擬物體的距離 <output id="v-d-out"></output></label><input type="range" id="v-d" min="0" max="100" step="1" value="30"></div>
+          <div class="ctrl"><label>顯示方式</label><div class="seg" id="v-m"><button data-v="vr" aria-pressed="true">VR 眼鏡</button><button data-v="real">真實世界</button></div></div>
+          <div class="readout">
+            <div class="row"><span>輻輳要對準</span><b id="v-ver">—</b></div>
+            <div class="row"><span>調節要對準</span><b id="v-acc">—</b></div>
+            <div class="row"><span>衝突量</span><b id="v-con">—</b></div>
+          </div>
+          <div class="verdict" id="v-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">在 VR 裡看一顆飄到眼前 30 cm 的球，眼睛的調節停在哪裡？</p>
+          <div class="opts"><button>30 cm</button><button>螢幕的光學位置（接近無限遠）</button><button>兩者之間</button></div>
+          <p class="why">影像經過鏡片後在光學無限遠，對焦只能停在那裡；兩眼卻要內聚到 30 cm——調節說遠、輻輳說近。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>切到「真實世界」：兩條線永遠重合——這就是近方三聯動。</li>
+          <li>虛擬物體越近，衝突越大；放在遠處的物體反而比較舒服。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 16-3</span><h3>螢幕距離與焦距</h3><span class="lvtag lv-d">◆ 要看懂</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-sc" aria-label="手機螢幕、透鏡與成像位置"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="s-d">手機螢幕到透鏡 <output id="s-d-out"></output></label><input type="range" id="s-d" min="30" max="52" step="0.5" value="45"></div>
+          <div class="readout">
+            <div class="row"><span>透鏡 F（f 45 mm）</span><b>+22.22 D</b></div>
+            <div class="row"><span>入射 L ＝ 1/l</span><b id="s-l">—</b></div>
+            <div class="row"><span>出射 L′ ＝ L ＋ F</span><b id="s-lp">—</b></div>
+            <div class="row"><span>影像看起來在</span><b id="s-im">—</b></div>
+          </div>
+          <div class="verdict" id="s-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>螢幕剛好在焦點（45 mm）：出射聚散度 0，平行光進眼睛，影像看起來在無限遠——回答討論第二題。</li>
+          <li>螢幕放近一點：影像變成眼前有限距離的虛像，要動用一些調節。</li>
+          <li>放超過焦距：出射光已經在會聚，正視眼怎麼調節都看不清。這裡用的是 W06 的 L′ ＝ L ＋ F，看懂即可。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 16-4</span><h3>左右兩個畫面：視差決定深度</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="sbs"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="sb-z">球的位置 <output id="sb-z-out"></output></label><input type="range" id="sb-z" min="-3" max="3" step="0.5" value="1.5"></div>
+          <div class="ctrl"><label>觀看方式</label><div class="seg" id="sb-e"><button data-v="both" aria-pressed="true">雙眼</button><button data-v="one">閉上一眼</button></div></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="sb-sw"> 把左右畫面裝反</label></div>
+          <div class="readout">
+            <div class="row"><span>水平視差</span><b id="sb-d">—</b></div>
+            <div class="row"><span>大腦感覺到的位置</span><b id="sb-p">—</b></div>
+          </div>
+          <div class="verdict" id="sb-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">把手機上的左右畫面裝反了，畫面會怎樣？</p>
+          <div class="opts"><button>完全一樣</button><button>深度前後顛倒</button><button>變成黑白</button></div>
+          <p class="why">視差的方向反過來，本來凸出螢幕的東西會看起來陷進去。這也證明了深度是大腦從兩眼的差異算出來的。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>兩個畫面幾乎一樣，只差在球的左右位置——這就是討論第一題的答案。</li>
+          <li>球在左眼畫面偏右、右眼畫面偏左（交叉視差）時，看起來在螢幕前方。</li>
+          <li>閉上一眼，只剩一個畫面，立體感就消失了（第七步）。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見錯誤 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>VR 頭暈是因為畫面做得不夠好。</summary><div class="fix">主因是輻輳—調節衝突，這是目前顯示原理的根本限制，不是畫質問題。</div></details>
+      <details class="myth"><summary>瞳距差一點點沒關係。</summary><div class="fix">P ＝ c × F，鏡片度數越高，偏一點點就產生很大的稜鏡。VR 鏡片約 +22 D，偏 2 mm 就有 4.4Δ。</div></details>
+      <details class="myth"><summary>手機只有 5 cm 遠，所以眼睛要看很近。</summary><div class="fix">螢幕放在凸透鏡的焦點上，出射光變成平行光，看起來像在遠方，眼睛的調節是放鬆的。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>紀錄表欄位 <span class="tag">RECORD</span></h2>
+    <div class="rec">自身 PD：____ mm
+錯誤 PD（____ mm）下的感受：1  2  3  4  5
+正確 PD 下的感受：1  2  3  4  5
+連續配戴 5 分鐘後的不適評分：1  2  3  4  5
+閉上一眼時立體感的變化：______________________
+討論五題（第三題需說明衝突機轉）</div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/bank/w16.js"></script>
+<script>
+(function () {
+  const { Stage, range, seg, fmt, clamp } = OL;
+  OL.levels("levels", [
+    ["◆", "Prentice 法則與 PD", "鏡片中心沒對準 → 非預期稜鏡"],
+    ["◆", "輻輳—調節衝突", "討論第三題，最重要"],
+    ["◆", "螢幕放在焦點 → 影像在無限遠", "W06 成像公式的應用"],
+    ["○", "視差與立體視", "閉一眼立體感消失"],
+  ]);
+  const F = 1000 / 45;
+
+  /* ---------- LAB 16-1 ---------- */
+  const pd = range("d-pd", (v) => v + " mm", () => st1.render()), sp = range("d-s", (v) => v + " mm", () => st1.render());
+  const st1 = new Stage("cv-pd", { xmin: -60, xmax: 60, ymin: -10, ymax: 70, aspect: 0.62, minH: 280, maxH: 420, equal: true, draw: (s, c) => {
+    const P = pd.value, S = sp.value, cmm = (S - P) / 2, pr = Math.abs(cmm) / 10 * F, tot = pr * 2;
+    const base = cmm > 0.25 ? "BO" : cmm < -0.25 ? "BI" : "";
+    // 眼睛（下方）、透鏡（中間）、手機（上方）
+    const ctx = s.ctx;
+    ctx.save(); ctx.fillStyle = c.surface2; ctx.fillRect(s.X(-58), s.Y(66), s.X(58) - s.X(-58), s.Y(58) - s.Y(66)); ctx.restore();
+    s.text("手機螢幕（左右兩個畫面）", 0, 62, { size: 11, color: c.muted });
+    s.line(0, 58, 0, 66, { color: c.muted, w: 1 });
+    [-1, 1].forEach((k) => {
+      const ex = k * P / 2, lx = k * S / 2;
+      ctx.save(); ctx.beginPath(); ctx.arc(s.X(ex), s.Y(4), 11 * s.sx, 0, Math.PI * 2); ctx.fillStyle = c.surface; ctx.fill(); ctx.strokeStyle = c.muted; ctx.stroke(); ctx.restore();
+      s.point(ex, 12, "", { color: c.ink, r: 4 });
+      s.line(lx - 12.5, 22, lx + 12.5, 22, { color: c.glassEdge, w: 6 });
+      s.point(lx, 22, "", { color: c.accent, r: 3.5 });
+      s.line(ex, 12, ex, 58, { color: c.ray, w: 1.4, dash: [4, 3] });
+      s.line(lx, 22, lx, 58, { color: c.accent, w: 1, dash: [2, 3] });
+    });
+    // 尺寸標註
+    s.line(-P / 2, -4, P / 2, -4, { color: c.ink, w: 1 }); s.text(`PD ${P} mm`, 0, -7.5, { size: 11, weight: 700 });
+    s.line(-S / 2, 30, S / 2, 30, { color: c.accent, w: 1 }); s.text(`鏡片中心距 ${S} mm`, 0, 33.5, { size: 11, color: c.accent, weight: 700 });
+    if (base) { s.text(base === "BO" ? "基底朝外 BO" : "基底朝內 BI", -S / 2, 44, { size: 11, color: c.warn, weight: 700 }); s.text(base === "BO" ? "基底朝外 BO" : "基底朝內 BI", S / 2, 44, { size: 11, color: c.warn, weight: 700 }); }
+    document.getElementById("d-c").textContent = (Math.abs(cmm) / 10).toFixed(2) + " cm" + (cmm > 0 ? "（外側）" : cmm < 0 ? "（內側）" : "");
+    document.getElementById("d-p").textContent = pr.toFixed(1) + "Δ";
+    document.getElementById("d-t").textContent = tot.toFixed(1) + "Δ " + base;
+    const v = document.getElementById("d-v");
+    if (tot < 2) v.innerHTML = '<span class="pill ok">舒適</span> 鏡片中心幾乎對準瞳孔。';
+    else if ((base === "BI" && tot > 8) || (base === "BO" && tot > 16)) v.innerHTML = `<span class="pill bad">很難融像</span> 要額外${base === "BO" ? "內聚" : "開散"} ${tot.toFixed(0)}Δ，影像分不開、眼睛發脹。`;
+    else v.innerHTML = `<span class="pill warn">吃力</span> 眼睛要額外${base === "BO" ? "內聚" : "開散"}代償，久了疲勞頭痛。`;
+  } });
+
+  /* ---------- LAB 16-2 ---------- */
+  const DIST = (v) => v >= 100 ? Infinity : 0.25 * Math.pow(40, v / 100);   // 0.25 m → 10 m
+  const vd = range("v-d", (v) => isFinite(DIST(v)) ? (DIST(v) < 1 ? (DIST(v) * 100).toFixed(0) + " cm" : DIST(v).toFixed(1) + " m") : "無限遠", () => st2.render());
+  const vm = seg("v-m", () => st2.render());
+  const st2 = new Stage("cv-vac", { xmin: 0, xmax: 100, ymin: 0, ymax: 56, aspect: 0.56, minH: 260, maxH: 400, draw: (s, c) => {
+    const d = DIST(vd.value), ver = isFinite(d) ? 1 / d : 0, acc = vm.value === "vr" ? 0 : ver, con = Math.abs(ver - acc);
+    const pdm = 0.063, deg = isFinite(d) ? 2 * Math.atan(pdm / 2 / d) * 180 / Math.PI : 0, pdD = pdm * 100 * ver;
+    // 屈光度刻度條
+    const bx = (D) => 12 + D / 4.5 * 80;
+    s.line(bx(0), 12, bx(4.5), 12, { color: c.muted, w: 1 });
+    [0, 0.5, 1, 2, 3, 4].forEach((D) => s.text(D === 0 ? "∞" : (100 / D).toFixed(0) + " cm", bx(D), 8, { size: 10, color: c.muted, font: c.mono }));
+    s.text("對應距離（屈光度刻度）", bx(4.5), 4, { size: 10, color: c.muted, align: "right" });
+    const mark = (D, col, t, y) => { s.line(bx(D), 12, bx(D), y, { color: col, w: 3 }); s.text(t, bx(D), y + 2.8, { size: 11, color: col, weight: 700, bg: c.bg }); };
+    mark(ver, c.ray, "輻輳在這裡", 22); mark(acc, c.accent, "調節在這裡", vm.value === "vr" ? 30 : 33);
+    // 兩眼俯視
+    const ey = 44, ctx = s.ctx;
+    [42, 58].forEach((x) => { ctx.save(); ctx.beginPath(); ctx.arc(s.X(x), s.Y(ey), 3.2 * s.sy, 0, Math.PI * 2); ctx.fillStyle = c.surface; ctx.fill(); ctx.strokeStyle = c.muted; ctx.stroke(); ctx.restore(); });
+    const tgx = 50, tgY = clamp(ey + 3 + (isFinite(d) ? 2.2 / d : 0) * 6, ey + 3, 55);
+    const ty = isFinite(d) ? Math.min(55, ey + 3 + 8 / d) : 55.5;
+    s.line(42, ey, isFinite(d) ? tgx : 42, ty, { color: c.ray, w: 1.4 }); s.line(58, ey, isFinite(d) ? tgx : 58, ty, { color: c.ray, w: 1.4 });
+    if (isFinite(d)) s.point(tgx, ty, "", { color: c.ray, r: 4 });
+    s.text("兩眼（俯視）", 50, ey - 5, { size: 10, color: c.muted });
+    document.getElementById("v-ver").textContent = isFinite(d) ? `${(d < 1 ? (d * 100).toFixed(0) + " cm" : d.toFixed(1) + " m")}（約 ${pdD.toFixed(1)}Δ）` : "無限遠";
+    document.getElementById("v-acc").textContent = vm.value === "vr" ? "光學無限遠（0 D）" : "同一個距離";
+    document.getElementById("v-con").textContent = con.toFixed(2) + " D";
+    document.getElementById("v-v").innerHTML = vm.value === "real" ? '<span class="pill ok">沒有衝突</span> 真實世界中調節與輻輳永遠一起移動。' : con > 1 ? '<span class="pill bad">衝突大</span> 調節說遠、輻輳說近，容易眼脹頭暈。' : con > 0.5 ? '<span class="pill warn">有些衝突</span> 短時間可以，久了會累。' : '<span class="pill ok">衝突小</span> 遠處的虛擬物體比較舒服。';
+  } });
+
+  /* ---------- LAB 16-3 ---------- */
+  const sd = range("s-d", (v) => v.toFixed(1) + " mm", () => st3.render());
+  const st3 = new Stage("cv-sc", { xmin: -60, xmax: 40, ymin: -16, ymax: 16, aspect: 0.42, minH: 220, maxH: 330, draw: (s, c) => {
+    const l = sd.value, L = -1000 / l, Lp = L + F;
+    s.axis({ label: false });
+    s.line(-l, -12, -l, 12, { color: c.ink, w: 4 }); s.text("手機螢幕", -l, 14, { size: 11, weight: 700 });
+    s.lens(0, 12, 8, { label: "+22.2 D" });
+    s.line(-45, -14, -45, -11, { color: c.muted, w: 1 }); s.text("焦點 45 mm", -45, -15, { size: 10, color: c.muted });
+    // 螢幕上一點發出的光
+    const y0 = 6;
+    [-8, 0, 8].forEach((yl) => {
+      const sl0 = (yl - y0) / l, slOut = sl0 - yl / (1000 / F);
+      s.ray([[-l, y0], [0, yl], [38, yl + slOut * 38]], { color: c.ray, w: 1.3 });
+      if (Lp < -0.01) s.line(0, yl, -1000 / Math.abs(Lp) < -60 ? -60 : -1000 / Math.abs(Lp), yl - slOut * (1000 / Math.abs(Lp)), { color: c.virtual, dash: [4, 4], w: 1, alpha: 0.5 });
+    });
+    s.text("→ 眼睛", 38, -3, { size: 11, color: c.muted, align: "right" });
+    document.getElementById("s-l").textContent = fmt.D(L);
+    document.getElementById("s-lp").textContent = fmt.D(Lp);
+    const im = Math.abs(Lp) < 0.05 ? "無限遠" : Lp < 0 ? `眼前約 ${(100 / -Lp).toFixed(0)} cm（虛像）` : "會聚光，看不清";
+    document.getElementById("s-im").textContent = im;
+    document.getElementById("s-v").innerHTML = Math.abs(Lp) < 0.3 ? '<span class="pill ok">剛好在焦點附近</span> 平行光進眼睛，像在遠方，調節放鬆。' : Lp < 0 ? `<span class="pill warn">虛像在 ${(100 / -Lp).toFixed(0)} cm</span> 眼睛要調節 ${(-Lp).toFixed(1)} D。` : '<span class="pill bad">超過焦距</span> 出射光在會聚，正視眼無法對焦。';
+  } });
+})();
+</script>
+<script>
+  (function () {
+    const { range, seg, check } = OL;
+    const z = range("sb-z", (v) => v > 0 ? "凸出 " + v : v < 0 ? "凹入 " + (-v) : "在螢幕上", () => draw());
+    const e = seg("sb-e", () => draw()), sw = check("sb-sw", () => draw());
+    function draw() {
+      const d = z.value * 8;   // 交叉視差：前方 → 左畫面右移、右畫面左移
+      let L = d, R = -d; if (sw.value) [L, R] = [R, L];
+      const one = e.value === "one";
+      const panel = (x0, off, lab, dim) => `<g opacity="${dim ? 0.18 : 1}"><rect x="${x0}" y="30" width="190" height="150" rx="10" fill="#0f2a33" stroke="var(--line)"/>
+        <rect x="${x0 + 20}" y="140" width="150" height="10" fill="#2f6f86"/><rect x="${x0 + 30}" y="60" width="26" height="80" fill="#3f8aa3"/><rect x="${x0 + 136}" y="70" width="22" height="70" fill="#3f8aa3"/>
+        <circle cx="${x0 + 95 + off}" cy="100" r="22" fill="#ffb300" stroke="#fff" stroke-width="2"/>
+        <line x1="${x0 + 95}" y1="36" x2="${x0 + 95}" y2="174" stroke="#fff" stroke-dasharray="3 4" opacity=".35"/>
+        <text x="${x0 + 95}" y="200" text-anchor="middle" font-size="12" fill="var(--ink)">${lab}</text></g>`;
+      document.getElementById("sbs").innerHTML = `<svg viewBox="0 0 440 215" role="img" aria-label="左右眼畫面">${panel(15, L, sw.value ? "左眼看到（裝反）" : "左眼看到的畫面", false)}${panel(235, R, sw.value ? "右眼看到（裝反）" : "右眼看到的畫面", one)}</svg>`;
+      const eff = (L - R) / 16;   // 正：前方
+      document.getElementById("sb-d").textContent = Math.abs(L - R) < 0.1 ? "0（兩邊一樣）" : `${Math.abs(L - R).toFixed(0)} 單位（${L > R ? "交叉" : "非交叉"}）`;
+      document.getElementById("sb-p").textContent = one ? "看不出深度" : eff > 0.01 ? `在螢幕前方 ${eff.toFixed(1)}` : eff < -0.01 ? `在螢幕後方 ${(-eff).toFixed(1)}` : "在螢幕上";
+      document.getElementById("sb-v").innerHTML = one ? '<span class="pill warn">立體感消失</span> 只剩一隻眼的畫面，沒有視差可以比較。' : sw.value && Math.abs(d) > 0 ? '<span class="pill bad">深度顛倒</span> 視差方向反了，前後跟著反過來。' : '<span class="pill ok">立體</span> 大腦比較兩眼畫面的水平差異，算出深度。';
+    }
+    draw();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>★ 九項計算練功房｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .toc { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+  .toc a { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; align-items: center; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
+  .toc a:hover { border-color: var(--accent); }
+  .toc b { font-family: var(--font-mono); color: var(--lv-s); font-size: 15px; }
+  .toc span small { display: block; color: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+  .star-sec { scroll-margin-top: 80px; }
+  .formula-line { font-family: var(--font-mono); background: var(--surface-2); border-radius: 8px; padding: 8px 12px; display: inline-block; margin-bottom: 12px; }
+</style>
+</head>
+<body data-chapter="calc">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Star Calculations</div>
+    <h1>★ 九項計算練功房</h1>
+    <div class="en">Nine one-step calculations</div>
+    <p class="lede">全學期要自己動筆算的只有九項，<b>全部都是一步驟</b>。每題數字隨機，按「換一組數字」可以無限練習；卡住時按「看下一步詳解」。每一項<b>沒看詳解、換數字連續全對 3 組</b>就算精熟，會記在<a href="progress.html">課程進度地圖</a>上。</p>
+  </div>
+
+  <section class="block">
+    <h2>目錄 <span class="tag">INDEX</span></h2>
+    <div class="toc" id="toc"></div>
+  </section>
+
+  <div id="secs"></div>
+
+  <section class="block star-sec" id="lab-calc">
+    <h2>實驗週的計算 <span class="tag">LAB WEEKS</span></h2>
+    <p class="sub">W05 模型比例換算（★）、W07 光學臺誤差百分比。計算方法和上面一樣。</p>
+    <div id="p-lab"></div>
+  </section>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script>
+(function () {
+  const STARS = [
+    [1, "屈光度 ↔ 焦距", "F ＝ 1 / f（f 用公尺）", "w06"],
+    [2, "遠點距離", "遠點（m）＝ 1 / 度數", "w08"],
+    [3, "調節需求", "調節需求 ＝ 1 / 距離（m）", "w14"],
+    [4, "調節幅度", "AA ＝ 1 / 近點（m）", "w14"],
+    [5, "Hofstetter 最小式", "AA ＝ 15 − 0.25 × 年齡（臨床常用）", "w14"],
+    [6, "散光量與光學十字", "散光量 ＝ |兩主子午線相減|", "w12"],
+    [7, "三十法則", "負柱面軸度 ＝ 鐘面數字 × 30", "w12"],
+    [8, "等價球面", "SE ＝ S ＋ C / 2", "w13"],
+    [9, "正負柱面轉換", "球面相加、柱面變號、軸 90 ↔ 180", "w13"],
+  ];
+  const { REG, define, mount } = OBPractice;
+  const seen = new Set();
+  Object.keys(REG).forEach((k) => REG[k].forEach((t) => {
+    if (seen.has(t.title)) return; seen.add(t.title);
+    define(t.star ? "star" + t.star : "starlab", [t]);
+  }));
+  const SJ = OL.journal.star();
+  document.getElementById("toc").innerHTML = STARS.map(([n, t, f]) => `<a href="#s${n}"><b>★${n}</b><span>${t}${SJ[n] && SJ[n].t ? ' <span class="pill ok">已精熟</span>' : ""}<small>${f}</small></span></a>`).join("") + `<a href="#lab-calc"><b>＋</b><span>實驗週的計算<small>比例換算、誤差百分比</small></span></a>`;
+  document.getElementById("secs").innerHTML = STARS.map(([n, t, f, w]) => `<section class="block star-sec" id="s${n}"><h2>★${n}　${t} <span class="tag"><a href="${w}.html">回到 ${w.toUpperCase()} →</a></span></h2><div class="formula-line">${f}</div><div id="p${n}"></div></section>`).join("");
+  document.addEventListener("DOMContentLoaded", () => {
+    STARS.forEach(([n]) => mount("p" + n, "star" + n));
+    mount("p-lab", "starlab");
+  });
+})();
+</script>
+</body>
+</html>

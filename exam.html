@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>綜合挑戰｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-chapter="exam">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Challenge</div>
+    <h1>綜合挑戰</h1>
+    <div class="en">Mixed practice across weeks</div>
+    <p class="lede">從各週的觀念題庫隨機抽題，選項順序每次都會打亂，再加上幾題隨機數字的 ★ 計算題。作答完會列出答錯題目來自哪一週，直接回去複習。每一輪的答對率會記在<a href="progress.html">課程進度地圖</a>上。</p>
+  </div>
+
+  <section class="block">
+    <h2>設定 <span class="tag">SETUP</span></h2>
+    <div class="exam-setup">
+      <div class="ctrl"><label>範圍</label><div class="seg" id="rng"><button data-v="mid" aria-pressed="true">前半學期（W01–W08）</button><button data-v="fin">後半學期（W10–W17 為主，含前半基礎）</button><button data-v="custom">自選週次</button></div></div>
+      <div class="ctrl" id="pick-box" hidden><label>勾選週次</label><div class="weekpick" id="pick"></div></div>
+      <div class="ctrl"><label>觀念題數</label><div class="seg" id="num"><button data-v="10">10 題</button><button data-v="20" aria-pressed="true">20 題</button><button data-v="35">35 題</button></div></div>
+      <div class="ctrl"><label class="check"><input type="checkbox" id="calc" checked> 加上 ★ 計算題（數字隨機）</label></div>
+      <div class="row-btns"><button class="btn" id="go" type="button">開始作答</button></div>
+    </div>
+  </section>
+
+  <section class="block" id="sec-q" hidden>
+    <h2>觀念題 <span class="tag">MULTIPLE CHOICE</span></h2>
+    <div id="mq"></div>
+    <div id="res" style="margin-top:16px"></div>
+  </section>
+
+  <section class="block" id="sec-c" hidden>
+    <h2>★ 計算題 <span class="tag">CALCULATION</span></h2>
+    <p class="sub">按「換一組數字」可以再練。</p>
+    <div id="mc"></div>
+  </section>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script src="assets/bank/w01.js"></script><script src="assets/bank/w02.js"></script><script src="assets/bank/w03.js"></script><script src="assets/bank/w04.js"></script>
+<script src="assets/bank/w05.js"></script><script src="assets/bank/w06.js"></script><script src="assets/bank/w07.js"></script><script src="assets/bank/w08.js"></script>
+<script src="assets/bank/w10.js"></script><script src="assets/bank/w11.js"></script><script src="assets/bank/w12.js"></script><script src="assets/bank/w13.js"></script>
+<script src="assets/bank/w14.js"></script><script src="assets/bank/w15.js"></script><script src="assets/bank/w16.js"></script><script src="assets/bank/w17.js"></script>
+<script>
+(function () {
+  const { WEEKS, BANK, wkLabel, seg, check, shuffle, quiz } = OL;
+  const { REG, define, mount } = OBPractice;
+  const rng = seg("rng", () => { document.getElementById("pick-box").hidden = rng.value !== "custom"; });
+  const num = seg("num"), calc = check("calc");
+  document.getElementById("pick").innerHTML = WEEKS.map((w) => `<label><input type="checkbox" value="${w.id}" ${w.wk <= 8 ? "checked" : ""}> ${wkLabel(w)}</label>`).join("");
+  const pool = (ids) => ids.flatMap((id) => (BANK[id] && BANK[id].quiz || []).map((q) => Object.assign({ src: wkLabel(WEEKS.find((w) => w.id === id)), wid: id }, q)));
+  const take = (arr, n) => shuffle(arr.slice()).slice(0, Math.min(n, arr.length));
+  let run = 0;
+  function start() {
+    const N = +num.value;
+    const early = WEEKS.filter((w) => w.wk <= 8).map((w) => w.id), late = WEEKS.filter((w) => w.wk >= 10).map((w) => w.id);
+    let items;
+    if (rng.value === "mid") items = take(pool(early), N);
+    else if (rng.value === "fin") { const a = Math.round(N * 0.7); items = take(pool(late), a).concat(take(pool(early), N - a)); }
+    else { const ids = [...document.querySelectorAll("#pick input:checked")].map((x) => x.value); if (!ids.length) { alertBox("請至少勾選一週。"); return; } items = take(pool(ids), N); }
+    items = shuffle(items);
+    const mq = document.getElementById("mq"); mq.innerHTML = ""; mq.className = "";
+    document.getElementById("res").innerHTML = "";
+    document.getElementById("sec-q").hidden = false;
+    quiz("mq", "exam", items, { noSave: true, onAgain: start, onDone: (ok, tot, wrong) => {
+      const by = {}; wrong.forEach((q) => { by[q.wid] = (by[q.wid] || 0) + 1; });
+      const rows = Object.entries(by).sort((a, b) => b[1] - a[1]).map(([id, n]) => `<li><a href="${id}.html">${wkLabel(WEEKS.find((w) => w.id === id))}　${WEEKS.find((w) => w.id === id).zh}</a>：錯 ${n} 題</li>`).join("");
+      document.getElementById("res").innerHTML = `<div class="result-card"><b>觀念題答對 ${ok} / ${tot}</b>${rows ? `<div>建議回去複習：</div><ul>${rows}</ul>` : "<div>全部答對，太厲害了！</div>"}</div>`;
+      OL.journal.examDone(rng.value, ok, tot);
+      if (window.labTrack) labTrack("mock_exam", { range: rng.value, correct: ok, total: tot, score: Math.round(ok / tot * 100) });
+    } });
+    // 計算題
+    const sc = document.getElementById("sec-c"); sc.hidden = !calc.value;
+    if (calc.value) {
+      run++;
+      const all = []; const seen = new Set();
+      Object.keys(REG).forEach((k) => REG[k].forEach((t) => { if (t.star && !seen.has(t.title)) { seen.add(t.title); all.push(t); } }));
+      let set;
+      if (rng.value === "mid") set = all.filter((t) => t.star <= 2);
+      else if (rng.value === "fin") set = take(all.filter((t) => t.star >= 3), 4).concat(take(all.filter((t) => t.star <= 2), 1));
+      else { const ids = [...document.querySelectorAll("#pick input:checked")].map((x) => x.value); set = all.filter((t) => ids.some((id) => (REG[id] || []).includes(t))); }
+      const key = "exam" + run; define(key, set.sort((a, b) => a.star - b.star));
+      document.getElementById("mc").innerHTML = ""; document.getElementById("mc").className = "";
+      if (set.length) mount("mc", key); else document.getElementById("mc").innerHTML = '<p class="sub">所選週次沒有 ★ 計算題。</p>';
+    }
+    document.getElementById("sec-q").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function alertBox(t) { document.getElementById("res").innerHTML = `<p class="fix-note">${t}</p>`; document.getElementById("sec-q").hidden = false; }
+  document.getElementById("go").onclick = start;
+})();
+</script>
+</body>
+</html>

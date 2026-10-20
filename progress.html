@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>課程進度地圖｜視光概論實驗台</title>
+<meta name="description" content="視光概論的學習旅程：18 站地圖、四大主軸完成度、★ 九項計算精熟度、名詞、目標自評的起點與現在。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  :root { --ax0: #2a78d6; --ax1: #eb6834; --ax2: #1baf7a; --ax3: #eda100; --ax4: #e87ba4; --cp: var(--ink); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ax0: #3987e5; --ax1: #d95926; --ax2: #199e70; --ax3: #c98500; --ax4: #d55181; } }
+  :root[data-theme="dark"] { --ax0: #3987e5; --ax1: #d95926; --ax2: #199e70; --ax3: #c98500; --ax4: #d55181; }
+
+  /* 總覽 */
+  .next-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 16px 18px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); margin-top: 18px; }
+  .next-card small { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--accent); }
+  .next-card b { display: block; font-size: 18px; font-family: var(--font-display); }
+  .next-card span { color: var(--muted); font-size: 14px; }
+  @media (max-width: 560px) { .next-card { grid-template-columns: 1fr; } }
+
+  .tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 960px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 12px; display: grid; gap: 4px; align-content: start; }
+  .tile .k { font-size: 13px; color: var(--muted); }
+  .tile .v { font-family: var(--font-mono); font-size: 28px; line-height: 1.1; color: var(--ink); }
+  .tile .v small { font-size: 14px; color: var(--muted); }
+  .tile .meter { height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin-top: 4px; }
+  .tile .meter i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+  .tile .d { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .tile a { font-size: 13px; }
+
+  /* 地圖 */
+  .legend-row { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-bottom: 12px; align-items: center; }
+  .legend-row .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+  .legend-row svg { vertical-align: -6px; margin-right: 4px; }
+  .map-wrap { position: relative; background: var(--canvas); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .map-wrap > svg.road { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .station { position: absolute; width: 124px; margin-left: -62px; display: grid; justify-items: center; gap: 2px; padding: 4px 2px 6px; border: 0; background: none; color: var(--ink); font: inherit; cursor: pointer; border-radius: 12px; }
+  .station:hover, .station:focus-visible { background: color-mix(in srgb, var(--accent) 9%, transparent); outline: none; }
+  .station[aria-current="true"] { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .station svg { display: block; }
+  .station .nm { font-size: 13px; line-height: 1.35; text-align: center; font-weight: 500; }
+  .station .st { font-size: 11.5px; color: var(--muted); }
+  .station .st.s2 { color: var(--ink); } .station .st.s3 { color: var(--ok); font-weight: 700; }
+  .axis-chip { position: absolute; transform: translateX(-50%); font-size: 11.5px; white-space: nowrap; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.04em; }
+  .axis-chip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+
+  /* 單站詳情 */
+  .detail { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; scroll-margin-top: 80px; }
+  .detail-head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; margin-bottom: 14px; }
+  .detail-head h3 { font-size: 21px; }
+  .detail-head .wk { font-family: var(--font-mono); color: var(--accent); }
+  .detail-head a { margin-left: auto; }
+  .dgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 820px) { .dgrid { grid-template-columns: 1fr; } }
+  .dgrid h4 { font-size: 14px; margin: 0 0 8px; color: var(--muted); font-weight: 700; }
+  .checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 14.5px; }
+  .checklist li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 6px; align-items: start; }
+  .checklist .m { font-weight: 700; color: var(--line); }
+  .checklist .m.ok { color: var(--ok); } .checklist .m.half { color: var(--warn); }
+  .checklist small { color: var(--muted); display: block; }
+  .detail .goals { margin-top: 6px; }
+  .detail .goal-h { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+  .detail .goal-h span { font-size: 13px; color: var(--muted); }
+
+  /* 圖表 */
+  .chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .chart-card h3 { font-size: 17px; margin-bottom: 2px; }
+  .chart-card .cap { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
+  .axisbars { display: grid; gap: 12px; }
+  .axisbar { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) 3.4em; gap: 10px; align-items: center; font-size: 14px; }
+  .axisbar .nm i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+  .axisbar .nm small { display: block; color: var(--muted); font-size: 11.5px; padding-left: 15px; }
+  .axisbar .tr { height: 12px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+  .axisbar .tr i { display: block; height: 100%; border-radius: 0 4px 4px 0; min-width: 0; }
+  .axisbar .pc { font-family: var(--font-mono); font-size: 13px; text-align: right; color: var(--ink); }
+  svg.viz { display: block; width: 100%; height: auto; overflow: visible; }
+  svg.viz text { font-family: var(--font-body); fill: var(--muted); font-size: 12px; }
+  svg.viz .grid { stroke: var(--grid); stroke-width: 1; }
+  .empty { padding: 26px 12px; text-align: center; color: var(--muted); font-size: 14px; background: var(--surface-2); border-radius: 10px; }
+  .viz-legend { display: flex; gap: 16px; font-size: 12.5px; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+  .viz-legend svg { vertical-align: -3px; margin-right: 4px; }
+  .tip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--surface); font-size: 12.5px; line-height: 1.5; padding: 6px 9px; border-radius: 6px; max-width: 240px; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+  .tip[hidden] { display: none; }
+
+  /* ★ 九項 */
+  .stars { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+  .starcell { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px; align-items: center; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
+  .starcell:hover { border-color: var(--accent); }
+  .starcell b { font-family: var(--font-mono); font-size: 15px; color: var(--muted); }
+  .starcell.m b { color: var(--lv-s); }
+  .starcell .pips { display: flex; gap: 3px; margin-top: 3px; }
+  .starcell .pips i { width: 16px; height: 5px; border-radius: 2px; background: var(--surface-2); }
+  .starcell .pips i.on { background: var(--lv-s); }
+  .starcell small { display: block; font-size: 11.5px; color: var(--muted); }
+
+  /* 成就 */
+  .badges { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+  .badge { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; align-items: center; padding: 12px; border-radius: 12px; border: 1px dashed var(--line); background: transparent; }
+  .badge.on { border-style: solid; background: var(--surface); }
+  .badge .ic { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; background: var(--surface-2); color: var(--muted); filter: grayscale(1); opacity: .65; }
+  .badge.on .ic { background: var(--accent-soft); color: var(--accent); filter: none; opacity: 1; }
+  .badge b { display: block; font-size: 14.5px; }
+  .badge span { font-size: 12.5px; color: var(--muted); line-height: 1.45; display: block; }
+  .badge .pg { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+  .badge.on .pg { color: var(--ok); }
+
+  .backup { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .backup .note { flex-basis: 100%; }
+</style>
+</head>
+<body data-chapter="progress">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Course Map</div>
+    <h1>課程進度地圖</h1>
+    <div class="en">How far you've come in Intro to Optometry</div>
+    <p class="lede">一學期 18 站，從「視光學是什麼」走到「視光學的未來」。你在各週操作的互動實驗、觀念檢核、★ 計算練習、字卡和目標自評，都會自動記在這張地圖上。這裡沒有分數排名，只看你自己比起點多走了多遠。</p>
+    <div class="next-card" id="next"></div>
+  </div>
+
+  <section class="block">
+    <h2>你的五種成長 <span class="tag">GROWTH</span></h2>
+    <p class="sub">視光人員要「動手做、想得通、算得準、說得出專業名詞、對自己有把握」。下面五格分別記錄這五件事。</p>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="block" id="map-sec">
+    <h2>學期旅程地圖 <span class="tag">18 STATIONS</span></h2>
+    <p class="sub">每一站外圈的四小段是本週四個互動實驗，實驗裡操作過幾次就會亮起；中間的圓是觀念檢核，答對八成以上會整個填滿。點任一站可以看還差什麼。</p>
+    <div class="legend-row" id="legend"></div>
+    <div class="map-wrap" id="map"></div>
+    <div class="detail" id="detail" aria-live="polite"></div>
+  </section>
+
+  <section class="block">
+    <h2>四大主軸走了多遠 <span class="tag">BY THEME</span></h2>
+    <div class="two-col">
+      <div class="chart-card">
+        <h3>主軸完成度</h3>
+        <div class="cap">實驗、觀念檢核、★ 計算三者平均，以本主軸各週合計。</div>
+        <div class="axisbars" id="axisbars"></div>
+      </div>
+      <div class="chart-card">
+        <h3>自評：起點 → 現在</h3>
+        <div class="cap">各週「學習目標」旁的自評。第一次評的是起點，之後再評會更新「現在」。</div>
+        <div id="selfviz"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>成長軌跡 <span class="tag">OVER TIME</span></h2>
+    <div class="two-col">
+      <div class="chart-card">
+        <h3>累積完成的學習項目</h3>
+        <div class="cap">探索完的實驗、答對八成的觀念檢核、精熟的 ★ 計算、自評進步的目標，依日期累計。</div>
+        <div id="curve"></div>
+      </div>
+      <div class="chart-card">
+        <h3>綜合挑戰紀錄</h3>
+        <div class="cap">每一輪在「綜合挑戰」完成觀念題的答對率。</div>
+        <div id="exams"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>★ 九項計算精熟度 <span class="tag">STAR SKILLS</span></h2>
+    <p class="sub">在每週練習或「★ 九項計算練功房」裡，<b>沒看詳解、換過數字</b>連續全對 3 組，就算精熟。</p>
+    <div class="stars" id="stars"></div>
+  </section>
+
+  <section class="block">
+    <h2>成就 <span class="tag">MILESTONES</span></h2>
+    <div class="badges" id="badges"></div>
+  </section>
+
+  <section class="block">
+    <h2>備份與換裝置 <span class="tag">BACKUP</span></h2>
+    <div class="backup">
+      <button class="btn" id="exp" type="button">下載進度檔</button>
+      <label class="btn ghost" for="imp" style="cursor:pointer">匯入進度檔</label><input type="file" id="imp" accept="application/json,.json" hidden>
+      <button class="btn ghost" id="reset" type="button">清除所有進度</button>
+      <span id="bk-msg" class="note"></span>
+      <p class="note">進度只存在你這台裝置的瀏覽器裡，不會上傳。換手機、換電腦或清除瀏覽資料前，先下載進度檔，到新裝置再匯入。</p>
+    </div>
+  </section>
+</main>
+<div class="tip" id="tip" hidden></div>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/goals.js"></script>
+<script src="assets/bank/w01.js"></script><script src="assets/bank/w02.js"></script><script src="assets/bank/w03.js"></script><script src="assets/bank/w04.js"></script>
+<script src="assets/bank/w05.js"></script><script src="assets/bank/w06.js"></script><script src="assets/bank/w07.js"></script><script src="assets/bank/w08.js"></script>
+<script src="assets/bank/w10.js"></script><script src="assets/bank/w11.js"></script><script src="assets/bank/w12.js"></script><script src="assets/bank/w13.js"></script>
+<script src="assets/bank/w14.js"></script><script src="assets/bank/w15.js"></script><script src="assets/bank/w16.js"></script><script src="assets/bank/w17.js"></script>
+<script>
+(function () {
+  const { WEEKS, AXES, BANK, wkLabel, progress, journal, selfRate, SELF_LV, STAR_NEED, store, esc } = OL;
+  const GOALS = window.OL_GOALS || {};
+  const $ = (id) => document.getElementById(id);
+  const AXNUM = ["〇", "一", "二", "三", "四"];
+  const axc = (a) => `var(--ax${a})`;
+  const STARS = { 1: "屈光度 ↔ 焦距", 2: "遠點距離", 3: "調節需求", 4: "調節幅度", 5: "Hofstetter 最小式", 6: "散光量與光學十字", 7: "三十法則", 8: "等價球面", 9: "正負柱面轉換" };
+  const STARW = { w06: [1], w08: [2], w10: [2], w12: [6, 7], w13: [8, 9], w14: [3, 4, 5] };
+  const SHORT = { w01: "視光學導論", w02: "眼球前段", w03: "眼球後段", w04: "視覺的形成", w05: "眼球模型實驗", w06: "基礎光學", w07: "光學臺實驗", w08: "屈光不正總論",
+    w09: "前半回顧站", w10: "近視", w11: "遠視與弱視", w12: "散光（一）", w13: "散光（二）", w14: "調節與老花", w15: "雙眼視覺", w16: "VR 眼鏡實驗", w17: "未來發展", w18: "終點回顧站" };
+  const STATUS = ["未出發", "探索中", "完成", "精熟"];
+  const PASS = 0.8;
+  const TERM_ALL = (() => { const s = new Set(); WEEKS.forEach((w) => (BANK[w.id] && BANK[w.id].terms || []).forEach(([en]) => s.add(en.toLowerCase()))); return s; })();
+  const fmtDate = (t) => { const d = new Date(t); return `${d.getMonth() + 1}/${d.getDate()}`; };
+
+  let D; // 目前的學習資料快照
+  function snapshot() {
+    const P = progress(), L = journal.labs(), S = journal.star(), T = journal.terms(), E = journal.exam(), SF = journal.self();
+    const starM = (n) => !!(S[n] && S[n].t);
+    const weeks = WEEKS.map((w) => {
+      const labs = w.labs.map((_, i) => !!(L[w.id] && L[w.id][i]));
+      const labsN = labs.filter(Boolean).length;
+      const q = P[w.id] || null, qr = q ? q.correct / q.total : null;
+      const stars = STARW[w.id] || [], sm = stars.filter(starM).length;
+      const parts = [labsN / 4, qr == null ? 0 : Math.min(qr / PASS, 1)];
+      if (stars.length) parts.push(sm / stars.length);
+      const pct = parts.reduce((a, b) => a + b, 0) / parts.length;
+      let status = 0;
+      if (pct > 0) status = 1;
+      if (labsN === 4 && q) status = 2;
+      if (status === 2 && qr >= PASS && sm === stars.length) status = 3;
+      const goals = (GOALS[w.id] || []).map((_, i) => SF[w.id + "-" + i] || null);
+      return { w, labs, labsN, q, qr, stars, sm, pct, status, goals };
+    });
+    const by = Object.fromEntries(weeks.map((x) => [x.w.id, x]));
+    const cp = (id, wk, list, stars) => {
+      const ws = weeks.filter((x) => list(x.w.wk));
+      const parts = ws.map((x) => x.pct).concat(stars.map((n) => starM(n) ? 1 : Math.min((S[n] ? S[n].ok : 0) / STAR_NEED, 1)));
+      const pct = parts.reduce((a, b) => a + b, 0) / parts.length;
+      const allM = ws.every((x) => x.status === 3) && stars.every(starM);
+      return { cp: true, id, wk, ws, stars, pct, status: allM ? 3 : pct >= 0.8 ? 2 : pct > 0 ? 1 : 0 };
+    };
+    const mid = cp("w09", 9, (k) => k <= 8, [1, 2]), fin = cp("w18", 18, (k) => k >= 10, [3, 4, 5, 6, 7, 8, 9]);
+    const stations = [];
+    weeks.forEach((x) => { stations.push(x); if (x.w.wk === 8) stations.push(mid); });
+    stations.push(fin);
+    return { P, L, S, T, E, SF, weeks, by, mid, fin, stations, starM };
+  }
+
+  /* ---------- 下一站建議 ---------- */
+  function missing(x) {
+    const m = [];
+    if (x.labsN < 4) m.push(`${4 - x.labsN} 個互動實驗`);
+    if (!x.q) m.push("觀念檢核"); else if (x.qr < PASS) m.push("觀念檢核再答對到八成");
+    const ls = x.stars.filter((n) => !D.starM(n)); if (ls.length) m.push(ls.map((n) => "★" + n).join("、") + " 計算");
+    return m;
+  }
+  function renderNext() {
+    const x = D.weeks.find((y) => y.status === 1) || D.weeks.find((y) => y.status < 3);
+    if (!x) { $("next").innerHTML = `<div><small>ALL STATIONS CLEARED</small><b>16 週全部精熟，恭喜你走完整張地圖！</b><span>可以到綜合挑戰練「後半學期」，或回到任何一週再玩一次實驗。</span></div><a class="btn" href="exam.html">去綜合挑戰</a>`; return; }
+    const started = D.weeks.some((y) => y.status > 0);
+    $("next").innerHTML = `<div><small>${started ? "NEXT STOP · 下一站" : "START HERE · 從這裡出發"}</small><b>${wkLabel(x.w)}　${esc(x.w.zh)}</b><span>${started ? "還差：" + missing(x).join("、") : "先到第一週操作互動實驗、完成觀念檢核，地圖就會亮起來。"}</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" type="button" id="next-see">在地圖上看</button><a class="btn" href="${x.w.id}.html">前往 ${wkLabel(x.w)}</a></div>`;
+    $("next-see").onclick = () => { select(x.w.id); $("detail").scrollIntoView({ behavior: "smooth", block: "start" }); };
+  }
+
+  /* ---------- 五種成長 ---------- */
+  function renderTiles() {
+    const labs = D.weeks.reduce((a, x) => a + x.labsN, 0);
+    const qPass = D.weeks.filter((x) => x.qr != null && x.qr >= PASS).length, qTry = D.weeks.filter((x) => x.q).length;
+    const sM = Object.keys(STARS).filter((n) => D.starM(+n)).length;
+    const tK = [...TERM_ALL].filter((k) => D.T[k]).length;
+    const rated = Object.values(D.SF).filter((r) => r && r.n != null);
+    const up = rated.filter((r) => r.n > r.b), lv = up.reduce((a, r) => a + r.n - r.b, 0);
+    const G = Object.values(GOALS).reduce((a, g) => a + g.length, 0);
+    const tile = (k, v, tot, d, href, link) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}<small> / ${tot}</small></div><div class="meter"><i style="width:${Math.min(100, v / tot * 100)}%"></i></div><div class="d">${d}</div><a href="${href}">${link}</a></div>`;
+    $("tiles").innerHTML =
+      tile("動手探索", labs, 64, "探索過的互動實驗", "#map-sec", "看地圖 →") +
+      tile("觀念掌握", qPass, 16, qTry ? `觀念檢核答對八成以上的週次（已作答 ${qTry} 週）` : "觀念檢核答對八成以上的週次", "#map-sec", "看地圖 →") +
+      tile("★ 計算", sM, 9, "精熟的一步驟計算", "calc.html", "去練功房 →") +
+      tile("專業英文", tK, TERM_ALL.size, "字卡標記「記得了」的名詞", "terms.html", "去背字卡 →") +
+      tile("自評進步", up.length, G, rated.length ? `比起點進步的學習目標，合計進步 ${lv} 級（已自評 ${rated.length} 項）` : "比起點進步的學習目標", "#selfviz", "看自評 →");
+  }
+
+  /* ---------- 地圖 ---------- */
+  let current = null;
+  function ring(x, size) {
+    const c = size / 2, R = c - 5, r = R - 8;
+    const color = x.cp ? "var(--cp)" : axc(x.w.axis);
+    if (x.cp) {
+      const p = Math.round(x.pct * 100);
+      const s = r + 3;
+      const fill = x.status === 3 ? color : "var(--surface)";
+      return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true">
+        <rect x="${c - s}" y="${c - s}" width="${2 * s}" height="${2 * s}" rx="6" transform="rotate(45 ${c} ${c})" fill="${fill}" stroke="${color}" stroke-width="2"/>
+        <text x="${c}" y="${c + 4}" text-anchor="middle" font-family="var(--font-mono)" font-size="12" fill="${x.status === 3 ? "var(--surface)" : "var(--ink)"}">${p}%</text></svg>`;
+    }
+    let arcs = "";
+    for (let i = 0; i < 4; i++) {
+      const a0 = (-90 + i * 90 + 7) * Math.PI / 180, a1 = (-90 + (i + 1) * 90 - 7) * Math.PI / 180;
+      arcs += `<path d="M${c + R * Math.cos(a0)} ${c + R * Math.sin(a0)} A${R} ${R} 0 0 1 ${c + R * Math.cos(a1)} ${c + R * Math.sin(a1)}" fill="none" stroke="${x.labs[i] ? color : "var(--line)"}" stroke-width="5" stroke-linecap="round"/>`;
+    }
+    const pass = x.qr != null && x.qr >= PASS, tried = x.q && !pass;
+    const fill = pass ? color : tried ? `color-mix(in srgb, ${color} 28%, var(--surface))` : "var(--surface)";
+    const crown = x.status === 3 ? `<text x="${size - 9}" y="13" text-anchor="middle" font-size="13" fill="var(--lv-s)">★</text>` : "";
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true">${arcs}
+      <circle cx="${c}" cy="${c}" r="${r}" fill="${fill}" stroke="${x.q ? color : "var(--line)"}" stroke-width="1.6"/>
+      <text x="${c}" y="${c + 5}" text-anchor="middle" font-family="var(--font-mono)" font-size="14" fill="${pass ? "var(--surface)" : "var(--ink)"}">${String(x.w.wk).padStart(2, "0")}</text>${crown}</svg>`;
+  }
+  function stationLabel(x) {
+    if (x.cp) return `${x.wk === 9 ? "W09 前半回顧站" : "W18 終點回顧站"}，完成度 ${Math.round(x.pct * 100)}%`;
+    return `${wkLabel(x.w)} ${x.w.zh}，${STATUS[x.status]}：實驗 ${x.labsN}/4，觀念檢核${x.q ? ` ${x.q.correct}/${x.q.total}` : "未作答"}`;
+  }
+  function renderMap() {
+    const el = $("map"); const cw = el.clientWidth || 900;
+    const cols = cw >= 900 ? 6 : cw >= 600 ? 4 : 3;
+    const N = D.stations.length, rows = Math.ceil(N / cols), colW = cw / cols, rowH = 178, top = 74;
+    const pos = D.stations.map((_, i) => { const r = Math.floor(i / cols); let c = i % cols; if (r % 2) c = cols - 1 - c; return { x: colW * (c + 0.5), y: top + r * rowH }; });
+    const H = top + (rows - 1) * rowH + 104;
+    el.style.height = H + "px";
+    let road = "";
+    for (let i = 0; i < N - 1; i++) {
+      const a = pos[i], b = pos[i + 1], x = D.stations[i];
+      const lit = x.status >= 2;
+      const col = x.cp ? "var(--muted)" : axc(D.stations[i + 1].cp ? x.w.axis : D.stations[i + 1].w.axis);
+      let d;
+      if (Math.abs(a.y - b.y) < 1) d = `M${a.x} ${a.y} L${b.x} ${b.y}`;
+      else { const dx = (a.x > cw / 2 ? 1 : -1) * colW * 0.42; d = `M${a.x} ${a.y} C${a.x + dx} ${a.y} ${b.x + dx} ${b.y} ${b.x} ${b.y}`; }
+      road += `<path d="${d}" fill="none" stroke="${lit ? col : "var(--line)"}" stroke-width="${lit ? 4 : 3}" stroke-linecap="round" ${lit ? "" : 'stroke-dasharray="2 7"'}/>`;
+    }
+    let html = `<svg class="road" viewBox="0 0 ${cw} ${H}" preserveAspectRatio="none">${road}</svg>`;
+    let lastAx = -1;
+    D.stations.forEach((x, i) => {
+      const p = pos[i], id = x.cp ? x.id : x.w.id;
+      if (!x.cp && x.w.axis !== lastAx) { lastAx = x.w.axis; html += `<div class="axis-chip" style="left:${p.x}px;top:${p.y - 62}px"><i style="background:${axc(x.w.axis)}"></i>主軸${AXNUM[x.w.axis]}${cols > 4 ? " " + AXES[x.w.axis].zh : ""}</div>`; }
+      const stTxt = x.cp ? (x.status === 3 ? "全部精熟" : "完成度") : STATUS[x.status];
+      html += `<button type="button" class="station" data-id="${id}" style="left:${p.x}px;top:${p.y - 38}px" aria-label="${esc(stationLabel(x))}" ${current === id ? 'aria-current="true"' : ""}>
+        ${ring(x, 76)}<span class="nm">${SHORT[id]}</span><span class="st s${x.status}">${stTxt}</span></button>`;
+    });
+    el.innerHTML = html;
+    el.querySelectorAll(".station").forEach((b) => b.onclick = () => select(b.dataset.id));
+    $("legend").innerHTML = AXES.map((a, i) => `<span><i class="sw" style="background:${axc(i)}"></i>主軸${AXNUM[i]} ${a.zh}</span>`).join("") +
+      `<span><svg width="20" height="20" viewBox="0 0 20 20"><rect x="5" y="5" width="10" height="10" rx="2" transform="rotate(45 10 10)" fill="none" stroke="var(--ink)" stroke-width="1.6"/></svg>回顧站</span><span><b style="color:var(--lv-s)">★</b> 精熟</span>`;
+  }
+
+  function select(id) {
+    current = id;
+    document.querySelectorAll(".station").forEach((b) => b.setAttribute("aria-current", b.dataset.id === id ? "true" : "false"));
+    const x = D.stations.find((s) => (s.cp ? s.id : s.w.id) === id);
+    const el = $("detail");
+    const starLi = (n) => { const r = D.S[n] || { ok: 0, tries: 0 }; const m = D.starM(n);
+      return `<li><span class="m ${m ? "ok" : r.ok ? "half" : ""}">${m ? "✓" : r.ok ? "◐" : "○"}</span><span><a href="calc.html#s${n}">★${n} ${STARS[n]}</a><small>${m ? "已精熟" : r.tries ? `全對 ${Math.min(r.ok, STAR_NEED)} / ${STAR_NEED} 組` : "還沒練習"}</small></span></li>`; };
+    if (x.cp) {
+      el.innerHTML = `<div class="detail-head"><span class="wk">${x.wk === 9 ? "W09" : "W18"}</span><h3>${x.wk === 9 ? "前半回顧站（W01–W08）" : "終點回顧站（W10–W17）"}</h3><a class="btn" href="exam.html">去綜合挑戰 →</a></div>
+        <div class="dgrid">
+          <div><h4>範圍內各週</h4><ul class="checklist">${x.ws.map((y) => `<li><span class="m ${y.status === 3 ? "ok" : y.status ? "half" : ""}">${y.status === 3 ? "✓" : y.status ? "◐" : "○"}</span><span><a href="${y.w.id}.html">${wkLabel(y.w)} ${esc(SHORT[y.w.id])}</a><small>${STATUS[y.status]}・${Math.round(y.pct * 100)}%</small></span></li>`).join("")}</ul></div>
+          <div><h4>範圍內的 ★ 計算</h4><ul class="checklist">${x.stars.map(starLi).join("")}</ul></div>
+          <div><h4>完成度</h4><p style="font-family:var(--font-mono);font-size:34px;margin:0;color:var(--ink)">${Math.round(x.pct * 100)}%</p><p class="note">範圍內每一週的完成度和每一項 ★ 計算的精熟度平均。範圍內全部精熟，這一站就會填滿。</p></div>
+        </div>`;
+      return;
+    }
+    const w = x.w;
+    el.innerHTML = `<div class="detail-head"><span class="wk">${wkLabel(w)}</span><h3>${esc(w.zh)}</h3><span class="pill ${x.status === 3 ? "ok" : x.status ? "info" : ""}">${STATUS[x.status]}</span><a class="btn" href="${w.id}.html">前往本週 →</a></div>
+      <div class="dgrid">
+        <div><h4>互動實驗 ${x.labsN} / 4</h4><ul class="checklist">${w.labs.map((t, i) => `<li><span class="m ${x.labs[i] ? "ok" : ""}">${x.labs[i] ? "✓" : "○"}</span><span><a href="${w.id}.html#lab-${i + 1}">${esc(t)}</a></span></li>`).join("")}</ul></div>
+        <div><h4>觀念檢核</h4><ul class="checklist"><li><span class="m ${x.qr >= PASS ? "ok" : x.q ? "half" : ""}">${x.qr >= PASS ? "✓" : x.q ? "◐" : "○"}</span><span><a href="${w.id}.html#quiz">本週觀念檢核</a><small>${x.q ? `最佳紀錄 ${x.q.correct} / ${x.q.total}${x.qr >= PASS ? "，觀念掌握良好" : "，答對八成就會填滿"}` : "還沒作答"}</small></span></li></ul></div>
+        <div><h4>★ 計算</h4>${x.stars.length ? `<ul class="checklist">${x.stars.map(starLi).join("")}</ul>` : '<p class="note">本週沒有 ★ 必算項目。</p>'}</div>
+      </div>
+      <div class="goal-h"><h4 style="margin:0;font-size:14px">學習目標自評</h4><span>第一次選的是起點，學完再回來更新。</span></div>
+      <ul class="goals" id="dgoals">${(GOALS[w.id] || []).map((g) => `<li>${esc(g)}</li>`).join("")}</ul>`;
+    selfRate($("dgoals"), w.id, false);
+    $("dgoals").addEventListener("click", (e) => { if (e.target.closest(".self button")) setTimeout(() => refresh(true), 0); });
+  }
+
+  /* ---------- 主軸完成度 ---------- */
+  function renderAxes() {
+    $("axisbars").innerHTML = AXES.map((a, i) => {
+      const ws = D.weeks.filter((x) => x.w.axis === i);
+      const pct = ws.reduce((s, x) => s + x.pct, 0) / ws.length;
+      const span = ws.length === 1 ? wkLabel(ws[0].w) : `${wkLabel(ws[0].w)}–${wkLabel(ws[ws.length - 1].w)}`;
+      return `<div class="axisbar"><span class="nm"><i style="background:${axc(i)}"></i>${a.zh.replace("與未來發展", "與未來")}<small>${span}</small></span><span class="tr" title="${a.zh} ${Math.round(pct * 100)}%"><i style="width:${pct * 100}%;background:${axc(i)}"></i></span><span class="pc">${Math.round(pct * 100)}%</span></div>`;
+    }).join("");
+  }
+
+  /* ---------- 自評：起點 vs 現在（啞鈴圖） ---------- */
+  const tip = $("tip");
+  function showTip(e, html) { tip.innerHTML = html; tip.hidden = false; const x = Math.min(e.clientX + 14, innerWidth - tip.offsetWidth - 8); tip.style.left = x + "px"; tip.style.top = (e.clientY + 14) + "px"; }
+  function hideTip() { tip.hidden = true; }
+  function bindTips(root) {
+    root.querySelectorAll("[data-tip]").forEach((n) => {
+      n.addEventListener("pointermove", (e) => showTip(e, n.dataset.tip));
+      n.addEventListener("pointerleave", hideTip);
+    });
+  }
+  function renderSelf() {
+    const rows = AXES.map((a, i) => {
+      const rs = D.weeks.filter((x) => x.w.axis === i).flatMap((x) => x.goals).filter((r) => r && r.n != null);
+      if (!rs.length) return { a, i, n: 0 };
+      const b = rs.reduce((s, r) => s + r.b, 0) / rs.length, n = rs.reduce((s, r) => s + r.n, 0) / rs.length;
+      return { a, i, n: rs.length, b, now: n };
+    });
+    if (!rows.some((r) => r.n)) { $("selfviz").innerHTML = '<div class="empty">還沒有自評紀錄。到任一週頁面的「學習目標」，或在上方地圖點一站，替自己評一次。</div>'; return; }
+    const W = 520, L = 128, R = 18, rowH = 40, H = rows.length * rowH + 34;
+    const X = (v) => L + (v - 1) / 3 * (W - L - R);
+    let g = SELF_LV.map((t, k) => `<line class="grid" x1="${X(k + 1)}" x2="${X(k + 1)}" y1="6" y2="${H - 26}"/><text x="${X(k + 1)}" y="${H - 8}" text-anchor="middle">${t}</text>`).join("");
+    rows.forEach((r, k) => {
+      const y = 8 + k * rowH + rowH / 2;
+      g += `<text x="0" y="${y + 4}" style="fill:var(--ink)">${r.a.zh.replace("與未來發展", "與未來")}</text>`;
+      if (!r.n) { g += `<text x="${L}" y="${y + 4}">尚未自評</text>`; return; }
+      const c = axc(r.i), tipTxt = `${r.a.zh}（${r.n} 項目標）<br>起點 ${r.b.toFixed(1)} → 現在 ${r.now.toFixed(1)}${r.now > r.b ? `<br>進步 ${(r.now - r.b).toFixed(1)} 級` : ""}`;
+      g += `<g data-tip="${esc(tipTxt)}"><rect x="${L - 10}" y="${y - 16}" width="${W - L - R + 20}" height="32" fill="transparent"/>
+        <line x1="${X(r.b)}" x2="${X(r.now)}" y1="${y}" y2="${y}" stroke="${c}" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="${X(r.b)}" cy="${y}" r="6" fill="var(--surface)" stroke="${c}" stroke-width="2"/>
+        <circle cx="${X(r.now)}" cy="${y}" r="6.5" fill="${c}" stroke="var(--surface)" stroke-width="2"/></g>`;
+    });
+    $("selfviz").innerHTML = `<svg class="viz" viewBox="0 0 ${W} ${H}" role="img" aria-label="各主軸自評起點與現在">${g}</svg>
+      <div class="viz-legend"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--muted)" stroke-width="2"/></svg>起點（第一次自評）</span><span><svg width="14" height="14"><circle cx="7" cy="7" r="5.5" fill="var(--muted)"/></svg>現在</span></div>`;
+    bindTips($("selfviz"));
+  }
+
+  /* ---------- 成長軌跡（累積折線） ---------- */
+  function events() {
+    const ev = [];
+    Object.entries(D.L).forEach(([wid, o]) => Object.entries(o).forEach(([i, t]) => { const w = WEEKS.find((x) => x.id === wid); if (w) ev.push({ t, what: `${wkLabel(w)} 實驗：${w.labs[+i] || ""}` }); }));
+    D.weeks.forEach((x) => { if (x.qr != null && x.qr >= PASS && x.q.t) ev.push({ t: x.q.t, what: `${wkLabel(x.w)} 觀念檢核答對八成` }); });
+    Object.entries(D.S).forEach(([n, r]) => { if (r.t) ev.push({ t: r.t, what: `★${n} ${STARS[n]} 精熟` }); });
+    Object.entries(D.SF).forEach(([k, r]) => { if (r && r.n > r.b) ev.push({ t: r.nt, what: `自評進步：${k.slice(0, 3).toUpperCase()} 目標 ${+k.slice(4) + 1}` }); });
+    return ev.sort((a, b) => a.t - b.t);
+  }
+  function renderCurve() {
+    const ev = events();
+    if (ev.length < 2) { $("curve").innerHTML = `<div class="empty">${ev.length ? "已經踏出第一步！再完成一些項目，這裡就會畫出你的成長曲線。" : "完成第一個互動實驗或觀念檢核後，這裡會開始畫出你的成長曲線。"}</div>`; return; }
+    const days = []; ev.forEach((e) => { const d = new Date(e.t); d.setHours(0, 0, 0, 0); const k = +d; const last = days[days.length - 1]; if (last && last.k === k) last.items.push(e.what); else days.push({ k, items: [e.what] }); });
+    let cum = 0; days.forEach((d) => { cum += d.items.length; d.cum = cum; });
+    const W = 520, H = 220, L = 34, R = 14, T = 14, B = 28;
+    const t0 = days[0].k, t1 = Math.max(days[days.length - 1].k, t0 + 86400000);
+    const X = (t) => L + (t - t0) / (t1 - t0) * (W - L - R), maxY = Math.max(4, Math.ceil(cum / 4) * 4), Y = (v) => H - B - v / maxY * (H - T - B);
+    let g = "";
+    for (let k = 0; k <= 4; k++) { const v = maxY / 4 * k; g += `<line class="grid" x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`; }
+    g += `<text x="${L}" y="${H - 8}">${fmtDate(t0)}</text><text x="${W - R}" y="${H - 8}" text-anchor="end">${fmtDate(days[days.length - 1].k)}</text>`;
+    // 階梯線：每天結束時的累計
+    let d = `M${X(days[0].k)} ${Y(0)}`; days.forEach((p, i) => { d += ` L${X(p.k)} ${Y(i ? days[i - 1].cum : 0)} L${X(p.k)} ${Y(p.cum)}`; });
+    g += `<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>`;
+    const last = days[days.length - 1];
+    g += `<circle cx="${X(last.k)}" cy="${Y(last.cum)}" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/><text x="${X(last.k) - 8}" y="${Y(last.cum) - 9}" text-anchor="end" style="fill:var(--ink);font-weight:700">${last.cum} 項</text>`;
+    g += `<line id="cx" class="grid" y1="${T}" y2="${H - B}" stroke-dasharray="3 3" style="stroke:var(--muted)" visibility="hidden"/><rect id="hit" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent"/>`;
+    $("curve").innerHTML = `<svg class="viz" viewBox="0 0 ${W} ${H}" role="img" aria-label="累積完成項目，目前 ${cum} 項">${g}</svg>`;
+    const svg = $("curve").querySelector("svg"), cx = svg.querySelector("#cx");
+    svg.querySelector("#hit").addEventListener("pointermove", (e) => {
+      const r = svg.getBoundingClientRect(), px = (e.clientX - r.left) / r.width * W;
+      let best = days[0]; days.forEach((p) => { if (Math.abs(X(p.k) - px) < Math.abs(X(best.k) - px)) best = p; });
+      cx.setAttribute("x1", X(best.k)); cx.setAttribute("x2", X(best.k)); cx.setAttribute("visibility", "visible");
+      const list = best.items.slice(0, 4).map(esc).join("<br>") + (best.items.length > 4 ? `<br>…等 ${best.items.length} 項` : "");
+      showTip(e, `<b>${fmtDate(best.k)}　累計 ${best.cum} 項</b><br>${list}`);
+    });
+    svg.querySelector("#hit").addEventListener("pointerleave", () => { cx.setAttribute("visibility", "hidden"); hideTip(); });
+  }
+
+  /* ---------- 綜合挑戰紀錄 ---------- */
+  function renderExams() {
+    const E = D.E;
+    if (!E.length) { $("exams").innerHTML = '<div class="empty">還沒有綜合挑戰紀錄。<a href="exam.html">去挑戰一輪 →</a></div>'; return; }
+    const RN = { mid: "前半學期", fin: "後半學期", custom: "自選週次" };
+    const W = 520, H = 220, L = 40, R = 14, T = 14, B = 28;
+    const n = E.length, X = (i) => n === 1 ? (L + W - R) / 2 : L + i / (n - 1) * (W - L - R), Y = (v) => H - B - v / 100 * (H - T - B);
+    let g = "";
+    [0, 50, 80, 100].forEach((v) => { g += `<line class="grid" x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" ${v === 80 ? 'stroke-dasharray="4 4"' : ""}/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${v}%</text>`; });
+    g += `<text x="${L + 4}" y="${Y(80) - 5}">八成</text>`;
+    if (n > 1) g += `<path d="${E.map((e, i) => `${i ? "L" : "M"}${X(i)} ${Y(e.ok / e.tot * 100)}`).join(" ")}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
+    E.forEach((e, i) => { const p = Math.round(e.ok / e.tot * 100);
+      g += `<g data-tip="${esc(`第 ${i + 1} 次・${fmtDate(e.t)}<br>${RN[e.range] || e.range}：${e.ok} / ${e.tot}（${p}%）`)}"><circle cx="${X(i)}" cy="${Y(p)}" r="12" fill="transparent"/><circle cx="${X(i)}" cy="${Y(p)}" r="4.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/></g>`; });
+    g += `<text x="${L}" y="${H - 8}">第 1 次</text>${n > 1 ? `<text x="${W - R}" y="${H - 8}" text-anchor="end">第 ${n} 次</text>` : ""}`;
+    const first = E[0].ok / E[0].tot, last = E[n - 1].ok / E[n - 1].tot, diff = Math.round((last - first) * 100);
+    $("exams").innerHTML = `<svg class="viz" viewBox="0 0 ${W} ${H}" role="img" aria-label="綜合挑戰答對率紀錄，共 ${n} 次">${g}</svg>
+      <div class="viz-legend"><span>共 ${n} 次</span>${n > 1 ? `<span>最近一次比第一次 ${diff >= 0 ? "進步" : "少了"} ${Math.abs(diff)} 個百分點</span>` : ""}</div>`;
+    bindTips($("exams"));
+  }
+
+  /* ---------- ★ 九項 ---------- */
+  function renderStars() {
+    $("stars").innerHTML = Object.entries(STARS).map(([n, t]) => {
+      const r = D.S[n] || { ok: 0, tries: 0 }, m = D.starM(+n), k = Math.min(r.ok, STAR_NEED);
+      return `<a class="starcell ${m ? "m" : ""}" href="calc.html#s${n}"><b>★${n}</b><span>${t}<small>${m ? "已精熟" : r.tries ? `全對 ${k} / ${STAR_NEED} 組` : "還沒練習"}</small><span class="pips">${Array.from({ length: STAR_NEED }, (_, i) => `<i class="${i < k ? "on" : ""}"></i>`).join("")}</span></span></a>`;
+    }).join("");
+  }
+
+  /* ---------- 成就 ---------- */
+  function renderBadges() {
+    const labs = D.weeks.reduce((a, x) => a + x.labsN, 0);
+    const ax = (i) => D.weeks.filter((x) => x.w.axis === i);
+    const axDone = (i) => ax(i).filter((x) => x.status >= 2).length;
+    const sM = Object.keys(STARS).filter((n) => D.starM(+n)).length;
+    const tK = [...TERM_ALL].filter((k) => D.T[k]).length;
+    const up = Object.values(D.SF).filter((r) => r && r.n > r.b).length;
+    const midW = D.weeks.filter((x) => x.w.wk <= 8), midOk = midW.filter((x) => x.qr >= PASS).length;
+    const finW = D.weeks.filter((x) => x.w.wk >= 10), finOk = finW.filter((x) => x.qr >= PASS).length;
+    const B = [
+      ["◎", "第一步", "探索完第一個互動實驗", Math.min(labs, 1), 1],
+      ["⚘", "動手做的人", "探索 32 個互動實驗（一半）", labs, 32],
+      ["⌬", "實驗台常客", "64 個互動實驗全部探索", labs, 64],
+      ["◉", "看懂眼睛", "主軸一（眼球生理）四週都完成", axDone(1), ax(1).length],
+      ["◐", "前半學期全通", "W01–W08 觀念檢核都答對八成", midOk, midW.length],
+      ["✦", "屈光通", "主軸二（屈光異常）七週都完成", axDone(2), ax(2).length],
+      ["★", "九星連珠", "★ 九項計算全部精熟", sM, 9],
+      ["Aa", "百詞達人", "字卡標記 100 個「記得了」", tK, 100],
+      ["↗", "看見自己的進步", "10 項學習目標自評比起點進步", up, 10],
+      ["✎", "三連挑戰", "完成 3 輪綜合挑戰", D.E.length, 3],
+      ["◑", "後半學期全通", "W10–W17 觀念檢核都答對八成", finOk, finW.length],
+      ["✺", "走完全程", "16 週全部精熟", D.weeks.filter((x) => x.status === 3).length, 16],
+    ];
+    $("badges").innerHTML = B.map(([ic, nm, d, v, tot]) => { const on = v >= tot;
+      return `<div class="badge ${on ? "on" : ""}"><span class="ic" aria-hidden="true">${ic}</span><div><b>${nm}</b><span>${d}</span><span class="pg">${on ? "✓ 已達成" : `${Math.min(v, tot)} / ${tot}`}</span></div></div>`; }).join("");
+  }
+
+  /* ---------- 備份 ---------- */
+  const KEYS = ["intro-progress", ...Object.values(journal.keys)];
+  $("exp").onclick = () => {
+    const data = { site: "intro-optometry-lab", v: 1, at: new Date().toISOString() }; KEYS.forEach((k) => data[k] = store.get(k, null));
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: "application/json" }));
+    const d = new Date(); a.download = `視光概論進度_${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}.json`;
+    document.body.appendChild(a); a.click(); a.remove(); $("bk-msg").textContent = "已下載進度檔。";
+  };
+  $("imp").onchange = (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    f.text().then((s) => { const data = JSON.parse(s); if (data.site !== "intro-optometry-lab") throw 0; KEYS.forEach((k) => { if (data[k] != null) store.set(k, data[k]); }); $("bk-msg").textContent = "已匯入進度。"; refresh(); })
+      .catch(() => { $("bk-msg").textContent = "這不是視光概論實驗台的進度檔。"; });
+    e.target.value = "";
+  };
+  let armed = 0;
+  $("reset").onclick = () => {
+    if (Date.now() - armed > 4000) { armed = Date.now(); $("reset").textContent = "再按一次確認清除"; $("bk-msg").textContent = "清除後無法復原，建議先下載進度檔。"; setTimeout(() => { $("reset").textContent = "清除所有進度"; }, 4000); return; }
+    KEYS.forEach((k) => { try { localStorage.removeItem(k); } catch (e) {} });
+    armed = 0; $("reset").textContent = "清除所有進度"; $("bk-msg").textContent = "已清除。"; refresh();
+  };
+
+  function refresh(keepDetail) {
+    D = snapshot();
+    renderNext(); renderTiles(); renderMap(); renderAxes(); renderSelf(); renderCurve(); renderExams(); renderStars(); renderBadges();
+    if (!keepDetail) { const x = D.weeks.find((y) => y.status === 1) || D.weeks.find((y) => y.status < 3) || D.weeks[0]; select(current || x.w.id); }
+    else document.querySelectorAll(".station").forEach((b) => b.setAttribute("aria-current", b.dataset.id === current ? "true" : "false"));
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    refresh();
+    let rw = innerWidth; addEventListener("resize", () => { if (Math.abs(innerWidth - rw) > 40) { rw = innerWidth; renderMap(); select(current); } });
+    if (window.labTrack) labTrack("progress_view", { labs: D.weeks.reduce((a, x) => a + x.labsN, 0) });
+  });
+})();
+</script>
+</body>
+</html>

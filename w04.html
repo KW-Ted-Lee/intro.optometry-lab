@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W04 視覺的形成｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .bs-wrap { background: #fff; border-radius: 10px; border: 1px solid var(--line); }
+  .bs-wrap canvas { display: block; width: 100%; }
+  .site { cursor: pointer; }
+  .site circle { transition: r .15s; }
+  .site:hover circle { r: 13; }
+</style>
+</head>
+<body data-chapter="w04">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 04</div>
+    <h1>視覺的形成：從視網膜到大腦</h1>
+    <div class="en">Visual Pathway, Blind Spot &amp; Pinhole</div>
+    <p class="lede">光訊號離開眼球後，在視交叉「換邊」，最後在枕葉才真正被「看到」。本週還要實測自己的盲點，並用一張針孔卡判斷視力不好是屈光問題還是眼疾：<b>針孔有進步 → 屈光；沒進步 → 該轉介了。</b></p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>說出從視網膜到枕葉視覺皮質的每一站，以及左右視野如何交叉。</li>
+      <li>說出盲點的位置、大小，以及大腦用哪三種方式把它藏起來。</li>
+      <li>說明針孔為什麼能改善視力，以及「有沒有改善」各代表什麼。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Light path in the eye</span><h3>光在眼球內走的路</h3><p>角膜 → 前房 → 瞳孔 → 後房 → 水晶體 → 玻璃體 → 視網膜 → 視神經 → 大腦。會讓光轉彎的屈光間質有四個：角膜、房水、水晶體、玻璃體。</p></div>
+      <div class="concept"><span class="en-term">Visual pathway</span><h3>完整視路</h3><p>感光細胞 → 雙極細胞 → 神經節細胞 → 視神經 → <b>視交叉</b> → 視束 → <b>外側膝狀體 LGN</b>（視丘） → 視放射 → <b>枕葉 V1</b>。部分纖維在 LGN 前分出，負責瞳孔反射與眼球運動。</p></div>
+      <div class="concept"><span class="en-term">Optic chiasm</span><h3>視交叉後左右換邊</h3><p>鼻側視網膜纖維交叉到對側，顳側不交叉。結果：<b>右腦處理兩眼的左半視野</b>，左腦處理右半視野。注意「視網膜的左右」與「視野的左右」相反。</p></div>
+      <div class="concept"><span class="lvtag lv-o">○ 知道即可</span><span class="en-term">Field defects</span><h3>由視野缺損反推位置</h3><p>單眼全盲 → 該側視神經；雙顳側偏盲 → 視交叉（腦下垂體腫瘤）；同側偏盲 → 對側視束或視放射；黃斑迴避的同側偏盲 → 枕葉皮質。本課只要求辨認前三種。</p></div>
+      <div class="concept"><span class="en-term">Blind spot</span><h3>盲點</h3><p>盲點是視盤在視野中的投影。位置在視野<b>顳側約 15°</b>、水平線略下方，大小約 <b>5° × 7°</b>。因為視盤在黃斑鼻側，而鼻側視網膜對應顳側視野。</p></div>
+      <div class="concept"><span class="en-term">Filling-in · Saccade</span><h3>為什麼感覺不到盲點</h3><p>一、大腦依周圍圖案自動<b>填補</b>；二、眼球<b>跳視</b>讓盲點位置一直在變；三、<b>雙眼視野互相覆蓋</b>，一眼的盲點另一眼看得到。盲點擴大是青光眼與視神經水腫的徵象。</p></div>
+      <div class="concept"><span class="en-term">Pinhole</span><h3>針孔為什麼有用</h3><p>小孔限制光束直徑 → 模糊圈變小、景深增加。最佳孔徑約 <b>1.2 mm</b>；太大限制不足，太小繞射變強、進光不足，視力反而下降。</p></div>
+      <div class="concept"><span class="en-term">Pinhole test</span><h3>針孔檢查的判讀</h3><p>戴針孔後<b>進步</b> → 傾向未矯正的屈光問題，一般可到約 6/9。<b>沒進步或變差</b> → 要懷疑介質混濁（白內障、角膜混濁）、黃斑部或視神經病變，這是轉介的訊號。</p></div>
+      <div class="concept"><span class="en-term">Ocular dominance</span><h3>主利眼</h3><p>大腦提供較多輸入、定位較準的那隻眼。測法：卡片洞法、拇指遮蔽法、Miles test（雙手三角孔）。約七成與慣用手同側但不絕對。用於老花單眼視配鏡（W14）、射擊與顯微鏡操作。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 4-1</span><h3>視路病灶與視野缺損</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="vp"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>點選圖上的紅色圓點，或在這裡選病灶位置</label>
+            <div class="seg" id="v-site"><button data-v="none" aria-pressed="true">無病灶</button><button data-v="onR">右視神經</button><button data-v="onL">左視神經</button><button data-v="ch">視交叉</button><button data-v="otR">右視束</button><button data-v="otL">左視束</button><button data-v="occR">右枕葉皮質</button></div></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="v-quiz"> 考考我：先看視野，猜病灶位置</label></div>
+          <div class="readout">
+            <div class="row"><span>缺損型態</span><b id="v-type">—</b></div>
+            <div class="row"><span>常見原因</span><b id="v-cause">—</b></div>
+          </div>
+          <div class="verdict" id="v-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="1">
+          <p class="q">腦下垂體腫瘤由下往上壓迫視交叉，最可能出現哪種視野缺損？</p>
+          <div class="opts"><button>單眼全盲</button><button>雙顳側偏盲</button><button>同側偏盲</button></div>
+          <p class="why">視交叉處交叉的是兩眼「鼻側」視網膜的纖維，它們負責的是兩眼的「顳側」視野。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>下方兩個圓是病人自己看到的視野（左眼的在左、右眼的在右），黑色是看不到的部分，小黑點是盲點。</li>
+          <li>橘色是會交叉的鼻側纖維，藍色是不交叉的顳側纖維。</li>
+          <li>病灶在視交叉「之前」影響一隻眼；在視交叉「之後」影響兩眼的同一側。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 4-2</span><h3>盲點實測</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage" style="padding:18px"><div class="bs-wrap"><canvas id="cv-bs" aria-label="盲點測試卡：左邊十字、右邊圓點"></canvas></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>測試卡</label>
+            <div class="seg" id="b-mode"><button data-v="dot" aria-pressed="true">圓點</button><button data-v="line">斷掉的線</button><button data-v="grid">格子紋</button></div></div>
+          <div class="ctrl"><label for="b-sep">用尺量十字到圓點的距離 <output id="b-sep-out"></output></label><input type="range" id="b-sep" min="4" max="15" step="0.5" value="8"></div>
+          <div class="ctrl"><label for="b-d">圓點消失時，眼睛到螢幕的距離 <output id="b-d-out"></output></label><input type="range" id="b-d" min="10" max="60" step="0.5" value="30"></div>
+          <div class="readout">
+            <div class="row"><span>你的盲點位置</span><b id="b-ang">—</b></div>
+            <div class="row"><span>預期消失距離（15°）</span><b id="b-exp">—</b></div>
+          </div>
+          <div class="verdict" id="b-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>操作步驟</h4><ul>
+          <li>遮住<b>左眼</b>，用右眼一直盯著左邊的十字，不要看圓點。</li>
+          <li>臉從離螢幕約 50 cm 處慢慢靠近，圓點會在某個距離突然消失，再靠近又出現。</li>
+          <li>量下消失時的距離，和十字到圓點的距離一起填入，算出你的盲點在顳側幾度。</li>
+          <li>換成「斷掉的線」：圓點消失的位置，線看起來是連起來的——這就是大腦的<b>填補</b>。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 4-3</span><h3>針孔孔徑與模糊圈</h3><span class="lvtag lv-o">○ 視力值為示意</span></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-ph" aria-label="孔徑與模糊程度"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>病人狀況</label>
+            <div class="seg" id="h-c"><button data-v="ref" aria-pressed="true">未矯正近視</button><button data-v="cat">白內障</button><button data-v="mac">黃斑部病變</button></div></div>
+          <div class="ctrl"><label for="h-e">屈光不正 <output id="h-e-out"></output></label><input type="range" id="h-e" min="0" max="4" step="0.25" value="1.5"></div>
+          <div class="ctrl"><label for="h-a">孔徑 <output id="h-a-out"></output></label><input type="range" id="h-a" min="0.3" max="5" step="0.1" value="4"></div>
+          <div class="readout">
+            <div class="row"><span>幾何／繞射模糊</span><b id="h-b">—</b></div>
+            <div class="row"><span>自然瞳孔 4 mm 的視力</span><b id="h-v0">—</b></div>
+            <div class="row"><span>目前孔徑的視力</span><b id="h-v1">—</b></div>
+          </div>
+          <div class="verdict" id="h-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">把孔徑一直縮小到 0.3 mm，視力會？</p>
+          <div class="opts"><button>越來越好</button><button>不變</button><button>先變好，太小又變差</button></div>
+          <p class="why">孔越小幾何模糊越小，但繞射模糊越大，最佳孔徑約 1.2 mm。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>近視病人：孔徑從 4 mm 縮到約 1.2 mm，視力明顯進步。</li>
+          <li>切換到白內障或黃斑部病變：針孔幫不上忙，這就是轉介的訊號。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 4-4</span><h3>主利眼：卡片洞法</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-dom" aria-label="透過卡片洞看遠處目標"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label>受測者的眼睛</label><div class="seg" id="m-e"><button data-v="both" aria-pressed="true">雙眼睜開</button><button data-v="R">閉左眼（只用右眼）</button><button data-v="L">閉右眼（只用左眼）</button></div></div>
+          <div class="ctrl"><label>這位受測者的主利眼是？</label><div class="chips" id="m-ans"><button type="button" class="chip" data-k="R">右眼</button><button type="button" class="chip" data-k="L">左眼</button></div></div>
+          <div class="row-btns"><button class="btn ghost" id="m-new" type="button">換一位受測者</button></div>
+          <div class="verdict" id="m-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>操作步驟</h4><ul>
+          <li>雙手持有洞的卡片、手臂伸直，雙眼睜開，從洞裡看遠處的目標。</li>
+          <li>輪流閉一隻眼：閉上某眼時目標「跑出洞外」，代表剛閉上的那隻才是主利眼。</li>
+          <li>重複三次確認結果一致——這就是作業（三）。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>左腦處理左眼、右腦處理右眼。</summary><div class="fix">視交叉後是按「視野」分：左腦處理兩眼的右半視野，右腦處理兩眼的左半視野。</div></details>
+      <details class="myth"><summary>視盤在鼻側，所以盲點也在鼻側視野。</summary><div class="fix">視網膜的位置與視野方向左右相反：鼻側視網膜 → 顳側視野。盲點在視野顳側約 15°。</div></details>
+      <details class="myth"><summary>盲點很小，大概只有一個針尖。</summary><div class="fix">約 5° × 7°，比多數人想像的大很多。在一臂距離大約是一顆高爾夫球大小。</div></details>
+      <details class="myth"><summary>針孔越小越清楚。</summary><div class="fix">太小會因繞射變糊、進光量也不足。最佳孔徑約 1.2 mm。</div></details>
+      <details class="myth"><summary>主利眼一定跟慣用手同一邊。</summary><div class="fix">約七成同側，但兩者並非絕對相關。要實際測過才知道。</div></details>
+    </div>
+  </section>
+
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>本週作業 <span class="tag">HOMEWORK</span></h2>
+    <div class="hw"><b>作業（三）我的利眼與盲點</b><ul>
+      <li>用任一種方法測出自己的主利眼，重複三次確認結果一致。</li>
+      <li>查詢主利眼與慣用手是否相關，寫下查到的說法與資料來源。</li>
+      <li>回答：如果要幫患者做單眼視 Monovision 配鏡，為什麼要先知道主利眼？</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/bank/w04.js"></script>
+<script>
+(function () {
+  const { range, seg, check, Stage, clamp, blurText } = OL;
+  OL.levels("levels", [
+    ["◆", "完整視路與視交叉", "鼻側纖維交叉、顳側不交叉"],
+    ["◆", "盲點的位置與三個隱藏機制", "簡答題：盲點為何感覺不到"],
+    ["◆", "針孔檢查的判讀", "簡答題：進步 → 屈光；沒進步 → 懷疑眼疾"],
+    ["○", "視野缺損反推病變位置", "只要求辨認單眼全盲、雙顳側偏盲、同側偏盲"],
+    ["○", "主利眼的三種測法", "W14 單眼視配鏡會用到"],
+  ]);
+
+  /* ---------- LAB 4-1 視路 ---------- */
+  const INFO = {
+    none: ["無缺損", "—", "正常視野：只有兩個生理性盲點。"],
+    onR: ["右眼全盲", "視神經炎、外傷、缺血", "病灶在視交叉之前，只影響一隻眼。"],
+    onL: ["左眼全盲", "視神經炎、外傷、缺血", "病灶在視交叉之前，只影響一隻眼。"],
+    ch: ["雙顳側偏盲", "腦下垂體腫瘤壓迫", "交叉的是鼻側纖維，負責兩眼的顳側視野。"],
+    otR: ["左側同側偏盲", "中風、腫瘤", "右視束帶著兩眼「左半視野」的訊號。"],
+    otL: ["右側同側偏盲", "中風、腫瘤", "左視束帶著兩眼「右半視野」的訊號。"],
+    occR: ["左側同側偏盲（黃斑迴避）", "後大腦動脈梗塞", "枕葉的黃斑區常有雙重血液供應，中心視野得以保留。"],
+  };
+  const site = seg("v-site", () => upd1());
+  const vq = check("v-quiz", () => { if (vq.value) newQuiz(); else upd1(); });
+  let quizAns = null, guessed = false;
+  function newQuiz() { const ks = Object.keys(INFO).filter((k) => k !== "none"); quizAns = ks[Math.floor(Math.random() * ks.length)]; guessed = false; site.set("none", true); upd1(); }
+  function field(cx, eye, k) {
+    const R = 60, y = 440;
+    let g = `<clipPath id="cl${eye}"><circle cx="${cx}" cy="${y}" r="${R}"/></clipPath><circle cx="${cx}" cy="${y}" r="${R}" fill="var(--surface)" stroke="var(--ink)"/>`;
+    const black = (x, w) => `<rect x="${x}" y="${y - R}" width="${w}" height="${2 * R}" fill="var(--ink)" clip-path="url(#cl${eye})"/>`;
+    const L = cx - R, M = cx;
+    if ((k === "onR" && eye === "R") || (k === "onL" && eye === "L")) g += `<circle cx="${cx}" cy="${y}" r="${R}" fill="var(--ink)"/>`;
+    if (k === "ch") g += eye === "R" ? black(M, R) : black(L, R);
+    if (k === "otR") g += black(L, R);
+    if (k === "otL") g += black(M, R);
+    if (k === "occR") g += black(L, R) + `<path d="M${cx},${y - 14} A14 14 0 0 0 ${cx},${y + 14} Z" fill="var(--surface)"/>`;
+    const bx = cx + (eye === "R" ? 1 : -1) * R * 15 / 60;   // 視野顳側 15°
+    g += `<ellipse cx="${bx}" cy="${y + 3}" rx="${R * 2.5 / 60}" ry="${R * 3.5 / 60}" fill="var(--muted)"/>`;
+    g += `<line x1="${cx - R}" y1="${y}" x2="${cx + R}" y2="${y}" stroke="var(--line)" stroke-width="0.8"/><line x1="${cx}" y1="${y - R}" x2="${cx}" y2="${y + R}" stroke="var(--line)" stroke-width="0.8"/>`;
+    g += `<text x="${cx}" y="${y + R + 18}" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)">${eye === "R" ? "右眼視野" : "左眼視野"}</text>`;
+    g += `<text x="${cx - R - 4}" y="${y + 4}" text-anchor="end" font-size="10" fill="var(--muted)">${eye === "R" ? "鼻側" : "顳側"}</text><text x="${cx + R + 4}" y="${y + 4}" font-size="10" fill="var(--muted)">${eye === "R" ? "顳側" : "鼻側"}</text>`;
+    return g;
+  }
+  const SITES = { onL: [196, 120], onR: [364, 120], ch: [280, 168], otL: [220, 222], otR: [340, 222], occR: [356, 312] };
+  function upd1() {
+    const k = vq.value && !guessed ? quizAns : site.value;
+    const shown = vq.value && !guessed ? quizAns : site.value;
+    const nasal = "var(--ray)", temp = "var(--accent)";
+    let s = `<svg viewBox="0 0 560 530" role="img" aria-label="視覺傳導路徑與視野">`;
+    s += `<text x="280" y="16" text-anchor="middle" font-size="11" fill="var(--muted)">由上往下看（病人面朝上方）</text>`;
+    // 眼睛
+    [[180, "左眼"], [380, "右眼"]].forEach(([x, t]) => { s += `<circle cx="${x}" cy="62" r="34" fill="var(--an-sclera)" stroke="var(--an-line)"/><circle cx="${x}" cy="32" r="12" fill="var(--an-iris)"/><text x="${x}" y="110" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" dx="${x < 280 ? -46 : 46}">${t}</text>`; });
+    // 纖維：左眼 鼻側在右（x=200），顳側在左（x=160）；右眼 鼻側在左（360），顳側在右（400）
+    const path = (d, col) => `<path d="${d}" fill="none" stroke="${col}" stroke-width="5" stroke-linecap="round" opacity=".9"/>`;
+    s += path("M160,90 C160,140 262,150 266,175 C268,200 236,215 226,240 L226,270 C226,300 250,320 268,340", temp);     // 左顳 → 左側
+    s += path("M200,90 C205,140 300,160 300,180 C300,200 336,215 334,240 L334,270 C334,300 312,320 300,340", nasal);   // 左鼻 → 交叉到右
+    s += path("M360,90 C355,140 260,160 260,180 C260,200 224,215 226,240", nasal);                                     // 右鼻 → 交叉到左
+    s += path("M400,90 C400,140 298,150 294,175 C292,200 324,215 334,240", temp);                                       // 右顳 → 右側
+    // LGN、枕葉
+    s += `<ellipse cx="226" cy="258" rx="20" ry="13" fill="var(--surface-2)" stroke="var(--muted)"/><ellipse cx="334" cy="258" rx="20" ry="13" fill="var(--surface-2)" stroke="var(--muted)"/>`;
+    s += `<text x="190" y="262" text-anchor="end" font-size="11" fill="var(--muted)">LGN</text><text x="370" y="262" font-size="11" fill="var(--muted)">LGN</text>`;
+    s += `<path d="M200,330 Q280,370 360,330 L360,348 Q280,388 200,348 Z" fill="var(--surface-2)" stroke="var(--muted)"/><text x="280" y="378" text-anchor="middle" font-size="11" fill="var(--muted)">枕葉 V1</text>`;
+    s += `<text x="120" y="150" font-size="11" fill="var(--muted)">視神經</text><text x="280" y="152" text-anchor="middle" font-size="11" fill="var(--muted)">視交叉</text><text x="150" y="228" font-size="11" fill="var(--muted)">視束</text><text x="150" y="312" font-size="11" fill="var(--muted)">視放射</text>`;
+    // 病灶點
+    Object.entries(SITES).forEach(([key, [x, y]]) => {
+      const on = key === shown;
+      s += `<g class="site" data-k="${key}"><circle cx="${x}" cy="${y}" r="${on ? 12 : 9}" fill="${on ? "var(--bad)" : "var(--surface)"}" stroke="var(--bad)" stroke-width="2.5" opacity="${on ? 0.9 : 0.85}"/>${on ? `<path d="M${x - 6},${y - 6} L${x + 6},${y + 6} M${x + 6},${y - 6} L${x - 6},${y + 6}" stroke="#fff" stroke-width="2.5"/>` : ""}</g>`;
+    });
+    s += field(170, "L", k) + field(390, "R", k) + `</svg>`;
+    const box = document.getElementById("vp"); box.innerHTML = s;
+    box.querySelectorAll(".site").forEach((g) => g.addEventListener("click", () => {
+      const key = g.dataset.k;
+      if (vq.value && !guessed) {
+        guessed = true; site.set(quizAns, true);
+        document.getElementById("v-v").innerHTML = key === quizAns ? '<span class="pill ok">猜對了</span> ' + INFO[quizAns][2] : `<span class="pill bad">再想想</span> 正確位置是「${document.querySelector(`#v-site button[data-v=${quizAns}]`).textContent}」。${INFO[quizAns][2]}`;
+        document.getElementById("v-v").innerHTML += ' <button type="button" class="linkish" id="v-next">再考一題</button>';
+        upd1(); document.getElementById("v-next").onclick = newQuiz; return;
+      }
+      site.set(key, true); upd1();
+    }));
+    if (vq.value && !guessed) {
+      document.getElementById("v-type").textContent = "？"; document.getElementById("v-cause").textContent = "？";
+      document.getElementById("v-v").innerHTML = '<span class="pill info">考考我</span> 看下方的視野，點圖上你認為的病灶位置。';
+      // 不顯示病灶點的答案
+      box.querySelectorAll(".site circle").forEach((c) => { c.setAttribute("fill", "var(--surface)"); c.setAttribute("r", 9); });
+      box.querySelectorAll(".site path").forEach((p) => p.remove());
+      return;
+    }
+    document.getElementById("v-type").textContent = INFO[k][0];
+    document.getElementById("v-cause").textContent = INFO[k][1];
+    if (!vq.value) document.getElementById("v-v").innerHTML = INFO[k][2];
+  }
+  upd1();
+
+  /* ---------- LAB 4-2 盲點 ---------- */
+  const bm = seg("b-mode", () => st2.render());
+  const bsep = range("b-sep", (v) => v.toFixed(1) + " cm", () => upd2());
+  const bd = range("b-d", (v) => v.toFixed(1) + " cm", () => upd2());
+  function upd2() {
+    const ang = Math.atan(bsep.value / bd.value) * 180 / Math.PI;
+    const exp = bsep.value / Math.tan(15 * Math.PI / 180);
+    document.getElementById("b-ang").textContent = "顳側 " + ang.toFixed(1) + "°";
+    document.getElementById("b-exp").textContent = exp.toFixed(1) + " cm";
+    document.getElementById("b-v").innerHTML = Math.abs(ang - 15) <= 3 ? '<span class="pill ok">符合</span> 盲點約在顳側 15°（一般範圍約 12–18°）。' : '<span class="pill warn">再量一次</span> 一般約在 12–18°。確認眼睛一直盯著十字、距離從眼睛量到螢幕。';
+  }
+  upd2();
+  const st2 = new Stage("cv-bs", { xmin: 0, xmax: 100, ymin: 0, ymax: 30, aspect: 0.3, minH: 150, maxH: 230, draw: (s) => {
+    const ctx = s.ctx; ctx.save(); ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, s.w, s.h);
+    const y = s.h / 2, xc = s.w * 0.12, xd = s.w * 0.82;
+    ctx.strokeStyle = "#111"; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(xc - 14, y); ctx.lineTo(xc + 14, y); ctx.moveTo(xc, y - 14); ctx.lineTo(xc, y + 14); ctx.stroke();
+    const m = bm.value;
+    if (m === "dot") { ctx.fillStyle = "#c62828"; ctx.beginPath(); ctx.arc(xd, y, 14, 0, Math.PI * 2); ctx.fill(); }
+    if (m === "line") { ctx.strokeStyle = "#1d4f91"; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(s.w * 0.3, y); ctx.lineTo(xd - 16, y); ctx.moveTo(xd + 16, y); ctx.lineTo(s.w * 0.98, y); ctx.stroke(); }
+    if (m === "grid") {
+      ctx.strokeStyle = "#1d4f91"; ctx.lineWidth = 2;
+      for (let gx = s.w * 0.62; gx <= s.w * 0.99; gx += 12) { ctx.beginPath(); ctx.moveTo(gx, 10); ctx.lineTo(gx, s.h - 10); ctx.stroke(); }
+      ctx.fillStyle = "#ffffff"; ctx.fillRect(xd - 15, y - 15, 30, 30);
+    }
+    ctx.fillStyle = "#555"; ctx.font = `12px ${s.c.body}`; ctx.textAlign = "left";
+    ctx.fillText("遮住左眼，右眼盯著十字", 10, 18);
+    ctx.restore();
+  } });
+
+  /* ---------- LAB 4-3 針孔 ---------- */
+  const hc = seg("h-c", () => upd3());
+  const he = range("h-e", (v) => (v === 0 ? "0.00" : "−" + v.toFixed(2)) + " D", () => upd3());
+  const ha = range("h-a", (v) => v.toFixed(1) + " mm", () => upd3());
+  const LAMBDA = 555e-9, ARC = 3437.75;   // rad → 弧分
+  const blurOf = (a, D) => { const geo = (a / 1000) * D * ARC, dif = 2.44 * LAMBDA / (a / 1000) * ARC; return { geo, dif, tot: Math.hypot(geo, dif) }; };
+  function va(a) {
+    const D = hc.value === "ref" ? he.value : Math.min(he.value, 0.5);
+    const b = blurOf(a, D);
+    let mar = Math.max(1, 0.25 * b.tot);
+    if (hc.value === "cat") mar = Math.max(mar, 3.4);
+    let v = 1 / mar; if (hc.value === "mac") v = Math.min(v, 0.2);
+    return { v: Math.min(1.2, v), b };
+  }
+  const deci = (v) => v.toFixed(v >= 0.95 ? 1 : 2);
+  function upd3() { st3.render(); }
+  const st3 = new Stage("cv-ph", { xmin: 0, xmax: 100, ymin: 0, ymax: 64, aspect: 0.62, minH: 300, maxH: 440, draw: (s, c) => {
+    const a = ha.value, r0 = va(4), r1 = va(a);
+    // 曲線：孔徑 vs 視力
+    const gx = (x) => 12 + (x - 0.3) / 4.7 * 82, gy = (v) => 10 + v / 1.2 * 24;
+    s.line(gx(0.3), gy(0), gx(5), gy(0), { color: c.muted, w: 1 }); s.line(gx(0.3), gy(0), gx(0.3), gy(1.2), { color: c.muted, w: 1 });
+    [0.5, 1, 2, 3, 4, 5].forEach((x) => s.text(x + "", gx(x), gy(0) - 3, { size: 10, color: c.muted, font: c.mono }));
+    [0.2, 0.5, 1.0].forEach((v) => s.text(v.toFixed(1), gx(0.3) - 1.2, gy(v), { size: 10, color: c.muted, font: c.mono, align: "right" }));
+    s.text("孔徑（mm）", gx(5), gy(0) - 6.5, { size: 10, color: c.muted, align: "right" });
+    s.text("視力（小數，示意）", gx(0.3) + 1, gy(1.2) + 2, { size: 10, color: c.muted, align: "left" });
+    const pts = []; for (let x = 0.3; x <= 5.001; x += 0.05) pts.push([gx(x), gy(va(x).v)]);
+    s.poly(pts, { color: c.accent, w: 2.2 });
+    s.line(gx(1.2), gy(0), gx(1.2), gy(1.2), { color: c.ok, w: 1, dash: [3, 3] }); s.text("1.2 mm", gx(1.2), gy(1.2) + 1.8, { size: 10, color: c.ok });
+    s.point(gx(a), gy(r1.v), "", { color: c.ray, r: 5 });
+    // 上方：視標比較
+    const ctx = s.ctx, Y = s.Y(50), F = Math.max(22, s.w * 0.05);
+    const draw = (x, r, lab) => {
+      const bpx = clamp(r.b.tot * 0.25 * 1.2, 0, 26) + (hc.value === "cat" ? 6 : 0);
+      ctx.save(); ctx.fillStyle = c.surface; ctx.fillRect(x - 80, Y - 40, 160, 80); ctx.strokeStyle = c.line; ctx.strokeRect(x - 80, Y - 40, 160, 80);
+      if (hc.value === "cat") { ctx.globalAlpha = 0.35; }
+      blurText(ctx, "E  F  P", x, Y - 4, `700 ${F}px ${c.body}`, c.ink, bpx, bpx);
+      ctx.globalAlpha = 1;
+      if (hc.value === "mac") { ctx.fillStyle = c.muted; ctx.globalAlpha = 0.6; ctx.beginPath(); ctx.arc(x, Y - 4, 16, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1; }
+      ctx.restore();
+      s.text(lab, x, Y + 52, { px: true, size: 12, weight: 700, color: c.ink });
+    };
+    draw(s.w * 0.28, r0, "自然瞳孔 4 mm：" + deci(r0.v));
+    draw(s.w * 0.72, r1, `孔徑 ${a.toFixed(1)} mm：` + deci(r1.v));
+    document.getElementById("h-b").textContent = `${r1.b.geo.toFixed(1)}′ ／ ${r1.b.dif.toFixed(1)}′`;
+    document.getElementById("h-v0").textContent = deci(r0.v);
+    document.getElementById("h-v1").textContent = deci(r1.v);
+    const gain = r1.v - r0.v, v = document.getElementById("h-v");
+    if (Math.abs(a - 4) < 0.15) v.innerHTML = "把孔徑縮小，看看視力有沒有進步。";
+    else if (gain > 0.1) v.innerHTML = '<span class="pill ok">針孔有進步</span> 傾向未矯正的屈光問題，可以繼續驗光矯正。';
+    else if (gain < -0.05) v.innerHTML = '<span class="pill warn">孔太小了</span> 繞射與進光不足讓視力反而下降。';
+    else v.innerHTML = '<span class="pill bad">針孔沒進步</span> 屈光不是主因，要懷疑介質混濁、黃斑部或視神經病變 → 轉介。';
+  } });
+})();
+</script>
+<script>
+  (function () {
+    const { Stage, seg } = OL;
+    let dom = Math.random() < 0.7 ? "R" : "L";
+    const me = seg("m-e", () => st.render());
+    const st = new Stage("cv-dom", { xmin: -20, xmax: 20, ymin: -12, ymax: 12, aspect: 0.6, minH: 260, maxH: 400, equal: true, draw: (s, c) => {
+      const ctx = s.ctx, e = me.value;
+      // 洞與目標的相對位置：雙眼時對準主利眼；只用某一眼時，非主利眼看到目標偏移
+      const shift = e === "both" || e === dom ? 0 : (e === "R" ? -9 : 9);
+      ctx.save(); ctx.fillStyle = "#cfe6d8"; ctx.fillRect(0, 0, s.w, s.h);
+      // 遠處目標（位置隨所用的眼睛改變）
+      const tx = s.X(shift), ty = s.Y(1);
+      [7, 5, 3, 1.4].forEach((r, i) => { ctx.beginPath(); ctx.arc(tx, ty, r * s.sx, 0, Math.PI * 2); ctx.fillStyle = i % 2 ? "#fff" : "#c62828"; ctx.fill(); });
+      // 卡片（有洞）
+      ctx.beginPath(); ctx.rect(0, 0, s.w, s.h); ctx.arc(s.X(0), s.Y(1), 4.2 * s.sx, 0, Math.PI * 2, true); ctx.fillStyle = "#e9dcc3"; ctx.fill("evenodd");
+      ctx.strokeStyle = "#8a7a5c"; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(s.X(0), s.Y(1), 4.2 * s.sx, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+      s.text(e === "both" ? "雙眼睜開：目標在洞的正中央" : `只用${e === "R" ? "右" : "左"}眼看`, 0, -9.5, { size: 13, weight: 700, color: "#3d3424" });
+      s.text("卡片", -17, 9.5, { size: 11, color: "#6b5d43" });
+    } });
+    const box = document.getElementById("m-ans");
+    box.querySelectorAll(".chip").forEach((b) => b.onclick = () => {
+      box.querySelectorAll(".chip").forEach((x) => { x.disabled = true; if (x.dataset.k === dom) x.classList.add("ok"); });
+      if (b.dataset.k !== dom) b.classList.add("bad");
+      document.getElementById("m-v").innerHTML = (b.dataset.k === dom ? '<span class="pill ok">正確</span> ' : '<span class="pill bad">再試一次</span> ') + `主利眼是${dom === "R" ? "右" : "左"}眼：只用${dom === "R" ? "右" : "左"}眼看時目標還在洞裡，閉上它目標就跑掉了。`;
+    });
+    document.getElementById("m-new").onclick = () => { dom = Math.random() < 0.7 ? "R" : "L"; me.set("both"); box.querySelectorAll(".chip").forEach((x) => { x.disabled = false; x.classList.remove("ok", "bad"); }); document.getElementById("m-v").textContent = ""; st.render(); };
+  })();
+</script>
+</body>
+</html>

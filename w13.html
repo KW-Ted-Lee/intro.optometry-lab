@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="assets/analytics.js"></script>
+<title>W13 散光（二）｜視光概論實驗台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .tp { display: grid; gap: 8px; }
+  .tp .step { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+  .tp .step b { font-family: var(--font-mono); color: var(--accent); font-size: 13px; }
+  .tp .step span { font-family: var(--font-mono); }
+  .rxbig { font-family: var(--font-mono); font-size: 22px; text-align: center; padding: 10px; background: var(--surface); border-radius: 10px; border: 1px solid var(--line); }
+  .rxin { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+</style>
+</head>
+<body data-chapter="w13">
+<header id="topbar"></header>
+<main class="wrap">
+  <div class="chapter-head">
+    <div class="eyebrow">Week 13</div>
+    <h1>散光（二）：Sturm 光錐與處方轉換</h1>
+    <div class="en">Astigmatism II</div>
+    <p class="lede">把 W07 看到的兩條焦線串成一個立體的光錐，就能用「焦線在視網膜哪一側」把散光分成五種。再學兩個 ★：<b>等價球面 SE ＝ S ＋ C/2</b>、<b>正負柱面轉換三步驟</b>。最後一句每年都有人記反：<b>軸的方向，是沒有度數的方向。</b></p>
+  </div>
+
+  <section class="block">
+    <h2>學習目標 <span class="tag">GOALS</span></h2>
+    <ul class="goals">
+      <li>用兩條焦線與視網膜的相對位置，解釋散光的五種成像位置分類。</li>
+      <li>★ 用 SE ＝ S ＋ C/2 算出散光眼的大致屈光狀態。</li>
+      <li>★ 用三步驟完成正負柱面轉換（先練軸 90／180 的情況）。</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>本週記號 <span class="tag">★ ◆ ○</span></h2>
+    <div id="levels"></div>
+  </section>
+
+  <section class="block">
+    <h2>核心觀念 <span class="tag">KEY IDEAS</span></h2>
+    <div class="concepts">
+      <div class="concept"><span class="en-term">Conoid of Sturm</span><h3>Sturm 光錐</h3><p>散光眼的光線形成立體光錐：<b>前焦線</b>（較強子午線的像）、<b>後焦線</b>（較弱子午線的像）、中間光斑最圓最小的<b>最小模糊圈</b>。沿光軸看：線 → 橢圓 → 圓 → 橢圓 → 線。兩焦線間的距離（Sturm 間隔）代表散光量。</p></div>
+      <div class="concept"><span class="en-term">Five types</span><h3>五種成像位置</h3><p>簡單近視型（前焦線在前、後焦線在視網膜上）、簡單遠視型（前在上、後在後）、複合近視型（兩條都在前）、複合遠視型（兩條都在後）、混合式（一前一後）。「簡單」＝有一條剛好在視網膜上。</p></div>
+      <div class="concept"><span class="en-term">Read it from the Rx</span><h3>從處方判斷</h3><p>看 <b>S</b> 與 <b>S ＋ C</b> 兩個數字：其中一個是 0 → 簡單型；同負 → 複合近視；同正 → 複合遠視；一正一負 → 混合式。例：pl / −1.00 × 180 簡單近視；+1.00 / −3.00 × 90 混合式。</p></div>
+      <div class="concept"><span class="lvtag lv-s">★ 要會算</span><span class="en-term">Spherical equivalent</span><h3>等價球面 SE</h3><p>SE ＝ S ＋ C ÷ 2：把最小模糊圈移到視網膜上所需的球面度數。−2.00 / −1.00 × 180 → −2.50；+1.00 / −3.00 × 90 → −0.50。近視控制研究幾乎都用 SE 表示度數變化。</p></div>
+      <div class="concept"><span class="lvtag lv-s">★ 要會算</span><span class="en-term">Transposition</span><h3>正負柱面轉換</h3><p>一、新球面 ＝ 原球面 ＋ 原柱面；二、柱面變號；三、軸度 ± 90°（結果在 1°–180°）。−2.00 / −1.00 × 180 → −3.00 / +1.00 × 90。台灣臨床與國考多用負柱面，但儀器、國外文獻常用正柱面。</p></div>
+      <div class="concept"><span class="en-term">Axis = no power</span><h3>軸是沒有度數的方向</h3><p>想像一根躺著的玻璃棒：沿長軸看是平的（沒度數），垂直方向是彎的（有度數）。−1.00 × 180：<b>水平沒有度數、垂直有 −1.00 D</b>。正柱面在有度數的方向較厚，負柱面較薄。</p></div>
+      <div class="concept"><span class="en-term">Neutralization</span><h3>鏡片中和</h3><p>拿鏡片在眼前左右移動看背後目標：<b>順動</b>（同方向）→ 負鏡片；<b>逆動</b> → 正鏡片；<b>剪動</b> → 含柱面；不動 → 已中和，度數即所用鏡片的相反數。焦度計普及前的傳統技術，逼你理解正負鏡片對光做了什麼。</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>互動實驗 <span class="tag">LAB</span></h2>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 13-1</span><h3>Sturm 光錐與五種成像位置</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-st" aria-label="Sturm 光錐側視圖與視網膜上的光斑"></canvas></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="s-s">球面 S <output id="s-s-out"></output></label><input type="range" id="s-s" min="-4" max="4" step="0.25" value="-2"></div>
+          <div class="ctrl"><label for="s-c">柱面 C（負柱面） <output id="s-c-out"></output></label><input type="range" id="s-c" min="-4" max="0" step="0.25" value="-1"></div>
+          <div class="ctrl"><label>軸度</label><div class="seg" id="s-a"><button data-v="180" aria-pressed="true">× 180</button><button data-v="90">× 90</button></div></div>
+          <div class="ctrl"><label for="s-k">在眼前加一片球面鏡 <output id="s-k-out"></output></label><input type="range" id="s-k" min="-4" max="4" step="0.25" value="0"></div>
+          <div class="readout">
+            <div class="row"><span>S ／ S ＋ C</span><b id="s-ss">—</b></div>
+            <div class="row"><span>型別</span><b id="s-ty">—</b></div>
+            <div class="row"><span>SE</span><b id="s-se">—</b></div>
+          </div>
+          <div class="verdict" id="s-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="2">
+          <p class="q">+1.00 / −3.00 × 90 屬於哪一型？</p>
+          <div class="opts"><button>複合遠視型</button><button>簡單遠視型</button><button>混合式</button></div>
+          <p class="why">S ＝ +1.00（正）、S ＋ C ＝ −2.00（負），一正一負就是混合式：一條焦線在視網膜後、一條在前。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>上圖紅線是視網膜，兩條粗線是焦線；它們相對視網膜的位置決定型別。</li>
+          <li>在眼前加一片 SE 的相反數（例如 SE −2.50 就加 −2.50）：最小模糊圈剛好落在視網膜上，這就是 SE 的意義。</li>
+          <li>只靠球面鏡，光斑最小只能到「最小模糊圈」，要變成一個點還是得用柱面鏡。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 13-2</span><h3>正負柱面轉換</h3><span class="lvtag lv-s">★ 要會算</span></div>
+      <div class="sim">
+        <div class="rxin">
+          <div class="ctrl"><label for="t-s">球面 S</label><input class="num" type="number" id="t-s" step="0.25" value="-2.00"></div>
+          <div class="ctrl"><label for="t-c">柱面 C</label><input class="num" type="number" id="t-c" step="0.25" value="-1.00"></div>
+          <div class="ctrl"><label for="t-a">軸度</label><input class="num" type="number" id="t-a" step="1" min="1" max="180" value="180"></div>
+        </div>
+        <div class="rxbig" id="t-in"></div>
+        <div class="tp" id="t-steps"></div>
+        <div class="rxbig" id="t-out"></div>
+        <div class="row-btns"><button class="btn ghost" id="t-rand" type="button">隨機出一題（軸 90／180）</button><button class="btn ghost" id="t-hide" type="button">先遮住答案</button></div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>轉換前後的 SE 一定相同——可以用來驗算。</li>
+          <li>先熟練軸度 90 或 180 的題目；45 ↔ 135 這種老師示範即可。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 13-3</span><h3>鏡片中和：順動、逆動與剪動</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><canvas id="cv-nz" aria-label="透過鏡片看十字"></canvas><span class="hint">拖曳鏡片左右移動</span></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="z-x">鏡片位置 <output id="z-x-out"></output></label><input type="range" id="z-x" min="-6" max="6" step="0.1" value="0"></div>
+          <div class="ctrl"><label class="check"><input type="checkbox" id="z-auto"> 自動左右移動</label></div>
+          <div class="ctrl"><label>我判斷這片是</label><div class="seg" id="z-g"><button data-v="none" aria-pressed="true">還沒判斷</button><button data-v="minus">負（順動）</button><button data-v="plus">正（逆動）</button><button data-v="cyl">含柱面（剪動）</button></div></div>
+          <div class="ctrl"><label for="z-t">疊上已知球面鏡中和 <output id="z-t-out"></output></label><input type="range" id="z-t" min="-5" max="5" step="0.25" value="0"></div>
+          <div class="row-btns"><button class="btn" id="z-chk" type="button">對答案</button><button class="btn ghost" id="z-new" type="button">換一片鏡片</button></div>
+          <div class="verdict" id="z-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <div class="predict" data-answer="0">
+          <p class="q">鏡片往右移，背後的十字也往右跑，這是哪一種鏡片？</p>
+          <div class="opts"><button>負鏡片（凹透鏡）</button><button>正鏡片（凸透鏡）</button><button>平光</button></div>
+          <p class="why">同方向移動叫順動，代表負鏡片；反方向叫逆動，代表正鏡片。</p>
+        </div>
+        <h4>觀察重點</h4><ul>
+          <li>疊上相反度數的鏡片，十字不再移動，就是「中和」。</li>
+          <li>柱面鏡片：十字的兩條線會往不同方向扭動（剪動），光靠球面鏡只能中和其中一個方向。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lab">
+      <div class="lab-head"><span class="lab-no">LAB 13-4</span><h3>躺著的玻璃棒：軸是沒有度數的方向</h3></div>
+      <div class="lab-body">
+        <div class="lab-stage"><div class="svgstage" id="rod"></div></div>
+        <div class="lab-panel">
+          <div class="ctrl"><label for="r-a">柱面軸度 <output id="r-a-out"></output></label><input type="range" id="r-a" min="5" max="180" step="5" value="180"></div>
+          <div class="ctrl"><label for="r-c">柱面度數 <output id="r-c-out"></output></label><input type="range" id="r-c" min="-4" max="4" step="0.25" value="-1"></div>
+          <div class="readout">
+            <div class="row"><span>沒有度數的方向（軸）</span><b id="r-no">—</b></div>
+            <div class="row"><span>有度數的方向</span><b id="r-yes">—</b></div>
+          </div>
+          <div class="ctrl"><label id="r-q">考考我</label><div class="chips" id="r-ch"></div></div>
+          <div class="row-btns"><button class="btn ghost" id="r-new" type="button">換一題</button></div>
+          <div class="verdict" id="r-v"></div>
+        </div>
+      </div>
+      <div class="observe">
+        <h4>觀察重點</h4><ul>
+          <li>沿著玻璃棒的長軸看，它是平的（沒度數）；橫著切過去才是彎的（有度數）。</li>
+          <li>−1.00 × 180：水平沒有度數，垂直有 −1.00 D。每年都有人記反。</li>
+          <li>度數在「軸的垂直方向」，所以軸度 ± 90 就是有度數的方向。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>常見迷思 <span class="tag">MISCONCEPTIONS</span></h2>
+    <div class="myths">
+      <details class="myth"><summary>−1.00 × 180 是水平方向有 −1.00 D。</summary><div class="fix">軸是「沒有度數」的方向：水平沒有度數，垂直有 −1.00 D。用躺著的玻璃棒記。</div></details>
+      <details class="myth"><summary>轉換時軸度一律加 90。</summary><div class="fix">結果要落在 1°–180°：120 → 30（加 90 超過 180 要減 180）；180 → 90、90 → 180。</div></details>
+      <details class="myth"><summary>SE 就是把散光忽略掉。</summary><div class="fix">SE 是把最小模糊圈放到視網膜上的球面度數，是有物理意義的「最佳球面近似」，不是丟掉散光。</div></details>
+      <details class="myth"><summary>剪動代表鏡片破了。</summary><div class="fix">剪動代表鏡片含柱面成分，可以藉此找出軸度。</div></details>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>觀念檢核 <span class="tag">CHECK</span></h2>
+    <div id="quiz"></div>
+  </section>
+
+  <section class="block">
+    <h2>練習題 <span class="tag">PRACTICE</span></h2>
+    <p class="sub">★ SE 與 ★ 正負柱面轉換，加上五種成像位置判斷。SE 可填到小數第三位。</p>
+    <div id="practice"></div>
+  </section>
+
+  <section class="block">
+    <h2>專業英文 <span class="tag">TERMS</span></h2>
+    <div id="terms"></div>
+  </section>
+
+  <section class="block">
+    <h2>本週作業 <span class="tag">HOMEWORK</span></h2>
+    <div class="hw"><b>作業（六）讀懂一張眼鏡處方</b><ul>
+      <li>拿一張自己或家人的眼鏡處方，說明 S、C、A 各代表什麼。</li>
+      <li>★ 計算 SE；★ 做一次正負柱面轉換；判斷屬於五種成像位置的哪一型。</li>
+      <li>兩眼相差 2.00 D 以上，說明可能遇到哪些問題（回想 W11）。</li>
+    </ul></div>
+  </section>
+
+  <nav id="pager"></nav>
+</main>
+<footer id="footer"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/practice.js"></script>
+<script src="assets/problems/star.js"></script>
+<script src="assets/bank/w13.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => OBPractice.mount("practice", "w13"));</script>
+<script>
+(function () {
+  const { Stage, range, seg, check, fmt, clamp } = OL;
+  OL.levels("levels", [
+    ["★", "等價球面 SE ＝ S ＋ C/2", "一步驟計算"],
+    ["★", "正負柱面轉換三步驟", "先練軸 90／180"],
+    ["◆", "Sturm 光錐與五種成像位置", "看懂五種位置的判斷"],
+    ["◆", "軸是沒有度數的方向", "每年都有人記反"],
+    ["○", "鏡片中和：順動、逆動、剪動", "課堂實作"],
+  ]);
+  const TYPES = (a, b) => {
+    const z = (v) => Math.abs(v) < 0.01;
+    if (z(a) && z(b)) return "正視（無屈光不正）";
+    if (z(a - b)) return a < 0 ? "單純近視（無散光）" : "單純遠視（無散光）";
+    if (z(a) || z(b)) return (a + b) < 0 ? "簡單近視型散光" : "簡單遠視型散光";
+    if (a < 0 && b < 0) return "複合近視型散光";
+    if (a > 0 && b > 0) return "複合遠視型散光";
+    return "混合式散光";
+  };
+
+  /* ---------- LAB 13-1 ---------- */
+  const ss = range("s-s", (v) => v === 0 ? "pl" : fmt.D(v), () => st1.render());
+  const sc = range("s-c", (v) => fmt.D(v), () => st1.render());
+  const sa = seg("s-a", () => st1.render());
+  const sk = range("s-k", (v) => fmt.D(v), () => st1.render());
+  const st1 = new Stage("cv-st", { xmin: -12, xmax: 12, ymin: -10, ymax: 10, aspect: 0.66, minH: 320, maxH: 470, draw: (s, c) => {
+    const S = ss.value, C = sc.value, ax = +sa.value, K = sk.value;
+    // 每條子午線的剩餘屈光不正（加鏡片後）：沿軸方向 S＋K，垂直軸方向 S＋C＋K
+    const eAx = S + K, ePerp = S + C + K;
+    // 側視（上半）：視網膜 x=0；焦線位置 x = e × 2.2（負 → 視網膜前）
+    const yS = 4.5, k = 2.2;
+    s.line(-12, yS, 12, yS, { color: c.muted, w: 1, dash: [8, 4, 2, 4] });
+    s.line(0, yS - 4.2, 0, yS + 4.2, { color: c.retina, w: 3 }); s.text("視網膜", 0, yS + 5, { size: 10, color: c.retina, weight: 700 });
+    s.text("前（玻璃體）", -11.5, yS + 5, { size: 10, color: c.muted, align: "left" }); s.text("後", 11.5, yS + 5, { size: 10, color: c.muted, align: "right" });
+    // 光錐輪廓：兩個子午面
+    const xa = clamp(eAx * k, -11, 11), xp = clamp(ePerp * k, -11, 11);
+    s.ctx.save(); s.ctx.beginPath(); s.ctx.rect(s.X(-12), s.Y(yS + 4.2), s.X(12) - s.X(-12), s.Y(yS - 4.2) - s.Y(yS + 4.2)); s.ctx.clip();
+    s.ray([[-12, yS + 3.2], [xp, yS], [12, yS - 3.2 * (12 - xp) / (12 + xp)]], { color: c.ray, w: 1.2, alpha: 0.5, arrows: false });
+    s.ray([[-12, yS - 3.2], [xp, yS], [12, yS + 3.2 * (12 - xp) / (12 + xp)]], { color: c.ray, w: 1.2, alpha: 0.5, arrows: false });
+    s.ray([[-12, yS + 2.4], [xa, yS], [12, yS - 2.4 * (12 - xa) / (12 + xa)]], { color: c.ray3, w: 1.2, alpha: 0.5, arrows: false });
+    s.ray([[-12, yS - 2.4], [xa, yS], [12, yS + 2.4 * (12 - xa) / (12 + xa)]], { color: c.ray3, w: 1.2, alpha: 0.5, arrows: false });
+    s.ctx.restore();
+    // 焦線標記：較強子午線（垂直軸方向）在前
+    const lineLab = (x, col, t, up) => { s.line(x, yS - 1.6, x, yS + 1.6, { color: col, w: 4 }); s.text(t, x, up ? yS + 2.6 : yS - 2.6, { size: 10, color: col, weight: 700, bg: c.bg }); };
+    const perpDir = ax === 180 ? "垂直" : "水平", axDir = ax === 180 ? "水平" : "垂直";
+    lineLab(xp, c.ray, `${perpDir}子午線的焦線`, false); lineLab(xa, c.ray3, `${axDir}子午線的焦線`, true);
+    const xm = (xa + xp) / 2; s.point(xm, yS, "", { color: c.ok, r: 4 }); s.text("最小模糊圈", xm, yS - 3.6, { size: 10, color: c.ok, bg: c.bg });
+    // 下半：視網膜上的光斑（各方向模糊長度 ∝ 該子午線的屈光不正）
+    const cx = s.X(0), cy = s.Y(-5.2), u = Math.min(s.w, s.h) * 0.045;
+    const wH = Math.abs(ax === 180 ? eAx : ePerp), wV = Math.abs(ax === 180 ? ePerp : eAx);   // 水平方向光斑長 ∝ 水平子午線的誤差
+    const ctx = s.ctx; ctx.save(); ctx.fillStyle = c.surface; ctx.strokeStyle = c.line; ctx.fillRect(cx - u * 6, cy - u * 4, u * 12, u * 8); ctx.strokeRect(cx - u * 6, cy - u * 4, u * 12, u * 8);
+    ctx.fillStyle = "#ffbf1f"; ctx.globalAlpha = 0.85; ctx.beginPath(); ctx.ellipse(cx, cy, Math.min(u * 5.6, Math.max(1.5, wH * u * 1.2)), Math.min(u * 3.7, Math.max(1.5, wV * u * 1.2)), 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+    s.text("視網膜上的光斑", 0, -9.4, { size: 10, color: c.muted });
+    const se = S + C / 2;
+    document.getElementById("s-ss").textContent = `${fmt.s(S)} ／ ${fmt.s(S + C)}`;
+    document.getElementById("s-ty").textContent = TYPES(S, S + C);
+    document.getElementById("s-se").textContent = fmt.D(se, 3).replace(/0 D$/, " D");
+    const after = TYPES(eAx, ePerp);
+    document.getElementById("s-v").innerHTML = Math.abs(K) < 0.01 ? "拖動「加一片球面鏡」，把兩條焦線一起往前或往後推。" :
+      Math.abs(K + se) < 0.13 ? '<span class="pill ok">最小模糊圈落在視網膜上</span> 加的正好是 SE 的相反數。' : `加鏡後變成：${after}`;
+  } });
+
+  /* ---------- LAB 13-2 ---------- */
+  let hideAns = false;
+  const ax3 = (a) => String(a).padStart(3, "0");
+  function upd2() {
+    const S = +document.getElementById("t-s").value || 0, C = +document.getElementById("t-c").value || 0;
+    let A = Math.round(+document.getElementById("t-a").value || 180); A = ((A - 1 + 1800) % 180) + 1;
+    const nS = S + C, nC = -C, raw = A + 90, nA = raw > 180 ? raw - 180 : raw;
+    const rx = (s, c, a) => `${Math.abs(s) < 0.005 ? "pl" : fmt.s(s)} / ${fmt.s(c)} × ${ax3(a)}`;
+    document.getElementById("t-in").textContent = rx(S, C, A);
+    const H = (t) => hideAns ? "？" : t;
+    document.getElementById("t-steps").innerHTML = [
+      ["步驟一", `新球面 ＝ ${fmt.s(S)} ＋ (${fmt.s(C)}) ＝ ${H(fmt.s(nS))}`],
+      ["步驟二", `柱面變號：${fmt.s(C)} → ${H(fmt.s(nC))}`],
+      ["步驟三", `軸度 ${A} ＋ 90 ＝ ${raw}${raw > 180 ? "，超過 180 減 180" : ""} → ${H(String(nA))}`],
+      ["驗算", `SE：${fmt.s(S + C / 2, 3)} ＝ ${H(fmt.s(nS + nC / 2, 3))}`],
+    ].map(([a, b]) => `<div class="step"><b>${a}</b><span>${b}</span></div>`).join("");
+    document.getElementById("t-out").textContent = hideAns ? "先自己寫答案，再按「顯示答案」" : rx(nS, nC, nA);
+    document.getElementById("t-hide").textContent = hideAns ? "顯示答案" : "先遮住答案";
+  }
+  ["t-s", "t-c", "t-a"].forEach((id) => document.getElementById(id).addEventListener("input", upd2));
+  document.getElementById("t-hide").onclick = () => { hideAns = !hideAns; upd2(); };
+  document.getElementById("t-rand").onclick = () => {
+    const q = (a, b) => (Math.round((a + Math.random() * (b - a)) * 4) / 4);
+    document.getElementById("t-s").value = q(-6, 4).toFixed(2);
+    document.getElementById("t-c").value = ((Math.random() < 0.5 ? -1 : 1) * Math.max(0.25, Math.abs(q(0.5, 3)))).toFixed(2);
+    document.getElementById("t-a").value = Math.random() < 0.5 ? 90 : 180;
+    hideAns = true; upd2();
+  };
+  upd2();
+
+  /* ---------- LAB 13-3 ---------- */
+  const zx = range("z-x", (v) => (v > 0 ? "右 " : v < 0 ? "左 " : "") + Math.abs(v).toFixed(1), () => st3.render());
+  const zt = range("z-t", (v) => fmt.D(v), () => st3.render());
+  const za = check("z-auto", () => { }), zg = seg("z-g", () => {});
+  const LENSES = [{ S: -3, C: 0, A: 0 }, { S: 2, C: 0, A: 0 }, { S: -1.5, C: 0, A: 0 }, { S: 4, C: 0, A: 0 }, { S: 0, C: -2, A: 30 }, { S: 0, C: 2, A: 120 }, { S: -1, C: -1.5, A: 160 }];
+  let L = LENSES[0];
+  function newLens() { L = LENSES[Math.floor(Math.random() * LENSES.length)]; zt.value = 0; zg.set("none", true); document.getElementById("z-v").textContent = ""; st3.render(); }
+  // 屈光力矩陣（柱面在軸的垂直方向有度數）
+  const mat = (S, C, Adeg) => { const a = Adeg * Math.PI / 180, s2 = Math.sin(a), c2 = Math.cos(a); return [S + C * s2 * s2, -C * s2 * c2, -C * s2 * c2, S + C * c2 * c2]; };
+  const st3 = new Stage("cv-nz", { xmin: -10, xmax: 10, ymin: -6, ymax: 6, aspect: 0.55, minH: 260, maxH: 380, equal: true, draw: (s, c) => {
+    const P = mat(L.S + zt.value, L.C, L.A), lx = zx.value, R = 3.6, k = 0.18;
+    const ctx = s.ctx;
+    // 背景十字
+    s.line(0, -6, 0, 6, { color: c.ink, w: 2 }); s.line(-10, 0, 10, 0, { color: c.ink, w: 2 });
+    // 鏡片
+    ctx.save(); ctx.beginPath(); ctx.arc(s.X(lx), s.Y(0.0), R * s.sx, 0, Math.PI * 2); ctx.fillStyle = c.bg; ctx.fill(); ctx.clip();
+    ctx.fillStyle = c.glass; ctx.fillRect(0, 0, s.w, s.h);
+    const map = (x, y) => { const dx = x - lx, dy = y; return [x + k * (P[0] * dx + P[1] * dy), y + k * (P[2] * dx + P[3] * dy)]; };
+    const drawMapped = (pts) => { ctx.beginPath(); pts.forEach(([x, y], i) => { const [u, v] = map(x, y); i ? ctx.lineTo(s.X(u), s.Y(v)) : ctx.moveTo(s.X(u), s.Y(v)); }); ctx.strokeStyle = c.ray; ctx.lineWidth = 3; ctx.stroke(); };
+    const vline = [], hline = []; for (let t = -8; t <= 8; t += 0.2) { vline.push([0, t]); hline.push([t, 0]); }
+    // 解出鏡片內看到的線：反向找影像點 —— 用前向映射近似
+    drawMapped(vline); drawMapped(hline);
+    ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.arc(s.X(lx), s.Y(0), R * s.sx, 0, Math.PI * 2); ctx.strokeStyle = c.glassEdge; ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+    s.text("背後的十字（黑）／透過鏡片看到的（橘）", -9.6, 5.4, { align: "left", size: 11, color: c.muted });
+  } });
+  st3.addHandle({ pos: () => [zx.value, -3.6], drag: (x) => { zx.value = clamp(Math.round(x * 10) / 10, -6, 6); } });
+  let ph = 0; setInterval(() => { if (za.value) { ph += 0.12; zx.value = Math.round(Math.sin(ph) * 50) / 10; st3.render(); } }, 60);
+  document.getElementById("z-new").onclick = newLens;
+  document.getElementById("z-chk").onclick = () => {
+    const truth = L.C !== 0 ? "cyl" : L.S < 0 ? "minus" : "plus";
+    const nm = { minus: "負鏡片（順動）", plus: "正鏡片（逆動）", cyl: "含柱面（剪動）" };
+    const desc = L.C ? `${L.S ? fmt.s(L.S) : "pl"} / ${fmt.s(L.C)} × ${String(L.A).padStart(3, "0")}` : fmt.D(L.S);
+    const g = zg.value, sum = L.S + zt.value;
+    document.getElementById("z-v").innerHTML = (g === "none" ? "" : g === truth ? '<span class="pill ok">判斷正確</span> ' : '<span class="pill bad">判斷錯誤</span> ') +
+      `這片是 ${nm[truth]}：${desc}。` + (L.C ? "球面鏡只能中和其中一個方向。" : Math.abs(sum) < 0.01 ? " 你已經用 " + fmt.D(zt.value) + " 中和成功。" : ` 要用 ${fmt.D(-L.S)} 才能中和。`);
+  };
+  newLens();
+})();
+</script>
+<script>
+  (function () {
+    const { range, fmt } = OL;
+    const ra = range("r-a", (v) => String(v).padStart(3, "0") + "°", () => draw()), rc = range("r-c", (v) => fmt.D(v), () => draw());
+    const perp = (a) => (a + 90 > 180 ? a - 90 : a + 90);
+    function draw() {
+      const A = ra.value, C = rc.value, cx = 210, cy = 150, L = 120, t = A * Math.PI / 180;
+      const ux = Math.cos(t), uy = -Math.sin(t), px = -uy, py = ux;
+      const w = 26;
+      const pts = [[cx - L * ux - w * px, cy - L * uy - w * py], [cx + L * ux - w * px, cy + L * uy - w * py], [cx + L * ux + w * px, cy + L * uy + w * py], [cx - L * ux + w * px, cy - L * uy + w * py]];
+      let s = `<svg viewBox="0 0 420 300" role="img" aria-label="柱面鏡片示意">`;
+      s += `<line x1="40" y1="${cy}" x2="380" y2="${cy}" stroke="var(--line)" stroke-dasharray="4 4"/><line x1="${cx}" y1="20" x2="${cx}" y2="280" stroke="var(--line)" stroke-dasharray="4 4"/>`;
+      s += `<polygon points="${pts.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ")}" fill="var(--glass)" stroke="var(--glass-edge)" stroke-width="2"/>`;
+      s += `<line x1="${cx - L * ux}" y1="${cy - L * uy}" x2="${cx + L * ux}" y2="${cy + L * uy}" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4"/>`;
+      s += `<line x1="${cx - 70 * px}" y1="${cy - 70 * py}" x2="${cx + 70 * px}" y2="${cy + 70 * py}" stroke="var(--ray)" stroke-width="3" marker-end="url(#ah)" marker-start="url(#ah)"/>`;
+      s += `<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 Z" fill="var(--ray)"/></marker></defs>`;
+      s += `<text x="${cx + (L + 18) * ux}" y="${cy + (L + 18) * uy + 4}" text-anchor="middle" font-size="12" fill="var(--accent)" font-weight="700">軸 ${A}°（平）</text>`;
+      s += `<text x="${cx + 86 * px}" y="${cy + 86 * py + 4}" text-anchor="middle" font-size="12" fill="var(--ray)" font-weight="700">${fmt.D(C)}</text>`;
+      s += `<text x="210" y="292" text-anchor="middle" font-size="11" fill="var(--muted)">驗光師面對患者的視角（TABO）</text></svg>`;
+      document.getElementById("rod").innerHTML = s;
+      document.getElementById("r-no").textContent = `${A}°`;
+      document.getElementById("r-yes").textContent = `${perp(A)}°（${fmt.D(C)}）`;
+    }
+    let q = null;
+    function newQ() {
+      const A = [180, 90, 30, 60, 120, 150, 45, 135][Math.floor(Math.random() * 8)], C = -[0.5, 1, 1.5, 2][Math.floor(Math.random() * 4)];
+      q = { A, C, ans: perp(A) };
+      document.getElementById("r-q").textContent = `考考我：${fmt.D(C).replace(" D", "")} × ${String(A).padStart(3, "0")}，哪個方向有度數？`;
+      const opts = [...new Set([A, perp(A), (A + 45) % 180 || 180, (A + 135) % 180 || 180])];
+      const box = document.getElementById("r-ch");
+      box.innerHTML = opts.sort((a, b) => a - b).map((d) => `<button type="button" class="chip" data-d="${d}">${d}° 方向</button>`).join("");
+      document.getElementById("r-v").textContent = "";
+      box.querySelectorAll(".chip").forEach((b) => b.onclick = () => {
+        box.querySelectorAll(".chip").forEach((x) => { x.disabled = true; if (+x.dataset.d === q.ans) x.classList.add("ok"); });
+        if (+b.dataset.d !== q.ans) b.classList.add("bad");
+        document.getElementById("r-v").innerHTML = (+b.dataset.d === q.ans ? '<span class="pill ok">正確</span> ' : '<span class="pill bad">記反了</span> ') + `${q.A}° 是軸、沒有度數；度數 ${fmt.D(q.C)} 在垂直於軸的 ${q.ans}° 方向。`;
+        ra.value = q.A; rc.value = q.C; draw();
+      });
+    }
+    document.getElementById("r-new").onclick = newQ;
+    draw(); newQ();
+  })();
+</script>
+</body>
+</html>
