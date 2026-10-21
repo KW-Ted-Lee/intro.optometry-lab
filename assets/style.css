@@ -1,4 +1,4 @@
-/* 視光概論實驗台 — 共用樣式（沿用「視光光學實驗台」「視光學臨床實驗台」）
+/* 視光概論（無邊界教室）— 共用樣式（沿用「幾何光學實驗台」「視光學臨床實驗台」）
    Layout concept: 一張光學實驗台。頂部導覽列 + 單欄閱讀區；互動實驗為「畫布 + 控制面板」雙欄，手機時上下堆疊。 */
 :root {
   --bg: #eef2f1;          /* 實驗台淺灰綠 */
@@ -312,7 +312,7 @@ table.mini td.hl { background: var(--accent-soft); font-weight: 700; }
 @media (max-width: 640px) { .sim-link { grid-template-columns: auto minmax(0, 1fr); } .sim-go { grid-column: 1 / -1; justify-self: start; } .sim-ic { width: 48px; height: 48px; } }
 
 /* =========================================================
-   視光概論實驗台：新增元件
+   視光概論（無邊界教室）：新增元件
    ========================================================= */
 :root { --lv-s: #c2410c; --lv-d: var(--accent); --lv-o: var(--muted); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --lv-s: #ff9a5c; } }

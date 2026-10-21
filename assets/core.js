@@ -1,4 +1,4 @@
-/* 視光概論實驗台 — 共用程式（架構沿用「視光光學實驗台」「視光學臨床實驗台」）
+/* 視光概論（無邊界教室）— 共用程式（架構沿用「幾何光學實驗台」「視光學臨床實驗台」）
    提供：週次清單、導覽列、主題切換、Stage（光學台畫布）、近軸光線追跡、控制元件、預測題、測驗、學習進度、
          題庫註冊、名詞表、講義圖解（燈箱）。
    純 JavaScript，無外部相依，可直接放在 GitHub Pages。 */
@@ -94,7 +94,7 @@
       const opts = WEEKS.map((w) => `<option value="${w.id}" ${w.id === currentId ? "selected" : ""}>${wkLabel(w)}　${w.zh}</option>`).join("") +
         `<optgroup label="綜合練習">${extra.map(([v, t]) => `<option value="${v}" ${v === currentId ? "selected" : ""}>${t}</option>`).join("")}</optgroup>`;
       header.innerHTML = `<div class="topbar-inner">
-        <a class="brand" href="index.html">${LOGO}<span>視光概論實驗台<small>INTRO TO OPTOMETRY LAB</small></span></a>
+        <a class="brand" href="index.html">${LOGO}<span>視光概論<small>無邊界教室 · INTRO TO OPTOMETRY</small></span></a>
         <div class="spacer"></div>
         <select class="chapter-select" id="chapter-jump" aria-label="跳至週次"><option value="index">— 課程首頁 —</option>${opts}</select>
         <button class="theme-btn" id="theme-btn" type="button"></button>

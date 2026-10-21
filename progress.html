@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="assets/analytics.js"></script>
-<title>課程進度地圖｜視光概論實驗台</title>
+<title>課程進度地圖｜視光概論・無邊界教室</title>
 <meta name="description" content="視光概論的學習旅程：18 站地圖、四大主軸完成度、★ 九項計算精熟度、名詞、目標自評的起點與現在。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
@@ -503,7 +503,7 @@
     const B = [
       ["◎", "第一步", "探索完第一個互動實驗", Math.min(labs, 1), 1],
       ["⚘", "動手做的人", "探索 32 個互動實驗（一半）", labs, 32],
-      ["⌬", "實驗台常客", "64 個互動實驗全部探索", labs, 64],
+      ["⌬", "動手常客", "64 個互動實驗全部探索", labs, 64],
       ["◉", "看懂眼睛", "主軸一（眼球生理）四週都完成", axDone(1), ax(1).length],
       ["◐", "前半學期全通", "W01–W08 觀念檢核都答對八成", midOk, midW.length],
       ["✦", "屈光通", "主軸二（屈光異常）七週都完成", axDone(2), ax(2).length],
@@ -529,7 +529,7 @@
   $("imp").onchange = (e) => {
     const f = e.target.files[0]; if (!f) return;
     f.text().then((s) => { const data = JSON.parse(s); if (data.site !== "intro-optometry-lab") throw 0; KEYS.forEach((k) => { if (data[k] != null) store.set(k, data[k]); }); $("bk-msg").textContent = "已匯入進度。"; refresh(); })
-      .catch(() => { $("bk-msg").textContent = "這不是視光概論實驗台的進度檔。"; });
+      .catch(() => { $("bk-msg").textContent = "這不是視光概論的進度檔。"; });
     e.target.value = "";
   };
   let armed = 0;

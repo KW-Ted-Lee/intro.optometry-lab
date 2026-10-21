@@ -1,6 +1,6 @@
 /* 網站設定：開發者名單與版權宣告集中在這裡修改，所有頁面會自動帶入 */
 window.OB_CONFIG = {
-  siteName: "視光概論實驗台",
+  siteName: "視光概論（無邊界教室）",
   course: "視光概論（五專一年級）",
   copyright: {
     year: 2026,
